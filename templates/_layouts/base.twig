@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Outring{% endblock %}</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>
+			{% block title %}
+				Outring
+			{% endblock %}
+		</title>
 
-  {# Vite CSS/JS #}
-  {{ craft.vite.script('src/js/main.ts', false) }}
-</head>
-<body>
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-</body>
+		{# Vite CSS/JS #}
+		{{ craft.vite.script('src/js/main.ts', false) }}
+	</head>
+	<body>
+		{% include '_modules/site-nav' %}
+		<main>
+			{% block content %}
+
+			{% endblock %}
+		</main>
+		{% include '_modules/site-footer' %}
+	</body>
 </html>
