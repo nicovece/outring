@@ -1,31 +1,103 @@
-{% extends "_layouts/base.twig" %}
+{% extends '_layouts/base.twig' %}
 
-{% block title %}{{ entry.title }}{% endblock %}
+{% block title %}
+	{{ entry.title }}- {{ siteName }}
+{% endblock %}
 
 {% block content %}
-<article class="experience max-w-4xl mx-auto px-4 py-16">
-  {% if entry.featuredImage|length %}
-      {% include '_modules/hero-image' with {
-        image: entry.featuredImage.one()
-      } only %}
-    {% endif %}
-  <h1>{{ entry.title }}</h1>
-  {% if entry.shortQuote %}
-    <p>"{{ entry.shortQuote }}"</p>
-  {% endif %}
-  {{ entry.experienceType.label }}
-  {% set date = entry.dateOfExperience %}
-  {% if date %}
-    <p>{{ date|date('F Y') }}</p>
-  {% endif %}
-  {% set place = entry.place.one() %}
-  {% if place %}
-    <p><a href="{{ place.url }}">{{ place.title }}</a></p>
-  {% endif %}
-  {% set themes = entry.themes.all() %}
-  {% for theme in themes %}
-    {{ theme.title }}{% if not loop.last %}, {% endif %}
-  {% endfor %}
-  <hr class="my-8">
-</article>
+	<article class="experience mx-auto max-w-4xl px-4 py-16">
+		<section class="hero-section">
+			{% if entry.featuredImage|length %}
+				{% include '_modules/hero-image' with {
+					image: entry.featuredImage.one(),
+					caption: entry.featuredImageCaption
+				} only %}
+			{% endif %}
+			<h1>{{ entry.title }}</h1>
+			{% if entry.shortQuote %}
+				<p>
+					"{{ entry.shortQuote }}"
+				</p>
+			{% endif %}
+		</section>
+		{{ entry.experienceType.label }}
+		{% set date = entry.dateOfExperience %}
+		{% if date %}
+			<p>
+				{{ date|date('F Y') }}
+			</p>
+		{% endif %}
+		{% set place = entry.place.one() %}
+		{% if place %}
+			<p>
+				<a href="{{ place.url }}">{{ place.title }}</a>
+			</p>
+		{% endif %}
+		{% set themes = entry.themes.all() %}
+		{% for theme in themes %}
+			{{ theme.title }}{% if not loop.last %}, {% endif %}
+		{% endfor %}
+		{# Body Content - Matrix Blocks #}
+		<section class="body-section mb-12 max-w-none">
+			{% for block in entry.body.all() %}
+				{% switch block.type %}
+
+				{% case 'richText' %}
+				{% include '_partials/_experience-blocks/rich-text' with {
+					block
+				} only %}
+
+				{% case 'pullQuote' %}
+				{% include '_partials/_experience-blocks/pull-quote' with {
+					block
+				} only %}
+
+				{% case 'imageBlock' %}
+				{% include '_partials/_experience-blocks/image-block' with {
+					block
+				} only %}
+
+				{% case 'callout' %}
+				{% include '_partials/_experience-blocks/callout' with {
+					block
+				} only %}
+
+				{% case 'beforeAfter' %}
+				{% include '_partials/_experience-blocks/before-after' with {
+					block
+				} only %}
+
+				{% default %}
+				<p class="text-red-500">
+					Unknown block type: {{ block.type }}
+				</p>
+
+				{% endswitch %}
+			{% endfor %}
+		</section>
+		{# People Involved #}
+		{% if entry.peopleInvolved|length %}
+			<section class="people-involved border-gray-200 mt-12 border-t pt-12">
+				<h2 class="mb-6 text-2xl font-bold">People Involved</h2>
+				<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+					{% for person in entry.peopleInvolved.all() %}
+						<div class="person-card">
+							{% if person.involvedPersonPhoto|length %}
+								{% set photo = person.involvedPersonPhoto.one() %}
+								<img
+									src="{{ photo.url }}"
+									alt="{{ person.involvedPersonName }}"
+									class="mb-3 h-20 w-20 rounded-full object-cover"
+								/>
+							{% endif %}
+							<h3 class="font-bold">{{ person.involvedPersonName }}</h3>
+							<p class="text-gray-600 text-sm">
+								{{ person.involvedPersonRole }}
+							</p>
+						</div>
+					{% endfor %}
+				</div>
+			</section>
+		{% endif %}
+	</article>
 {% endblock %}
