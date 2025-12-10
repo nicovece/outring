@@ -1,0 +1,16 @@
+{% if block.quote %}
+	<blockquote class="prose mb-6 max-w-none">
+		{% include '_partials/_retcon/experience-text' with {
+			text: block.quote
+		} only %}
+		{% if block.attribution %}
+			<footer class="text-gray-700">
+				<cite>
+					{% include '_partials/_retcon/experience-text' with {
+						text: block.attribution
+					} only %}
+				</cite>
+			</footer>
+		{% endif %}
+	</blockquote>
+{% endif %}

@@ -1,0 +1,75 @@
+{#
+    Before/After Slider Block
+
+    Receives: block (Matrix block object)
+    Fields:
+      - block.beforeImage (Asset)
+      - block.beforeAltText (Plain Text)
+      - block.afterImage (Asset)
+      - block.afterAltText (Plain Text)
+      - block.caption (CKEditor)
+  #}
+
+{% if block.beforeImage and block.afterImage %}
+	{% set beforeImg = block.beforeImage.one() %}
+	{% set afterImg = block.afterImage.one() %}
+
+	<figure class="before-after mb-6" data-before-after>
+		<div class="before-after__container">
+			{# Before Image (base layer) #}
+			<img
+				src="{{ beforeImg.url }}"
+				alt="{{ block.beforeAltText ? : beforeImg.title }}"
+				width="{{ beforeImg.width }}"
+				height="{{ beforeImg.height }}"
+				class="before-after__image before-after__image--before"
+				loading="lazy"
+			/>
+
+			{# After Image (clipped layer) #}
+			<img
+				src="{{ afterImg.url }}"
+				alt="{{ block.afterAltText ? : afterImg.title }}"
+				width="{{ afterImg.width }}"
+				height="{{ afterImg.height }}"
+				class="before-after__image before-after__image--after"
+				loading="lazy"
+			/>
+
+			{# Divider Line #}
+			<div class="before-after__divider" aria-hidden="true">
+				<div class="before-after__handle">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
+						<path d="M10 16l6-6v4h6v-4l6 6-6 6v-4h-6v4z" />
+					</svg>
+				</div>
+			</div>
+		</div>
+
+		{# Range Input (fallback + enhancement) #}
+		<input
+			type="range"
+			min="0"
+			max="100"
+			value="50"
+			step="1"
+			class="before-after__slider"
+			aria-label="Slide to compare before and after images"
+		/>
+
+		{# Labels #}
+		<div class="before-after__labels" aria-hidden="true">
+			<span class="before-after__label before-after__label--before">Before</span>
+			<span class="before-after__label before-after__label--after">After</span>
+		</div>
+
+		{# Caption #}
+		{% if block.caption %}
+			<figcaption class="text-gray-700 mt-2">
+				{% include '_partials/_retcon/experience-text' with {
+					text: block.caption
+				} only %}
+			</figcaption>
+		{% endif %}
+	</figure>
+{% endif %}

@@ -1,0 +1,20 @@
+{% if block.image %}
+	{% set image = block.image.one() %}
+	<figure class="mb-6">
+		<img
+			src="{{ image.url }}"
+			alt="{{ block.altText ? : image.title }}"
+			width="{{ image.width }}"
+			height="{{ image.height }}"
+			loading="lazy"
+			class="w-full"
+		/>
+		{% if block.caption %}
+			<figcaption class="text-gray-700 mt-2">
+				{% include '_partials/_retcon/experience-text' with {
+					text: block.caption
+				} only %}
+			</figcaption>
+		{% endif %}
+	</figure>
+{% endif %}
