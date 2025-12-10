@@ -55,6 +55,23 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-12-10T12:12:13+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 2510f397-c34c-4a8b-b10e-fb9b14599ee6 # Featured Image Caption
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7bbd9f6f-bae3-4928-bb97-2f72b8eec3a8
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-12-09T15:54:29+00:00'
             editCondition: null
             elementCondition: null

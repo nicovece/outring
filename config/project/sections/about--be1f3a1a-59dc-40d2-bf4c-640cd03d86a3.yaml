@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: ef2e8135-8589-451c-853a-ae1b22c5547d # About
+handle: about
+maxAuthors: 1
+name: About
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  62bc0ef7-2ac1-4b54-b20d-b5029f396ce6: # Outring
+    enabledByDefault: true
+    hasUrls: true
+    template: about/_entry.twig
+    uriFormat: about
+type: single

@@ -5,6 +5,7 @@
 /.cursor
 /.vscode
 /.prettierrc
+/.as
 .DS_Store
 
 # Snyk Security Extension - AI Rules (auto-generated)

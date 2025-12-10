@@ -1,0 +1,26 @@
+columnSuffix: null
+handle: featuredImageCaption
+instructions: 'Optional caption or tagline for the featured image. Appears below the hero image on the detail page.'
+name: 'Featured Image Caption'
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  characterLimit: 200
+  ckeConfig: b75c217c-fc11-41f6-b056-7f483eb2212f # Default
+  createButtonLabel: null
+  defaultTransform: null
+  expandEntryButtons: false
+  fullGraphqlData: true
+  parseEmbeds: false
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field
