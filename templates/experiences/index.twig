@@ -1,0 +1,89 @@
+{% extends '_layouts/base.twig' %}
+
+{% block title %}
+	Experiences - {{ siteName }}
+{% endblock %}
+
+{% block content %}
+	<div class="mx-auto max-w-6xl px-4 py-16">
+		{# Header #}
+		<header class="mb-12">
+			<h1 class="mb-4 text-4xl font-bold">Experiences</h1>
+			<p class="text-gray-600 text-xl">
+				Stories from residents involved in urban regeneration projects
+			</p>
+		</header>
+
+		{# Experiences Grid #}
+		{% set experiences =
+			craft.entries().section('experiences').with(['featuredImage', 'place', 'themes']).orderBy(
+				'dateOfExperience DESC'
+			).all()
+		%}
+
+		{% if experiences|length %}
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+				{% for experience in experiences %}
+					<article class="experience-card border-gray-200 overflow-hidden rounded-lg border transition hover:shadow-lg">
+						{# Featured Image #}
+						{% if experience.featuredImage|length %}
+							{% set image = experience.featuredImage.one() %}
+							<a href="{{ experience.url }}">
+								<img src="{{ image.url }}" alt="{{ image.title }}" class="h-48 w-full object-cover" loading="lazy" />
+							</a>
+						{% endif %}
+
+						{# Content #}
+						<div class="p-6">
+							{# Title #}
+							<h2 class="mb-2 text-xl font-bold">
+								<a href="{{ experience.url }}" class="hover:text-gray-600">{{ experience.title }}</a>
+							</h2>
+
+							{# Short Quote #}
+							{% if experience.shortQuote %}
+								<p class="text-gray-600 mb-4 italic">
+									"{{ experience.shortQuote }}"
+								</p>
+							{% endif %}
+
+							{# Meta #}
+							<div class="text-gray-500 space-y-1 text-sm">
+								{# Date #}
+								{% if experience.dateOfExperience %}
+									<div>
+										{{ experience.dateOfExperience|date('F Y') }}
+									</div>
+								{% endif %}
+
+								{# Place #}
+								{% set place = experience.place.one() %}
+								{% if place %}
+									<div>
+										{{ place.title }}
+									</div>
+								{% endif %}
+							</div>
+
+							{# Themes #}
+							{% set themes = experience.themes.all() %}
+							{% if themes|length %}
+								<div class="mt-4 flex flex-wrap gap-2">
+									{% for theme in themes %}
+										<a href="{{ theme.url }}" class="bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 text-xs">
+											{{ theme.title }}
+										</a>
+									{% endfor %}
+								</div>
+							{% endif %}
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		{% else %}
+			<p class="text-gray-600">
+				No experiences yet.
+			</p>
+		{% endif %}
+	</div>
+{% endblock %}

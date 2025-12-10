@@ -1,0 +1,55 @@
+{% extends '_layouts/base.twig' %}
+
+{% block title %}
+	{{ entry.title }} - {{ siteName }}
+{% endblock %}
+
+{% block content %}
+	<article class="mx-auto max-w-4xl px-4 py-16">
+		<h1 class="mb-8 text-4xl font-bold">{{ entry.title }}</h1>
+		{% set featuredImage = entry.featuredImage.one() %}
+		{% if featuredImage %}
+			{% include '_modules/hero-image' with {
+				image: featuredImage,
+				caption: featuredImage.caption
+			} only %}
+		{% endif %}
+		<section class="body-section mb-12 max-w-none">
+			{% for block in entry.body.all() %}
+				{% switch block.type %}
+
+				{% case 'richText' %}
+				{% include '_partials/_experience-blocks/rich-text' with {
+					block
+				} only %}
+
+				{% case 'pullQuote' %}
+				{% include '_partials/_experience-blocks/pull-quote' with {
+					block
+				} only %}
+
+				{% case 'imageBlock' %}
+				{% include '_partials/_experience-blocks/image-block' with {
+					block
+				} only %}
+
+				{% case 'callout' %}
+				{% include '_partials/_experience-blocks/callout' with {
+					block
+				} only %}
+
+				{% case 'beforeAfter' %}
+				{% include '_partials/_experience-blocks/before-after' with {
+					block
+				} only %}
+
+				{% default %}
+				<p class="text-red-500">
+					Unknown block type: {{ block.type }}
+				</p>
+
+				{% endswitch %}
+			{% endfor %}
+		</section>
+	</article>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends '_layouts/base.twig' %}
+
+{% block title %}
+	Themes
+{% endblock %}
+
+{% block content %}
+	<div class="mx-auto max-w-6xl px-4 py-16">
+		<header class="mb-12">
+			<h1 class="mb-4 text-4xl font-bold">Themes</h1>
+			<p class="text-gray-600 text-xl">
+				Explore experiences by topic
+			</p>
+		</header>
+
+		{% set themes = craft.entries().section('themes').all() %}
+
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{% for theme in themes %}
+				<a href="{{ theme.url }}" class="theme-card border-gray-200 rounded-lg border p-6 transition hover:shadow-lg">
+					<h2 class="mb-2 text-2xl font-bold">{{ theme.title }}</h2>
+					{% if theme.text %}
+						<div class="text-gray-600">
+							{{ theme.text|striptags|slice(0, 120) }}...
+						</div>
+					{% endif %}
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
