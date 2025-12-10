@@ -1,0 +1,74 @@
+color: null
+description: null
+fieldLayouts:
+  3c39fe99-f315-401c-a727-0b90fbf14ad9:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-09T15:27:42+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 811867f9-5d6c-43e8-a1ae-d294f0dbe229 # Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cfbceb3c-d796-43ca-9608-f8e3bdbe11b0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:29:25+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 5e85c8d8-050c-4f7b-83b5-8f5bb2c1609a # Alt Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 22c71dca-b5ac-4e38-863a-a7011cc8e86b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:29:25+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: eaf6a6e9-e328-4688-864e-9b23f3e55755 # Caption
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: aee7872f-d0c4-47d5-960e-5a41da5b53a8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ce12d434-d966-4fb5-8143-d5daaa1d33fb
+        userCondition: null
+handle: imageBlock
+hasTitleField: false
+icon: null
+name: 'Image Block'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{type.name}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

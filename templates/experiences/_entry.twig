@@ -1,0 +1,31 @@
+{% extends "_layouts/base.twig" %}
+
+{% block title %}{{ entry.title }}{% endblock %}
+
+{% block content %}
+<article class="experience max-w-4xl mx-auto px-4 py-16">
+  {% if entry.featuredImage|length %}
+      {% include '_modules/hero-image' with {
+        image: entry.featuredImage.one()
+      } only %}
+    {% endif %}
+  <h1>{{ entry.title }}</h1>
+  {% if entry.shortQuote %}
+    <p>"{{ entry.shortQuote }}"</p>
+  {% endif %}
+  {{ entry.experienceType.label }}
+  {% set date = entry.dateOfExperience %}
+  {% if date %}
+    <p>{{ date|date('F Y') }}</p>
+  {% endif %}
+  {% set place = entry.place.one() %}
+  {% if place %}
+    <p><a href="{{ place.url }}">{{ place.title }}</a></p>
+  {% endif %}
+  {% set themes = entry.themes.all() %}
+  {% for theme in themes %}
+    {{ theme.title }}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+  <hr class="my-8">
+</article>
+{% endblock %}

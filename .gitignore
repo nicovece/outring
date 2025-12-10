@@ -1,0 +1,11 @@
+/.env
+/.idea
+/vendor
+/node_modules
+/.cursor
+/.vscode
+/.prettierrc
+.DS_Store
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.cursor/rules/snyk_rules.mdc

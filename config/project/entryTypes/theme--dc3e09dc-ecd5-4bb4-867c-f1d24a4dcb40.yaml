@@ -1,0 +1,87 @@
+color: null
+description: null
+fieldLayouts:
+  de23052b-4df2-475e-b7a6-755a1df3eaba:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-12-09T11:34:59+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: b19bf7ad-e24d-448e-a281-072e7a8dae25
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:58:08+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 5d1215b1-5277-45ff-add8-b9470c26338b # Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6127636d-9578-4315-9d98-3ebaa97b13a4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:58:08+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 2856f991-bc95-4a50-ae86-cdb6d7a75cce # Theme Color
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c7475a96-598f-4032-aa37-9ca6ea4d34b8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2b500653-f496-4c12-8817-72d6f93a2c29
+        userCondition: null
+handle: theme
+hasTitleField: true
+icon: trees
+name: Theme
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,80 @@
+dateModified: 1765310600
+email:
+  fromEmail: me@nicovece.com
+  fromName: Outring
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  local:
+    hasUrls: true
+    name: Local
+    settings:
+      path: '@webroot/uploads'
+    type: craft\fs\Local
+    url: '@web/uploads'
+meta:
+  __names__:
+    1f153368-e72f-4d41-9a33-2c0cc7769cfe: 'External Project URL' # External Project URL
+    2c506b5d-c50c-4a0c-987d-ee5a0e597996: 'Pull Quote' # Pull Quote
+    5c1103a9-12de-4dcb-b873-ac7b9a5bebf7: 'Participation Phase' # Participation Phase
+    5d1215b1-5277-45ff-add8-b9470c26338b: Text # Text
+    5e85c8d8-050c-4f7b-83b5-8f5bb2c1609a: 'Alt Text' # Alt Text
+    7c7a95e6-57d7-4355-9679-32d26c3c0a83: Role # Role
+    7da6a3b4-58fb-435d-b0fe-cfd5a53a7fe2: Places # Places
+    7eb89847-52c1-4cf3-8178-cddbc12e22bd: Attribution # Attribution
+    8b1eeb41-ed00-4e2d-ae3f-293ff76f96d6: Themes # Themes
+    8e125a51-39c8-4452-8313-84b56f8fd5fb: 'Rich Text' # Rich Text
+    9c8b9611-d687-4642-8647-d84d7a816609: 'Before Alt Text' # Before Alt Text
+    62bc0ef7-2ac1-4b54-b20d-b5029f396ce6: Outring # Outring
+    79dfdcd1-560d-402e-8eee-7c663bdbdb15: Experiences # Experiences
+    0178d46e-a81d-4be3-bab6-7481e2c62ee1: Experience # Experience
+    534abbfb-4e75-40e6-8aed-3c859412ebf9: 'Experience Type' # Experience Type
+    0905e205-4c22-4c63-88f1-fe6a62497607: City # City
+    1418d0e3-127c-47e3-a914-2074712463c4: 'Before After' # Before After
+    2289d566-365e-487f-9c76-a01fd1f73a07: 'Date of Experience' # Date of Experience
+    2856f991-bc95-4a50-ae86-cdb6d7a75cce: 'Theme Color' # Theme Color
+    632826db-933d-4fb9-a63e-c6173a02cf07: Place # Place
+    695043cc-c5cc-41eb-af11-8a82b7e873a0: Photo # Photo
+    811867f9-5d6c-43e8-a1ae-d294f0dbe229: Image # Image
+    22630847-d6e9-4cf9-a1c8-78d84d281486: 'Short Quote' # Short Quote
+    a2b84830-34a0-4780-bf03-08293ba5127c: 'Featured Image' # Featured Image
+    b2d67bb8-0595-4356-a6ad-349dec9f11dd: Place # Place
+    b75c217c-fc11-41f6-b056-7f483eb2212f: Default # Default
+    c754eefd-99e6-4646-8399-3e26f08a4e9a: 'Image Block' # Image Block
+    d2b7c10f-b013-4c41-a09d-60e005a5b8d1: Images # Images
+    d3c2c606-4515-4be3-9780-cda4112337c0: Name # Name
+    d4fc5d70-873a-4c16-9938-8dbc6f6e4b35: Outring # Outring
+    d9517422-a093-4a22-a24a-5b8ebcd24c15: Person # Person
+    da9f857b-c96d-4a51-bf9e-1145543329c6: 'People Involved' # People Involved
+    dc3e09dc-ecd5-4bb4-867c-f1d24a4dcb40: Theme # Theme
+    df5e3056-f611-4f43-9561-ba7ee0622c93: Quote # Quote
+    e8a7ebee-dfaa-4253-8107-0e1716a4b36e: 'After Image' # After Image
+    eaf6a6e9-e328-4688-864e-9b23f3e55755: Caption # Caption
+    ec82511a-62d1-43d6-9b3d-754139ae7565: Callout # Callout
+    eee44d8f-a8f8-4c84-a202-5490cb708983: 'Voice Perspective' # Voice Perspective
+    f08a310e-0e47-47a4-bb1c-51dc3436baba: 'After Alt Text' # After Alt Text
+    f80a4df9-6931-4e2b-af3b-23d50be99dc6: 'Before Image' # Before Image
+    f7523342-6e93-4849-89f8-1951759f8e05: Simple # Simple
+    fe0b41ea-1d6b-4721-92d9-ad51f4ce6038: Body # Body
+    fff6184b-15f7-4bc8-b79b-4555a163c116: Themes # Themes
+plugins:
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: Outring
+  schemaVersion: 5.8.0.3
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  require2fa: false
+  requireEmailVerification: true

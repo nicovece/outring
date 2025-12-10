@@ -1,0 +1,21 @@
+{#
+    Hero Image Module
+
+    Expected: image is not null
+
+    Usage:
+    {% if entry.featuredImage|length %}
+      {% include '_modules/hero-image' with {
+        image: entry.featuredImage.one()
+      } only %}
+    {% endif %}
+  #}
+
+  <figure class="mb-12">
+    <img src="{{ image.url }}" alt="{{ image.title }}" class="w-full" loading="eager">
+    {% if image.title %}
+      <figcaption class="text-sm text-gray-600 mt-2">
+        {{ image.title }}
+      </figcaption>
+    {% endif %}
+  </figure>

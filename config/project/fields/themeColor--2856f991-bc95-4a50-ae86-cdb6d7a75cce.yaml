@@ -1,0 +1,10 @@
+columnSuffix: null
+handle: themeColor
+instructions: 'Color to represent this theme visually'
+name: 'Theme Color'
+searchable: false
+settings:
+  allowCustomColors: true
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Color

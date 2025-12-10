@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: dc3e09dc-ecd5-4bb4-867c-f1d24a4dcb40 # Theme
+handle: themes
+maxAuthors: 1
+name: Themes
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  62bc0ef7-2ac1-4b54-b20d-b5029f396ce6: # Outring
+    enabledByDefault: true
+    hasUrls: true
+    template: themes/_entry.twig
+    uriFormat: 'themes/{slug}'
+structure:
+  maxLevels: null
+  uid: 6e12b4ca-1b60-411f-a7c3-8b33f938c232
+type: structure

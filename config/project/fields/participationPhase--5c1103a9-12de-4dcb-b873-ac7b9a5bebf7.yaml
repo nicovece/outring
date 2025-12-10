@@ -1,0 +1,79 @@
+columnSuffix: null
+handle: participationPhase
+instructions: 'When in the G124 process did this happen?'
+name: 'Participation Phase'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Initial Listening'
+        -
+          - value
+          - initialListening
+        -
+          - icon
+          - ''
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Co-Design
+        -
+          - value
+          - coDesign
+        -
+          - icon
+          - ''
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Open Construction'
+        -
+          - value
+          - openConstruction
+        -
+          - icon
+          - ''
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'New Everyday Life'
+        -
+          - value
+          - newEverydayLife
+        -
+          - icon
+          - ''
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

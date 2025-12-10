@@ -1,0 +1,16 @@
+columnSuffix: null
+handle: externalProjectUrl
+instructions: null
+name: 'External Project URL'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  initialRows: 4
+  multiline: false
+  placeholder: 'https://renzopianog124.com/...'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

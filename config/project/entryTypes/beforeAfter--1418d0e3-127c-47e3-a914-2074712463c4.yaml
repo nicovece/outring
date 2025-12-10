@@ -1,0 +1,138 @@
+color: null
+description: null
+fieldLayouts:
+  47a8eaaf-7d27-4594-b308-7525e4c57ea3:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-12-09T15:32:12+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 207c4d2f-ac21-4512-9e77-1b1a52202168
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:40:00+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: f80a4df9-6931-4e2b-af3b-23d50be99dc6 # Before Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 063d78ce-bf5e-4c25-a64f-a8e77ee2e053
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:40:00+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 9c8b9611-d687-4642-8647-d84d7a816609 # Before Alt Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 68588c66-0a02-4eca-9243-212f95f14bc5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:40:00+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: e8a7ebee-dfaa-4253-8107-0e1716a4b36e # After Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ba5f98eb-ac1e-4fac-83d8-29448d99e374
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:40:00+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: f08a310e-0e47-47a4-bb1c-51dc3436baba # After Alt Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 04914a30-bfe1-4bd9-aad6-cf29a5c3101a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:40:00+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: eaf6a6e9-e328-4688-864e-9b23f3e55755 # Caption
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c3a8fe32-c78d-4c1e-b417-dc2ea11445ec
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c8c9dd3d-4046-401c-924c-f6eb723905f2
+        userCondition: null
+handle: beforeAfter
+hasTitleField: true
+icon: null
+name: 'Before After'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{type.name}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

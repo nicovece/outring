@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: peopleInvolved
+instructions: 'People who participated in or contributed to this experience'
+name: 'People Involved'
+searchable: false
+settings:
+  createButtonLabel: 'Add person'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - d9517422-a093-4a22-a24a-5b8ebcd24c15 # Person
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

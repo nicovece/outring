@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en
+name: Outring
+primary: true
+siteGroup: d4fc5d70-873a-4c16-9938-8dbc6f6e4b35 # Outring
+sortOrder: 1

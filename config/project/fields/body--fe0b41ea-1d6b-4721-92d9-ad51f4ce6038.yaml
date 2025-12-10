@@ -1,0 +1,61 @@
+columnSuffix: null
+handle: body
+instructions: 'Main content of the experience - mix text, images, quotes, etc.'
+name: Body
+searchable: true
+settings:
+  createButtonLabel: 'Add content block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 8e125a51-39c8-4452-8313-84b56f8fd5fb # Rich Text
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 2c506b5d-c50c-4a0c-987d-ee5a0e597996 # Pull Quote
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - c754eefd-99e6-4646-8399-3e26f08a4e9a # Image Block
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - ec82511a-62d1-43d6-9b3d-754139ae7565 # Callout
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 1418d0e3-127c-47e3-a914-2074712463c4 # Before After
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

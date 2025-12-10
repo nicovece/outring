@@ -1,0 +1,57 @@
+color: null
+description: null
+fieldLayouts:
+  5c0f5413-6bc4-495a-9751-dc13bef69925:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-09T15:24:45+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: df5e3056-f611-4f43-9561-ba7ee0622c93 # Quote
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 75fb1162-04bb-4341-8fe1-70f15a1a6c37
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-09T15:24:45+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7eb89847-52c1-4cf3-8178-cddbc12e22bd # Attribution
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 48d1b914-3dbb-486d-8e75-bf7dbb40857d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 77faa207-d64b-4e4d-acc8-e7e2cca979a7
+        userCondition: null
+handle: pullQuote
+hasTitleField: false
+icon: null
+name: 'Pull Quote'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{type.name}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

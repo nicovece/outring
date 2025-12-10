@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 632826db-933d-4fb9-a63e-c6173a02cf07 # Place
+handle: places
+maxAuthors: 1
+name: Places
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  62bc0ef7-2ac1-4b54-b20d-b5029f396ce6: # Outring
+    enabledByDefault: true
+    hasUrls: true
+    template: places/_entry.twig
+    uriFormat: 'places/{slug}'
+structure:
+  maxLevels: null
+  uid: 55772339-2f89-4d1e-86d0-2666aa2c4ecb
+type: structure
