@@ -17,7 +17,7 @@
 
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{% for theme in themes %}
-				<a href="{{ theme.url }}" class="theme-card border-gray-200 rounded-lg border p-6 transition hover:shadow-lg">
+				<a href="{{ theme.url }}" class="theme-card card-theme">
 					<h2 class="mb-2 text-2xl font-bold">{{ theme.title }}</h2>
 					{% if theme.text %}
 						<div class="text-gray-600">

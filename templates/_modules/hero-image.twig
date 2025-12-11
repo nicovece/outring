@@ -14,11 +14,27 @@
     {% endif %}
   #}
 
-<figure class="mb-12">
-	<img src="{{ image.url }}" alt="{{ image.title }}" class="w-full" />
-	{% if caption %}
-		<figcaption class="text-gray-600 mt-2 text-sm">
-			{{ caption }}
-		</figcaption>
-	{% endif %}
-</figure>
+{% if image %}
+	{% import "_macros" as macros %}
+	<figure class="mb-12">
+		<img
+			src="{{
+			image.getUrl({
+				width: 800,
+				height: 450,
+				mode: "crop"
+			})
+			}}"
+			srcset="{{ macros.srcSet(image, true, "16:9") }}"
+			sizes="100vw"
+			alt="{{ image.title }}"
+			class="w-full"
+			loading="eager"
+		/>
+		{% if caption %}
+			<figcaption class="mt-2 text-sm text-gray-600">
+				{{ caption }}
+			</figcaption>
+		{% endif %}
+	</figure>
+{% endif %}

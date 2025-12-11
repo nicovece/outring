@@ -1,8 +1,11 @@
 {% if block.image %}
+	{% import "_macros" as macros %}
 	{% set image = block.image.one() %}
 	<figure class="mb-6">
 		<img
-			src="{{ image.url }}"
+			src="{{ image.getUrl("w1200") }}"
+			srcset="{{ macros.srcSet(image) }}"
+			sizes="(max-width: 768px) 100vw, 800px"
 			alt="{{ block.altText ? : image.title }}"
 			width="{{ image.width }}"
 			height="{{ image.height }}"
@@ -10,8 +13,8 @@
 			class="w-full"
 		/>
 		{% if block.caption %}
-			<figcaption class="text-gray-700 mt-2">
-				{% include '_partials/_retcon/experience-text' with {
+			<figcaption class="mt-2 text-gray-700">
+				{% include "_partials/_retcon/experience-text" with {
 					text: block.caption
 				} only %}
 			</figcaption>

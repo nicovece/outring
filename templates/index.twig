@@ -1,4 +1,4 @@
-{% extends '_layouts/base.twig' %}
+{% extends "_layouts/base.twig" %}
 
 {% block title %}
 	{{ siteName }} - Voices from the Periphery
@@ -7,15 +7,15 @@
 {% block content %}
 	{# Hero Section #}
 	<section class="bg-gray-50 py-24">
-		<div class="mx-auto max-w-4xl px-4 text-center">
+		<div class="container-content text-center">
 			<h1 class="mb-6 text-5xl font-bold">Voices from the Periphery</h1>
-			<p class="text-gray-600 mb-8 text-xl">
+			<p class="mb-8 text-xl text-gray-600">
 				Amplifying the direct voices and lived experiences of residents involved in G124 urban regeneration projects
 				across Europe.
 			</p>
 			<a
 				href="/experiences"
-				class="bg-gray-900 hover:bg-gray-700 inline-block rounded px-6 py-3 font-medium text-white"
+				class="inline-block rounded bg-gray-900 px-6 py-3 font-medium text-white hover:bg-gray-700"
 			>
 				Explore Experiences
 			</a>
@@ -23,12 +23,12 @@
 	</section>
 
 	{# Featured Experiences #}
-	<section class="mx-auto max-w-6xl px-4 py-16">
+	<section class="container-wide">
 		<h2 class="mb-8 text-3xl font-bold">Recent Experiences</h2>
 
 		{% set featured =
-			craft.entries().section('experiences').with(['featuredImage', 'place', 'themes']).orderBy(
-				'dateOfExperience DESC'
+			craft.entries().section("experiences").with(["featuredImage", "place", "themes"]).orderBy(
+				"dateOfExperience DESC"
 			).limit(
 				3
 			).all()
@@ -36,12 +36,25 @@
 
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
 			{% for experience in featured %}
-				<article class="experience-card border-gray-200 overflow-hidden rounded-lg border transition hover:shadow-lg">
+				<article class="experience-card card-experience">
 					{# Featured Image #}
 					{% if experience.featuredImage|length %}
 						{% set image = experience.featuredImage.one() %}
 						<a href="{{ experience.url }}">
-							<img src="{{ image.url }}" alt="{{ image.title }}" class="h-48 w-full object-cover" loading="lazy" />
+							<img
+								src="{{
+								image.getUrl({
+									width: 800,
+									height: 450,
+									mode: "crop"
+								})
+								}}"
+								srcset="{{ macros.srcSet(image, true, "16:9") }}"
+								sizes="(max-width: 768px) 100vw, 33vw"
+								alt="{{ image.title }}"
+								class="h-48 w-full object-cover"
+								loading="lazy"
+							/>
 						</a>
 					{% endif %}
 
@@ -52,7 +65,7 @@
 						</h3>
 
 						{% if experience.shortQuote %}
-							<p class="text-gray-600 text-sm italic">
+							<p class="text-sm text-gray-600 italic">
 								"{{ experience.shortQuote }}"
 							</p>
 						{% endif %}
@@ -62,19 +75,19 @@
 		</div>
 
 		<div class="mt-12 text-center">
-			<a href="/experiences" class="text-gray-600 hover:text-gray-900 font-medium">View all experiences →</a>
+			<a href="/experiences" class="font-medium text-gray-600 hover:text-gray-900">View all experiences →</a>
 		</div>
 	</section>
 
 	{# About Section #}
 	<section class="bg-gray-50 py-16">
-		<div class="mx-auto max-w-4xl px-4">
+		<div class="container-content">
 			<h2 class="mb-6 text-3xl font-bold">About This Project</h2>
-			<p class="text-gray-600 mb-4 text-lg">
+			<p class="mb-4 text-lg text-gray-600">
 				Outring complements the official G124 website by focusing on human stories rather than architectural
 				documentation. We emphasize participation, co-design, and everyday life in urban peripheries.
 			</p>
-			<a href="/about" class="text-gray-900 font-medium hover:underline">Learn more about our method →</a>
+			<a href="/about" class="font-medium text-gray-900 hover:underline">Learn more about our method →</a>
 		</div>
 	</section>
 {% endblock %}

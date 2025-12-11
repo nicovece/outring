@@ -60,6 +60,36 @@
 }
 
 @layer components {
+	/* Layout Components */
+
+	.container-wide {
+		@apply mx-auto max-w-6xl px-4 py-16;
+	}
+
+	.container-content {
+		@apply mx-auto max-w-4xl px-4 py-16;
+	}
+
+	.container-nav {
+		@apply mx-auto max-w-6xl px-4 py-4;
+	}
+
+	/* Card Components */
+
+	.card-experience {
+		@apply overflow-hidden rounded-lg border border-gray-200 transition hover:shadow-lg;
+	}
+
+	.card-theme {
+		@apply rounded-lg border border-gray-200 p-6 transition hover:shadow-lg;
+	}
+
+	/* Content Components */
+
+	.prose-block {
+		@apply mb-6 max-w-none;
+	}
+
 	/* Before/After Slider Component - Start */
 
 	.before-after {

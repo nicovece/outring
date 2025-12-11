@@ -4,4 +4,4 @@
   Usage: {% include '_partials/experience-blocks/experience-text' with { text: block.text } only %}
 #}
 
-{{ text|retcon([['removeEmpty', 'body > p, body > h1, body > h2']])|raw }}
+{{ text|retcon([["removeEmpty", "body > p, body > h1, body > h2"]])|raw }}

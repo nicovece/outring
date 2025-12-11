@@ -11,6 +11,7 @@
   #}
 
 {% if block.beforeImage and block.afterImage %}
+	{% import "_macros" as macros %}
 	{% set beforeImg = block.beforeImage.one() %}
 	{% set afterImg = block.afterImage.one() %}
 
@@ -18,7 +19,9 @@
 		<div class="before-after__container">
 			{# Before Image (base layer) #}
 			<img
-				src="{{ beforeImg.url }}"
+				src="{{ beforeImg.getUrl("w1200") }}"
+				srcset="{{ macros.srcSet(beforeImg, true, "16:9") }}"
+				sizes="100vw"
 				alt="{{ block.beforeAltText ? : beforeImg.title }}"
 				width="{{ beforeImg.width }}"
 				height="{{ beforeImg.height }}"
@@ -28,7 +31,9 @@
 
 			{# After Image (clipped layer) #}
 			<img
-				src="{{ afterImg.url }}"
+				src="{{ afterImg.getUrl("w1200") }}"
+				srcset="{{ macros.srcSet(afterImg, true, "16:9") }}"
+				sizes="100vw"
 				alt="{{ block.afterAltText ? : afterImg.title }}"
 				width="{{ afterImg.width }}"
 				height="{{ afterImg.height }}"
@@ -65,8 +70,8 @@
 
 		{# Caption #}
 		{% if block.caption %}
-			<figcaption class="text-gray-700 mt-2">
-				{% include '_partials/_retcon/experience-text' with {
+			<figcaption class="mt-2 text-gray-700">
+				{% include "_partials/_retcon/experience-text" with {
 					text: block.caption
 				} only %}
 			</figcaption>

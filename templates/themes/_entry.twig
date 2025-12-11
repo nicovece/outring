@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-	<div class="mx-auto max-w-6xl px-4 py-16">
+	<div class="container-wide">
 		{# Theme Header #}
 		<header class="mb-12">
 			<h1 class="mb-4 text-4xl font-bold">{{ entry.title }}</h1>
@@ -28,11 +28,18 @@
 
 			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 				{% for experience in experiences %}
-					<article class="experience-card border-gray-200 overflow-hidden rounded-lg border transition hover:shadow-lg">
+					<article class="experience-card card-experience">
 						{% if experience.featuredImage|length %}
 							{% set image = experience.featuredImage.one() %}
 							<a href="{{ experience.url }}">
-								<img src="{{ image.url }}" alt="{{ image.title }}" class="h-48 w-full object-cover" loading="lazy" />
+								<img
+									src="{{ image.getUrl({ width: 800, height: 450, mode: 'crop' }) }}"
+									srcset="{{ macros.srcSet(image, true, '16:9') }}"
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+									alt="{{ image.title }}"
+									class="h-48 w-full object-cover"
+									loading="lazy"
+								/>
 							</a>
 						{% endif %}
 
