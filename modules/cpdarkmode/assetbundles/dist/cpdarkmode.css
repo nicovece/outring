@@ -1,0 +1,224 @@
+/**
+ * Craft CMS 5 Control Panel Dark Mode
+ * 
+ * Overrides Craft's CSS custom properties to create a dark theme.
+ * Based on Craft 5's CP styling system.
+ */
+
+:root {
+	/*  GRAY SCALE (inverted)  */
+	--gray-050: #1a1a1c;
+	--gray-100: #232326;
+	--gray-150: #2c2c30;
+	--gray-200: #37373d;
+	--gray-300: #4a4a52;
+	--gray-350: #5a5a63;
+	--gray-400: #6e6e78;
+	--gray-500: #8e8e99;
+	--gray-550: #a1a1ab;
+	--gray-600: #b4b4bc;
+	--gray-700: #cacacf;
+	--gray-800: #dfdfe2;
+	--gray-900: #ededef;
+	--gray-1000: #f7f7f8;
+
+	/*  BASE COLORS  */
+	--white: #121214;
+	--black: #e8e8eb;
+
+	/*  UI COLORS  */
+	--ui-control-bg-color: var(--gray-100);
+	--ui-control-hover-bg-color: var(--gray-150);
+	--ui-control-active-bg-color: var(--gray-200);
+
+	/*  TEXT COLORS  */
+	--text-color: var(--gray-800);
+	--medium-text-color: var(--gray-600);
+	--light-text-color: var(--gray-500);
+	--link-color: #6b9eff;
+
+	/*  BACKGROUND COLORS  */
+	--bg-color: var(--gray-050);
+	--content-bg-color: var(--gray-100);
+
+	/*  BORDER COLORS  */
+	--hairline-color: var(--gray-200);
+	--medium-hairline-color: var(--gray-300);
+	--dark-hairline-color: var(--gray-400);
+
+	/*  FOCUS/SELECTION  */
+	--focus-ring-color: rgba(107, 158, 255, 0.5);
+	--selection-color: rgba(107, 158, 255, 0.3);
+
+	/*  STATUS COLORS (keep readable on dark bg)  */
+	--enabled-color: #5cb85c;
+	--pending-color: #f0ad4e;
+	--disabled-color: #777;
+
+	/*  FORM ELEMENTS  */
+	--input-bg-color: var(--gray-150);
+	--input-border-color: var(--gray-300);
+	--input-focused-border-color: #6b9eff;
+
+	/* BUTTONS */
+	--primary-button-text-color: var(--gray-100);
+}
+
+/*  ADDITIONAL OVERRIDES  */
+
+/* Sidebar */
+#global-sidebar {
+	background-color: var(--gray-100);
+}
+
+#devmode {
+	background-color: var(--gray-100);
+}
+
+/* Main content area */
+#main-content {
+	background-color: var(--bg-color);
+}
+
+/* Cards and panels */
+.pane,
+.card {
+	background-color: var(--content-bg-color);
+	border-color: var(--hairline-color);
+}
+
+/* Buttons - adjust if needed */
+.btn {
+	background-color: var(--gray-200);
+	color: var(--text-color);
+}
+
+.btn:hover {
+	background-color: var(--gray-300);
+}
+
+.btn.submit,
+.btn.primary {
+	background-color: #2563eb;
+	color: #fff;
+}
+
+.btn.submit:hover,
+.btn.primary:hover {
+	background-color: #1d4ed8;
+}
+
+/* Tables */
+table.data th {
+	background-color: var(--gray-100);
+}
+
+table.data td {
+	border-color: var(--hairline-color);
+}
+
+table.data tbody tr {
+	--hover-bg-color: var(--gray-050);
+	--selected-bg-color: var(--gray-400);
+}
+
+.tableview .vue-admin-table-footer {
+	background-color: var(--gray-150);
+	border-top: 1px solid var(--gray-50);
+}
+
+/* Matrix/entry cards */
+.matrixblock,
+.element.card {
+	background-color: var(--gray-100);
+	border-color: var(--hairline-color);
+}
+
+/* Scrollbars (Webkit) */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--gray-400);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--gray-500);
+}
+
+/* Code blocks */
+code,
+pre {
+	background-color: var(--gray-150);
+	color: var(--gray-800);
+}
+
+/* Alerts and notices */
+.notice,
+.info {
+	background-color: rgba(107, 158, 255, 0.15);
+	border-color: rgba(107, 158, 255, 0.3);
+}
+
+.warning {
+	background-color: rgba(240, 173, 78, 0.15);
+	border-color: rgba(240, 173, 78, 0.3);
+}
+
+.error {
+	background-color: rgba(217, 83, 79, 0.15);
+	border-color: rgba(217, 83, 79, 0.3);
+}
+
+/* Status labels */
+.status-label .status-label-text {
+	color: var(--gray-700);
+}
+
+/* Inputs and checkboxes */
+.elementselectormodal .body .content .main .elements .disabled .checkbox:before,
+.sel div.checkbox:before,
+div.checkbox.checked:before,
+div.checkbox.indeterminate:before,
+input.checkbox:checked + label:before,
+input.checkbox:indeterminate + label:before {
+	color: var(--gray-100);
+}
+
+.selectize.multiselect .selectize-input,
+.text > input,
+.text > textarea,
+input.text,
+table.editable textarea,
+textarea.text {
+	background-color: var(--gray-200);
+}
+
+/* Fixed header */
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+	body.fixed-header #header {
+		background-color: hsla(212, 50%, 93%, 0.25);
+	}
+}
+
+/* .element-index .source-path .chevron-btns {
+	background-color: var(--gray-100);
+}
+
+.element-index .source-path .chevron-btns:after,
+.element-index .source-path .chevron-btns:before {
+	border-inline-start: calc(var(--ui-control-height) / 2) solid transparent;
+}
+.element-index .source-path .chevron-btns:before {
+	border-inline-start: calc(var(--ui-control-height) / 2) solid var(--gray-100);
+}
+.element-index .source-path .chevron-btns:after {
+	border-block-end: calc(var(--ui-control-height) / 2) solid transparent;
+} */

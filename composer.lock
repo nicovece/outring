@@ -2549,16 +2549,16 @@
         },
         {
             "name": "mmikkel/retcon",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mmikkel/Retcon-Craft.git",
-                "reference": "80a520b54220417a598f66b5dcac77216da51cc1"
+                "reference": "5bea59c7156e09ae131efd71371e7df271859e15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mmikkel/Retcon-Craft/zipball/80a520b54220417a598f66b5dcac77216da51cc1",
-                "reference": "80a520b54220417a598f66b5dcac77216da51cc1",
+                "url": "https://api.github.com/repos/mmikkel/Retcon-Craft/zipball/5bea59c7156e09ae131efd71371e7df271859e15",
+                "reference": "5bea59c7156e09ae131efd71371e7df271859e15",
                 "shasum": ""
             },
             "require": {
@@ -2608,9 +2608,9 @@
             "support": {
                 "docs": "https://github.com/mmikkel/Retcon-Craft/blob/master/README.md",
                 "issues": "https://github.com/mmikkel/Retcon-Craft/issues",
-                "source": "https://github.com/mmikkel/Retcon-Craft/tree/3.2.1"
+                "source": "https://github.com/mmikkel/Retcon-Craft/tree/3.2.2"
             },
-            "time": "2024-10-21T13:36:18+00:00"
+            "time": "2025-12-09T22:51:18+00:00"
         },
         {
             "name": "moneyphp/money",
