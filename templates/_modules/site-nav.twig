@@ -1,15 +1,16 @@
-<nav class="site-nav border-gray-200 border-b">
+<nav class="site-nav border-b border-gray-200">
 	<div class="mx-auto max-w-6xl px-4 py-4">
 		<div class="flex items-center justify-between">
 			{# Logo/Site Name #}
-			<a href="/" class="hover:text-gray-600 text-2xl font-bold">Outring</a>
+			<a href="/" class="text-2xl font-bold hover:text-gray-600">Outring</a>
 
 			{# Navigation Links #}
 			<ul class="flex gap-6">
-				<li><a href="/experiences" class="hover:text-gray-600 font-medium">Experiences</a></li>
-				<li><a href="/themes" class="hover:text-gray-600 font-medium">Themes</a></li>
-				<li><a href="/about" class="hover:text-gray-600 font-medium">About</a></li>
+				<li><a href="/experiences" class="font-medium hover:text-gray-600">Experiences</a></li>
+				<li><a href="/themes" class="font-medium hover:text-gray-600">Themes</a></li>
+				<li><a href="/about" class="font-medium hover:text-gray-600">About</a></li>
 			</ul>
+			{% include "_modules/theme-toggle" %}
 		</div>
 	</div>
 </nav>

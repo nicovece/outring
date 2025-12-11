@@ -1,10 +1,21 @@
 @import "tailwindcss";
 
+@custom-variant dark (:is(.dark &):not(.print &));
+
 @theme {
 	/* Colors */
 	--color-*: initial;
 	--color-black: #000000;
 	--color-white: #ffffff;
+	--color-gray-50: #f9fafb;
+	--color-gray-100: #f3f4f6;
+	--color-gray-200: #e5e7eb;
+	--color-gray-300: #d1d5db;
+	--color-gray-500: #6b7280;
+	--color-gray-600: #4b5563;
+	--color-gray-700: #374151;
+	--color-gray-800: #1f2937;
+	--color-gray-900: #111827;
 
 	/* Typography */
 	--font-sans: system-ui, -apple-system, sans-serif;
@@ -14,8 +25,18 @@
 }
 
 @layer base {
+	/* Enable dark mode with class strategy */
+	:root {
+		color-scheme: light;
+	}
+
+	:root.dark {
+		color-scheme: dark;
+	}
+
 	body {
-		@apply min-h-screen bg-white text-black antialiased;
+		@apply min-h-screen bg-white text-gray-900 antialiased;
+		@apply dark:bg-gray-900 dark:text-gray-100;
 	}
 
 	h1,
@@ -34,13 +55,12 @@
 
 	:focus-visible {
 		@apply outline-2 outline-offset-2 outline-black;
+		@apply dark:outline-white;
 	}
 }
 
 @layer components {
-	/* ========================================
-     Before/After Slider Component
-     ======================================== */
+	/* Before/After Slider Component - Start */
 
 	.before-after {
 		--reveal: 50%; /* Default reveal position */
@@ -148,4 +168,25 @@
 		outline: 2px solid #3b82f6;
 		outline-offset: 2px;
 	}
+
+	/* Before/After Slider Component - End */
+
+	/* Theme Toggle Component - Start */
+	.moon-icon {
+		display: block;
+	}
+
+	.sun-icon {
+		display: none;
+	}
+
+	/* Show sun in dark mode, hide moon */
+	.dark .moon-icon {
+		display: none;
+	}
+
+	.dark .sun-icon {
+		display: block;
+	}
+	/* Theme Toggle Component - End */
 }
