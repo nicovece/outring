@@ -11,7 +11,11 @@ if (import.meta.hot) {
 }
 
 import { ThemeToggle } from "./components/theme-toggle";
-
 if (!customElements.get("theme-toggle")) {
 	customElements.define("theme-toggle", ThemeToggle);
+}
+
+import { SiteNav } from "./components/site-nav";
+if (!customElements.get("site-nav")) {
+	customElements.define("site-nav", SiteNav);
 }

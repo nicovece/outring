@@ -1,18 +1,81 @@
 {% import "_macros" as macros %}
-<header>
-	<nav
-		class="site-nav container-nav flex items-center justify-between border-b border-gray-200 p-4"
-		aria-label="Primary navigation"
-	>
-		{# Logo/Site Name #}
-		<a href="/" class="text-2xl font-bold hover:text-gray-600">Outring</a>
-
-		{% set currentSegment = craft.app.request.segments|first %}
-		<ul class="flex gap-6">
-			<li>{{ macros.navLink(url("experiences"), "Experiences", currentSegment) }}</li>
-			<li>{{ macros.navLink(url("themes"), "Themes", currentSegment) }}</li>
-			<li>{{ macros.navLink(url("about"), "About", currentSegment) }}</li>
-		</ul>
-		{% include "_modules/theme-toggle" %}
-	</nav>
-</header>
+{% set currentSegment = craft.app.request.segments|first %}
+<site-nav>
+	<header class="relative has-[.menu-open]:bg-accent">
+		<nav
+			class="site-nav container-nav flex items-center justify-between border-b border-gray-200 pt-4 pb-2 dark:border-gray-700 [.menu-open]:border-b-0 [.menu-open]:bg-accent"
+			aria-label="Primary navigation"
+		>
+			<div class="flex items-center gap-2 xl:w-1/2">
+				{% include "_modules/button-text" with {
+					url: url("/"),
+					label: "Outring",
+					ariaLabel: "Go to home page Outring",
+					additionalClasses: "font-bold"
+				} only %} <span class="dark:text-gray-400 hidden text-gray-500 xl:inline">{{ siteInfo.siteTagline }}</span>
+			</div>
+			<button
+				data-menu-toggle
+				class="flex h-4 w-4 items-center justify-center md:hidden"
+				aria-label="Toggle menu"
+				aria-expanded="false"
+			>
+				<span class="hamburger-icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						class="bars-icon h-3 w-3 [.menu-open_&]:hidden"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						class="bars-icon hidden h-4 w-4 [.menu-open_&]:block"
+					>
+						<path
+							d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
+						/>
+					</svg>
+				</span>
+			</button>
+			<div
+				data-menu
+				class="pointer-events-none invisible absolute -top-full right-0 left-0 flex flex-col gap-2 border-b border-gray-200 bg-white opacity-0 transition-all md:pointer-events-auto md:visible md:static md:flex-row md:items-center md:justify-end md:border-0 md:bg-transparent md:opacity-100 xl:w-1/2 xl:gap-4 dark:border-gray-700 dark:bg-gray-900 [.menu-open_&]:pointer-events-auto [.menu-open_&]:visible [.menu-open_&]:top-full [.menu-open_&]:bg-accent [.menu-open_&]:opacity-100 [.menu-open_&]:dark:bg-accent"
+			>
+				<ul
+					class="2 mx-auto flex w-full max-w-(--max-width) flex-col justify-end gap-2 border-b border-gray-200/25 px-1 pt-2 pb-2 md:mx-0 md:w-fit md:flex-row md:border-b-0 md:px-0 md:pt-0 md:pb-0 xl:gap-4 xl:gap-6 xl:pt-0"
+				>
+					<li>
+						{% include "_modules/nav-link" with {
+							url: url("experiences"),
+							label: "Experiences",
+							currentSegment: currentSegment
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/nav-link" with {
+							url: url("themes"),
+							label: "Themes",
+							currentSegment: currentSegment
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/nav-link" with {
+							url: url("about"),
+							label: "About",
+							currentSegment: currentSegment
+						} only %}
+					</li>
+				</ul>
+				{% include "_modules/theme-toggle" %}
+			</div>
+		</nav>
+	</header>
+</site-nav>
