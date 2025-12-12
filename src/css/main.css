@@ -18,20 +18,23 @@
 }
 
 @theme {
-	--font-sans: "InterVariable", system-ui, sans-serif;
 	/* Colors */
 	--color-*: initial;
 	--color-black: #000000;
 	--color-white: #ffffff;
-	--color-gray-50: #f9fafb;
-	--color-gray-100: #f3f4f6;
-	--color-gray-200: #e5e7eb;
-	--color-gray-300: #d1d5db;
-	--color-gray-500: #6b7280;
-	--color-gray-600: #4b5563;
-	--color-gray-700: #374151;
-	--color-gray-800: #1f2937;
-	--color-gray-900: #111827;
+	--color-gray-50: #fafbfa; /* vs #f9fafb - warmer, less blue */
+	--color-gray-100: #f4f6f4; /* vs #f3f4f6 - subtle green hint */
+	--color-gray-200: #e7ebe8; /* vs #e5e7eb - warmer, olive-ish */
+	--color-gray-300: #d3d8d4; /* vs #d1d5db - green-gray balance */
+	--color-gray-500: #6d7570; /* vs #6b7280 - warm gray, less blue */
+	--color-gray-600: #4f5854; /* vs #4b5563 - olive-gray */
+	--color-gray-700: #3a403c; /* vs #374151 - warm charcoal */
+	--color-gray-800: #252b27; /* vs #1f2937 - deep forest-gray */
+	--color-gray-900: #151a17; /* vs #111827 - almost black-green */
+	--color-gray-1000: #000000;
+
+	--color-accent: #00aa8f;
+	--color-accent-dark: color-mix(in oklch, var(--color-accent), black 10%);
 
 	/* Typography */
 	--font-sans: "InterVariable", system-ui, -apple-system, sans-serif;
@@ -53,7 +56,7 @@
 	}
 
 	body {
-		@apply min-h-screen bg-white text-gray-900 antialiased;
+		@apply min-h-screen bg-white text-black antialiased;
 		@apply dark:bg-gray-900 dark:text-gray-100;
 	}
 
@@ -71,6 +74,11 @@
 		@apply block max-w-full;
 	}
 
+	b,
+	strong {
+		@apply font-semibold;
+	}
+
 	:focus-visible {
 		@apply outline-2 outline-offset-2 outline-black;
 		@apply dark:outline-white;
@@ -80,22 +88,40 @@
 @layer components {
 	/* Layout Components */
 
+	.container-full {
+		@apply mx-auto;
+	}
 	.container-wide {
-		@apply mx-auto max-w-(--max-width) px-4 py-16;
+		@apply mx-auto max-w-(--max-width) px-1 py-4 md:px-4;
+	}
+	.container-medium {
+		@apply mx-auto max-w-5xl px-1 py-4 md:px-4;
+	}
+	.container-inColumn {
+		@apply mx-auto max-w-xl px-1 py-4 md:px-4;
 	}
 
 	.container-content {
-		@apply mx-auto max-w-4xl px-4 py-16;
+		/* TODO: Remove this */
+		@apply mx-auto max-w-4xl px-1 py-16 md:px-4;
 	}
 
 	.container-nav {
-		@apply mx-auto max-w-(--max-width) px-4 py-4;
+		@apply mx-auto max-w-(--max-width) px-1 py-4 md:px-4;
+	}
+
+	/* Links */
+	.link-inline {
+		@apply block w-fit border-b border-accent/50 font-medium;
+		@apply transition duration-200;
+		@apply hover:border-accent hover:text-accent;
+		@apply my-2 md:ml-2 md:inline;
 	}
 
 	/* Card Components */
 
 	.card-experience {
-		@apply overflow-hidden rounded-lg border border-gray-200 transition hover:shadow-lg;
+		@apply transition hover:shadow-lg;
 	}
 
 	.card-theme {
@@ -104,8 +130,12 @@
 
 	/* Content Components */
 
+	.content-column-main {
+		@apply max-w-xl;
+	}
+
 	.prose-block {
-		@apply mb-6 max-w-none;
+		@apply mb-6;
 	}
 
 	/* Before/After Slider Component - Start */
