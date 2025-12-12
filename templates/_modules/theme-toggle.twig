@@ -1,16 +1,25 @@
-<theme-toggle>
+{% set elementStyles = {
+	base: "flex w-full max-w-(--max-width) mx-auto px-1 pb-4 xl:pl-4 md:border-l md:border-gray-200 md:items-center md:justify-center md:mx-0 md:w-fit md:px-0 md:pl-2 md:pb-0"
+} %}
+{% set linkStyles = {
+	base: "inline-flex cursor-pointer items-center justify-center gap-1 transition-colors duration-300 relative",
+	hover: "hover:text-accent-dark dark:hover:text-accent",
+	after: "after:content-[''] after:block after:absolute after:h-0 after:right-0  after:-bottom-[2px] after:left-0 after:bg-accent after:z-[-1] after:transition-all  after:ease-in-out hover:after:h-[3px] hover:after:bg-accent"
+} %}
+
+<theme-toggle class="{{ elementStyles.base }} ">
 	<button
 		type="button"
 		aria-label="Toggle dark mode"
-		class="inline-flex cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-2 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700"
+		class="{{ linkStyles.base }} {{ linkStyles.hover }} {{ linkStyles.after }}"
 	>
-		<span class="sr-only">Toggle dark mode</span>
+		<span class="theme-toggle-text md:sr-only xl:not-sr-only">Dark mode</span>
 
 		{# Moon - show in light mode #}
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			aria-hidden="true"
-			class="moon-icon h-5 w-5"
+			class="moon-icon h-2 w-2"
 			viewBox="0 0 16 16"
 			fill="currentColor"
 		>
@@ -22,7 +31,7 @@
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			aria-hidden="true"
-			class="sun-icon h-5 w-5"
+			class="sun-icon h-2 w-2"
 			viewBox="0 0 16 16"
 			fill="currentColor"
 		>

@@ -41,11 +41,16 @@
 	--bg-color: var(--gray-050);
 	--content-bg-color: var(--gray-100);
 	--ck-color-base-background: var(--gray-200) !important;
+	--shade-bg: hsl(from var(--gray-100) h s l / 75%);
+	--input-bg: hsl(from var(--gray-100) h s l / 99%);
 
 	/*  BORDER COLORS  */
 	--hairline-color: var(--gray-200);
 	--medium-hairline-color: var(--gray-300);
 	--dark-hairline-color: var(--gray-400);
+
+	/*  SHADOWS  */
+	--modal-shadow: 0 0 0 1px hsl(from var(--gray-400) h s l / 25%), 0 25px 100px hsl(from var(--gray-100) h s l / 50%);
 
 	/*  FOCUS/SELECTION  */
 	--focus-ring-color: rgba(107, 158, 255, 0.5);
@@ -218,6 +223,11 @@ body .selectize-dropdown [data-selectable],
 }
 body .selectize-dropdown .selected {
 	color: var(--gray-900) !important; /* not my fault, craft scss uses important */
+}
+
+/* CKEditor */
+.ck-editor__main .ck-source-editing-area textarea {
+	background-color: var(--gray-200);
 }
 
 /* Fixed header */

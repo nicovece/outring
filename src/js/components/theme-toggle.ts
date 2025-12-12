@@ -18,11 +18,11 @@ export class ThemeToggle extends HTMLElement {
 	private updateButtonLabel(theme: "dark" | "light"): void {
 		if (!this.button) return;
 
-		const label = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+		const label = theme === "dark" ? "Light mode" : "Dark mode";
 
 		this.button.setAttribute("aria-label", label);
 
-		const srText = this.button.querySelector(".sr-only");
+		const srText = this.button.querySelector(".theme-toggle-text");
 		if (srText) {
 			srText.textContent = label;
 		}
