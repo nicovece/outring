@@ -2,7 +2,23 @@
 
 @custom-variant dark (:is(.dark &):not(.print &));
 
+@font-face {
+	font-family: InterVariable;
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/InterVariable.woff2") format("woff2");
+}
+@font-face {
+	font-family: InterVariable;
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
+}
+
 @theme {
+	--font-sans: "InterVariable", system-ui, sans-serif;
 	/* Colors */
 	--color-*: initial;
 	--color-black: #000000;
@@ -18,10 +34,12 @@
 	--color-gray-900: #111827;
 
 	/* Typography */
-	--font-sans: system-ui, -apple-system, sans-serif;
+	--font-sans: "InterVariable", system-ui, -apple-system, sans-serif;
 
 	/* Spacing base */
 	--spacing: 8px;
+
+	--max-width: 90vw;
 }
 
 @layer base {
@@ -63,7 +81,7 @@
 	/* Layout Components */
 
 	.container-wide {
-		@apply mx-auto max-w-6xl px-4 py-16;
+		@apply mx-auto max-w-(--max-width) px-4 py-16;
 	}
 
 	.container-content {
@@ -71,7 +89,7 @@
 	}
 
 	.container-nav {
-		@apply mx-auto max-w-6xl px-4 py-4;
+		@apply mx-auto max-w-(--max-width) px-4 py-4;
 	}
 
 	/* Card Components */

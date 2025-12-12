@@ -23,75 +23,11 @@
 		%}
 
 		{% if experiences|length %}
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 				{% for experience in experiences %}
-					<article class="experience-card card-experience">
-						{# Featured Image #}
-						{% if experience.featuredImage|length %}
-							{% set image = experience.featuredImage.one() %}
-							<a href="{{ experience.url }}">
-								<img
-									src="{{
-									image.getUrl({
-										width: 800,
-										height: 450,
-										mode: "crop"
-									})
-									}}"
-									srcset="{{ macros.srcSet(image, true, "16:9") }}"
-									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-									alt="{{ image.title }}"
-									class="h-48 w-full object-cover"
-									loading="lazy"
-								/>
-							</a>
-						{% endif %}
-
-						{# Content #}
-						<div class="p-6">
-							{# Title #}
-							<h2 class="mb-2 text-xl font-bold">
-								<a href="{{ experience.url }}" class="hover:text-gray-600">{{ experience.title }}</a>
-							</h2>
-
-							{# Short Quote #}
-							{% if experience.shortQuote %}
-								<p class="mb-4 text-gray-600 italic">
-									"{{ experience.shortQuote }}"
-								</p>
-							{% endif %}
-
-							{# Meta #}
-							<div class="space-y-1 text-sm text-gray-500">
-								{# Date #}
-								{% if experience.dateOfExperience %}
-									<div>
-										{{ experience.dateOfExperience|date("F Y") }}
-									</div>
-								{% endif %}
-
-								{# Place #}
-								{% set place = experience.place.one() %}
-								{% if place %}
-									<div>
-										{{ place.title }}
-									</div>
-								{% endif %}
-							</div>
-
-							{# Themes #}
-							{% set themes = experience.themes.all() %}
-							{% if themes|length %}
-								<div class="mt-4 flex flex-wrap gap-2">
-									{% for theme in themes %}
-										<a href="{{ theme.url }}" class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200">
-											{{ theme.title }}
-										</a>
-									{% endfor %}
-								</div>
-							{% endif %}
-						</div>
-					</article>
+					{% include "_partials/entry/experience-card" with {
+						experience: experience
+					} only %}
 				{% endfor %}
 			</div>
 		{% else %}

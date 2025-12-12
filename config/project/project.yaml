@@ -1,4 +1,4 @@
-dateModified: 1765470012
+dateModified: 1765522082
 email:
   fromEmail: me@nicovece.com
   fromName: Outring
@@ -48,6 +48,7 @@ meta:
     be1f3a1a-59dc-40d2-bf4c-640cd03d86a3: About # About
     c1a55f6f-a25c-4608-af2d-e290209cdad0: Manifesto # Manifesto
     c754eefd-99e6-4646-8399-3e26f08a4e9a: 'Image Block' # Image Block
+    c854ee8e-d31d-41b5-a6b5-439ded6b83e4: 'Section width' # Section width
     cef5dec6-7bf0-46e1-afea-cdf7cefb9982: w800 # w800
     d2b7c10f-b013-4c41-a09d-60e005a5b8d1: Images # Images
     d3c2c606-4515-4be3-9780-cda4112337c0: Name # Name

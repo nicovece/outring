@@ -40,6 +40,7 @@
 	/*  BACKGROUND COLORS  */
 	--bg-color: var(--gray-050);
 	--content-bg-color: var(--gray-100);
+	--ck-color-base-background: var(--gray-200) !important;
 
 	/*  BORDER COLORS  */
 	--hairline-color: var(--gray-200);
@@ -199,6 +200,24 @@ input.text,
 table.editable textarea,
 textarea.text {
 	background-color: var(--gray-200);
+}
+
+.selectize.select .selectize-input {
+	color: var(--text-color);
+}
+
+body .selectize-dropdown-content {
+	background-color: var(--gray-200);
+	color: var(--gray-700);
+}
+body .selectize-dropdown .optgroup-header,
+body .selectize-dropdown .option,
+body .selectize-dropdown [data-selectable],
+.selectize-dropdown .active:not(.selected) {
+	color: var(--gray-700);
+}
+body .selectize-dropdown .selected {
+	color: var(--gray-900) !important; /* not my fault, craft scss uses important */
 }
 
 /* Fixed header */

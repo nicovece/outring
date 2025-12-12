@@ -1,5 +1,5 @@
-{% extends '_layouts/base.twig' %}
-
+{% extends "_layouts/base.twig" %}
+{% import "_macros" as macros %}
 {% block title %}
 	{{ entry.title }} - Themes - {{ siteName }}
 {% endblock %}
@@ -10,7 +10,7 @@
 		<header class="mb-12">
 			<h1 class="mb-4 text-4xl font-bold">{{ entry.title }}</h1>
 			{% if entry.text %}
-				<div class="text-gray-600 prose text-xl">
+				<div class="prose text-xl text-gray-600">
 					{{ entry.text }}
 				</div>
 			{% endif %}
@@ -18,8 +18,8 @@
 
 		{# Experiences with this theme #}
 		{% set experiences =
-			craft.entries().section('experiences').relatedTo(entry).with(['featuredImage', 'place']).orderBy(
-				'dateOfExperience DESC'
+			craft.entries().section("experiences").relatedTo(entry).with(["featuredImage", "place"]).orderBy(
+				"dateOfExperience DESC"
 			).all()
 		%}
 
@@ -33,8 +33,14 @@
 							{% set image = experience.featuredImage.one() %}
 							<a href="{{ experience.url }}">
 								<img
-									src="{{ image.getUrl({ width: 800, height: 450, mode: 'crop' }) }}"
-									srcset="{{ macros.srcSet(image, true, '16:9') }}"
+									src="{{
+									image.getUrl({
+										width: 800,
+										height: 450,
+										mode: "crop"
+									})
+									}}"
+									srcset="{{ macros.srcSet(image, true, "16:9") }}"
 									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 									alt="{{ image.title }}"
 									class="h-48 w-full object-cover"
@@ -49,14 +55,14 @@
 							</h3>
 
 							{% if experience.shortQuote %}
-								<p class="text-gray-600 mb-4 text-sm italic">
+								<p class="mb-4 text-sm text-gray-600 italic">
 									"{{ experience.shortQuote }}"
 								</p>
 							{% endif %}
 
 							{% set place = experience.place.one() %}
 							{% if place %}
-								<div class="text-gray-500 text-sm">
+								<div class="text-sm text-gray-500">
 									{{ place.title }}
 								</div>
 							{% endif %}

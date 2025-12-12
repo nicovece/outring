@@ -1,16 +1,18 @@
-<nav class="site-nav border-b border-gray-200">
-	<div class="container-nav">
-		<div class="flex items-center justify-between">
-			{# Logo/Site Name #}
-			<a href="/" class="text-2xl font-bold hover:text-gray-600">Outring</a>
+{% import "_macros" as macros %}
+<header>
+	<nav
+		class="site-nav container-nav flex items-center justify-between border-b border-gray-200 p-4"
+		aria-label="Primary navigation"
+	>
+		{# Logo/Site Name #}
+		<a href="/" class="text-2xl font-bold hover:text-gray-600">Outring</a>
 
-			{# Navigation Links #}
-			<ul class="flex gap-6">
-				<li><a href="/experiences" class="font-medium hover:text-gray-600">Experiences</a></li>
-				<li><a href="/themes" class="font-medium hover:text-gray-600">Themes</a></li>
-				<li><a href="/about" class="font-medium hover:text-gray-600">About</a></li>
-			</ul>
-			{% include "_modules/theme-toggle" %}
-		</div>
-	</div>
-</nav>
+		{% set currentSegment = craft.app.request.segments|first %}
+		<ul class="flex gap-6">
+			<li>{{ macros.navLink(url("experiences"), "Experiences", currentSegment) }}</li>
+			<li>{{ macros.navLink(url("themes"), "Themes", currentSegment) }}</li>
+			<li>{{ macros.navLink(url("about"), "About", currentSegment) }}</li>
+		</ul>
+		{% include "_modules/theme-toggle" %}
+	</nav>
+</header>
