@@ -1,7 +1,7 @@
 columnSuffix: null
-handle: sectionWidth
+handle: imageHeight
 instructions: null
-name: 'Section width'
+name: 'Image height'
 searchable: false
 settings:
   customOptions: false
@@ -27,27 +27,10 @@ settings:
       __assoc__:
         -
           - label
-          - Wide
+          - Half
         -
           - value
-          - wide
-        -
-          - icon
-          - ''
-        -
-          - color
-          - ''
-        -
-          - default
-          - '1'
-    -
-      __assoc__:
-        -
-          - label
-          - Medium
-        -
-          - value
-          - medium
+          - half
         -
           - icon
           - ''
@@ -61,10 +44,27 @@ settings:
       __assoc__:
         -
           - label
-          - 'In column'
+          - 'Fit content'
         -
           - value
-          - inColumn
+          - fitContent
+        -
+          - icon
+          - ''
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'One third'
+        -
+          - value
+          - oneThird
         -
           - icon
           - ''

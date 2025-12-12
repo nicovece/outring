@@ -1,0 +1,16 @@
+columnSuffix: null
+handle: ctaButtonThext
+instructions: null
+name: 'CTA button thext'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 50
+  code: false
+  initialRows: 4
+  multiline: false
+  placeholder: 'Explore Experiences'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

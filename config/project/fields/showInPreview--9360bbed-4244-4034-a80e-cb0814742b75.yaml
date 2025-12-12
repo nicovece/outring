@@ -1,0 +1,12 @@
+columnSuffix: null
+handle: showInPreview
+instructions: null
+name: 'Show in preview'
+searchable: false
+settings:
+  default: false
+  offLabel: "Don't show"
+  onLabel: Show
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

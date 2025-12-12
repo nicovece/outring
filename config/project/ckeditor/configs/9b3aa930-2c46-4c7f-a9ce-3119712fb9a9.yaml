@@ -1,0 +1,13 @@
+headingLevels:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+name: Stripped-down
+toolbar:
+  - bold
+  - italic
+  - blockQuote
+  - sourceEditing

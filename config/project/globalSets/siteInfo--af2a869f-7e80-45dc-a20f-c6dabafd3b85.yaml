@@ -1,34 +1,15 @@
-color: null
-description: null
 fieldLayouts:
-  a5669542-a636-4dc8-8725-d60a088f5598:
+  756a4829-2eb4-44f3-8581-15f455662ead:
     cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
         elements:
           -
-            dateAdded: '2025-12-09T15:30:46+00:00'
+            dateAdded: '2025-12-13T18:05:41+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: 5d1215b1-5277-45ff-add8-b9470c26338b # Text
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: true
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 67ce3425-a330-4e45-b3c5-a6409d1ee9e1
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-12-12T07:55:58+00:00'
-            editCondition: null
-            elementCondition: null
-            fieldUid: c854ee8e-d31d-41b5-a6b5-439ded6b83e4 # Section width
+            fieldUid: cc978418-4e17-473f-a62f-71e2a6e8742d # Site display name
             handle: null
             includeInCards: false
             instructions: null
@@ -37,21 +18,30 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: d81b7013-062e-44af-a791-196a1592d290
+            uid: d5e26a38-170c-43bc-8382-e8ca97510b00
             userCondition: null
             warning: null
             width: 100
-        name: Content
-        uid: b671d9e5-359f-430e-9f39-369fba65fc21
+          -
+            dateAdded: '2025-12-13T18:05:41+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7f1c25b6-7231-4cf2-96d8-b6c651140081 # Site tagline
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 94c7cc53-b280-4a5e-990e-2d1495f12c2e
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Site info content'
+        uid: 2a6198b1-640e-49ca-8ac6-91becd65ba3f
         userCondition: null
-handle: callout
-hasTitleField: false
-icon: null
-name: Callout
-showSlugField: true
-showStatusField: true
-slugTranslationKeyFormat: null
-slugTranslationMethod: site
-titleFormat: '{type.name}'
-titleTranslationKeyFormat: null
-titleTranslationMethod: site
+handle: siteInfo
+name: 'Site info'
+sortOrder: 1
