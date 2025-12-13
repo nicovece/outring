@@ -1,28 +1,62 @@
-<footer class="mt-auto bg-gray-900 py-12 text-gray-300">
-	<div class="container-nav">
+<footer class="mt-auto pt-10">
+	<div class="container-wide border-t border-gray-200 dark:border-gray-700">
 		<div class="mb-8 grid gap-8 md:grid-cols-3">
 			{# Column 1: About #}
 			<div>
-				<h3 class="mb-3 font-bold text-white">Outring</h3>
+				<h3 class="mb-3 font-bold">
+					{% include "_modules/button-text" with {
+						url: url("/"),
+						label: siteInfo.siteDisplayName,
+						ariaLabel: "Go to home page Outring",
+						additionalClasses: "font-bold"
+					} only %}
+				</h3>
 				<p class="text-sm">
-					Voices from the Periphery
+					{{ siteInfo.siteTagline }}
 				</p>
 			</div>
 
 			{# Column 2: Links #}
 			<div>
-				<h3 class="mb-3 font-bold text-white">Explore</h3>
+				<h3 class="mb-3 font-bold">Explore</h3>
+				{% set linkClasses = {
+					base: "w-fit text-sm 2xl:text-base"
+				} %}
 				<ul class="space-y-2 text-sm">
-					<li><a href="/experiences" class="hover:text-white">Experiences</a></li>
-					<li><a href="/themes" class="hover:text-white">Themes</a></li>
-					<li><a href="/about" class="hover:text-white">About</a></li>
-					<li><a href="/manifesto" class="hover:text-white">Manifesto</a></li>
+					<li>
+						{% include "_modules/link-text" with {
+							url: url("experiences"),
+							label: "Experiences",
+							additionalClasses: linkClasses.base
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/link-text" with {
+							url: url("themes"),
+							label: "Themes",
+							additionalClasses: linkClasses.base
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/link-text" with {
+							url: url("about"),
+							label: "About",
+							additionalClasses: linkClasses.base
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/link-text" with {
+							url: url("manifesto"),
+							label: "Manifesto",
+							additionalClasses: linkClasses.base
+						} only %}
+					</li>
 				</ul>
 			</div>
 
 			{# Column 3: Credits #}
 			<div>
-				<h3 class="mb-3 font-bold text-white">Inspired by</h3>
+				<h3 class="mb-3 font-bold">Inspired by</h3>
 				<p class="text-sm">
 					<a href="https://renzopianog124.com" target="_blank" rel="noopener" class="hover:text-white">
 						G124 by Renzo Piano Building Workshop
@@ -34,9 +68,9 @@
 			</div>
 		</div>
 
-		<div class="border-t border-gray-700 pt-6 text-center text-sm">
+		<div class="pt-6 text-sm 2xl:text-base">
 			<p>
-				Demonstration project · December 2024
+				Demonstration project · December 2025
 			</p>
 		</div>
 	</div>

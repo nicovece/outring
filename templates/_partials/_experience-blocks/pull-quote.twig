@@ -1,16 +1,18 @@
 {% if block.quote %}
-	<blockquote class="prose-block">
-		{% include "_partials/_retcon/experience-text" with {
-			text: block.quote
-		} only %}
-		{% if block.attribution %}
-			<footer class="text-gray-700">
-				<cite>
-					{% include "_partials/_retcon/experience-text" with {
-						text: block.attribution
-					} only %}
-				</cite>
-			</footer>
-		{% endif %}
-	</blockquote>
+	<section class="body-section container-{{ block.sectionWidth ? : "wide" }}">
+		<blockquote class="prose-block">
+			{% include "_partials/_retcon/experience-text" with {
+				text: block.quote
+			} only %}
+			{% if block.attribution %}
+				<footer class="text-gray-700">
+					<cite>
+						{% include "_partials/_retcon/experience-text" with {
+							text: block.attribution
+						} only %}
+					</cite>
+				</footer>
+			{% endif %}
+		</blockquote>
+	</section>
 {% endif %}

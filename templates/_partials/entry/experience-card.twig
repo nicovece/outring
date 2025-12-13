@@ -1,9 +1,17 @@
 {% import "_macros" as macros %}
-<article class="card-experience">
-	{# Featured Image #}
-	{% if experience.featuredImage|length %}
+{% set isEditorial = experience.experienceType == "editorialReportage" %}
+
+{% set cardClasses = {
+	layout: "card-community flex flex-col gap-4 pb-8",
+	image: "w-full aspect-[16/9] object-cover",
+	imageContainer: "block",
+	content: "px-4 md:px-6 pt-0",
+	meta: "px-4 md:px-6 mt-auto"
+} %}
+<article class="card-experience bg-white dark:bg-gray-900 {{ cardClasses.layout }}">
+	{% if isEditorial and (experience.featuredImage|length) %}
 		{% set image = experience.featuredImage.one() %}
-		<a href="{{ experience.url }}">
+		<a href="{{ experience.url }}" class="{{ cardClasses.imageContainer }}">
 			<img
 				src="{{
 				image.getUrl({
@@ -15,54 +23,97 @@
 				srcset="{{ macros.srcSet(image, true, "16:9") }}"
 				sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 				alt="{{ image.title }}"
-				class="h-48 w-full object-cover"
+				class="{{ cardClasses.image }}"
 				loading="lazy"
 			/>
 		</a>
 	{% endif %}
 
-	{# Content #}
-	<div class="p-6">
-		{# Title #}
-		<h2 class="mb-2 text-xl font-bold">
-			<a href="{{ experience.url }}" class="hover:text-gray-600">{{ experience.title }}</a>
-		</h2>
-
-		{# Short Quote #}
-		{% if experience.shortQuote %}
-			<p class="mb-4 text-gray-600 italic">
-				"{{ experience.shortQuote }}"
+	{# Short Quote #}
+	{% if not isEditorial and experience.shortQuote %}
+		<blockquote
+			class="flex flex-col justify-center bg-accent/30 p-4 text-2xl font-extralight italic md:p-6 md:text-4xl 2xl:p-10 {{
+			cardClasses.image
+			}}"
+		>
+			<p>
+				<span class="mr-1 inline-block font-medium">“</span>{{ experience.shortQuote }}<span
+					class="-mr-2 inline-block font-medium"
+				>
+					”
+				</span>
 			</p>
-		{% endif %}
-
-		{# Meta #}
-		<div class="space-y-1 text-sm text-gray-500">
-			{# Date #}
-			{% if experience.dateOfExperience %}
-				<div>
-					{{ experience.dateOfExperience|date("F Y") }}
-				</div>
+			{% if not isEditorial and (experience.peopleInvolved|length) %}
+				<footer class="mt-4">
+					{% for person in experience.peopleInvolved.showInPreview(true).all() %}
+						<div class="flex items-center gap-3">
+							{% if person.involvedPersonPhoto|length %}
+								{% set photo = person.involvedPersonPhoto.one() %}
+								<img
+									src="{{
+									photo.getUrl({
+										width: 160,
+										height: 160,
+										mode: "crop"
+									})
+									}}"
+									srcset="{{ macros.srcSet(photo, true, "1:1") }}"
+									sizes="80px"
+									alt="{{ person.involvedPersonName }}"
+									class="h-10 w-10 rounded-full object-cover lg:h-14 lg:w-14"
+								/>
+							{% endif %}
+							<div class="text-base not-italic md:text-lg">
+								<span class="block font-semibold">{{ person.involvedPersonName }}</span>
+								<span class="text-gray-600">{{ person.involvedPersonRole }}</span>
+							</div>
+						</div>
+					{% endfor %}
+				</footer>
 			{% endif %}
+		</blockquote>
+	{% endif %}
 
-			{# Place #}
+	<div class="card-content {{ cardClasses.content }}">
+		<span class="text-sm text-gray-700 dark:text-gray-500">{{ experience.experienceType.label }}</span>
+		<h3 class="mt-4 mb-2 text-xl font-normal md:text-2xl/5">
+			<a href="{{ experience.url }}" class="hover:text-gray-600">{{ experience.title }}</a>
+		</h3>
+		<div class="text-sm/3 md:text-base/4">
 			{% set place = experience.place.one() %}
 			{% if place %}
-				<div>
-					{{ place.title }}
-				</div>
+				<span><strong>{{ place.title }}</strong>, {{ place.city }}</span>
+			{% endif %}
+			{% if experience.dateOfExperience %}
+				<time datetime="{{ experience.dateOfExperience|date("Y-m") }}" class="before:content-['-']">
+					{{ experience.dateOfExperience|date("F Y") }}
+				</time>
 			{% endif %}
 		</div>
 
-		{# Themes #}
-		{% set themes = experience.themes.all() %}
-		{% if themes|length %}
-			<div class="mt-4 flex flex-wrap gap-2">
-				{% for theme in themes %}
-					<a href="{{ theme.url }}" class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200">
-						{{ theme.title }}
-					</a>
-				{% endfor %}
-			</div>
+		{% if experience.description %}
+			<p class="my-2 text-base/3 font-light md:text-lg/4">
+				{{ experience.description|striptags("<strong><em>")|raw }}
+			</p>
 		{% endif %}
 	</div>
+	<footer class="card-meta {{ cardClasses.meta }} ">
+		{% set themes = experience.themes.all() %}
+		{% if themes|length %}
+			<nav aria-label="Experience themes" class="flex flex-wrap gap-1">
+				<span class="text-sm text-gray-700 dark:text-gray-500">Themes:</span>
+				<ul class="flex w-full flex-wrap gap-2">
+					{% for theme in themes %}
+						<li>
+							{% include "_modules/link-text" with {
+								url: theme.url,
+								label: theme.title,
+								additionalClasses: "font-bold text-base 2xl:text-lg"
+							} only %}
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+		{% endif %}
+	</footer>
 </article>
