@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block content %}
-	<article class="experience container-content">
+	<article class="experience">
 		<header>
 			<h1>{{ entry.experienceType }}</h1>
 		</header>
-		<section class="hero-section">
+		<section class="hero-section-- container-wide">
 			{% if entry.featuredImage|length %}
 				{% include "_modules/hero-image" with {
 					image: entry.featuredImage.one(),
@@ -42,36 +42,34 @@
 			{{ theme.title }}{% if not loop.last %}, {% endif %}
 		{% endfor %}
 		{# Body Content - Matrix Blocks #}
-		<section class="body-section mb-12 max-w-none">
-			{% for block in entry.body.all() %}
-				{% switch block.type %}
-					{% case "richText" %}
-						{% include "_partials/_experience-blocks/rich-text" with {
-							block
-						} only %}
-					{% case "pullQuote" %}
-						{% include "_partials/_experience-blocks/pull-quote" with {
-							block
-						} only %}
-					{% case "imageBlock" %}
-						{% include "_partials/_experience-blocks/image-block" with {
-							block
-						} only %}
-					{% case "callout" %}
-						{% include "_partials/_experience-blocks/callout" with {
-							block
-						} only %}
-					{% case "beforeAfter" %}
-						{% include "_partials/_experience-blocks/before-after" with {
-							block
-						} only %}
-					{% default %}
-						<p class="text-red-500">
-							Unknown block type: {{ block.type }}
-						</p>
-				{% endswitch %}
-			{% endfor %}
-		</section>
+		{% for block in entry.body.all() %}
+			{% switch block.type %}
+				{% case "richText" %}
+					{% include "_partials/_experience-blocks/rich-text" with {
+						block
+					} only %}
+				{% case "pullQuote" %}
+					{% include "_partials/_experience-blocks/pull-quote" with {
+						block
+					} only %}
+				{% case "imageBlock" %}
+					{% include "_partials/_experience-blocks/image-block" with {
+						block
+					} only %}
+				{% case "callout" %}
+					{% include "_partials/_experience-blocks/callout" with {
+						block
+					} only %}
+				{% case "beforeAfter" %}
+					{% include "_partials/_experience-blocks/before-after" with {
+						block
+					} only %}
+				{% default %}
+					<p class="text-red-500">
+						Unknown block type: {{ block.type }}
+					</p>
+			{% endswitch %}
+		{% endfor %}
 		{# People Involved #}
 		{% if entry.peopleInvolved|length %}
 			<section class="people-involved mt-12 border-t border-gray-200 pt-12">
@@ -82,8 +80,14 @@
 							{% if person.involvedPersonPhoto|length %}
 								{% set photo = person.involvedPersonPhoto.one() %}
 								<img
-									src="{{ photo.getUrl({ width: 160, height: 160, mode: 'crop' }) }}"
-									srcset="{{ macros.srcSet(photo, true, '1:1') }}"
+									src="{{
+									photo.getUrl({
+										width: 160,
+										height: 160,
+										mode: "crop"
+									})
+									}}"
+									srcset="{{ macros.srcSet(photo, true, "1:1") }}"
 									sizes="80px"
 									alt="{{ person.involvedPersonName }}"
 									class="mb-3 h-20 w-20 rounded-full object-cover"

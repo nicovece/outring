@@ -11,7 +11,8 @@
 		{% if featuredImage %}
 			{% include "_modules/hero-image" with {
 				image: featuredImage,
-				caption: featuredImage.caption
+				caption: featuredImage.caption,
+				title: entry.title
 			} only %}
 		{% endif %}
 		<section class="body-section mb-12 max-w-none">
