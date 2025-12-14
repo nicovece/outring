@@ -16,6 +16,6 @@ siteSettings:
   62bc0ef7-2ac1-4b54-b20d-b5029f396ce6: # Outring
     enabledByDefault: true
     hasUrls: true
-    template: about/_entry.twig
+    template: generic/_entry.twig
     uriFormat: about
 type: single

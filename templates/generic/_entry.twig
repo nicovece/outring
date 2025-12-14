@@ -1,0 +1,50 @@
+{% extends "_layouts/base.twig" %}
+
+{% block title %}
+	{{ entry.title }} - {{ siteName }}
+{% endblock %}
+
+{% block content %}
+	<article class="container-full">
+		{% if entry.featuredImage is defined and (entry.featuredImage|length) %}
+			{% include "_modules/page-header" with {
+				title: entry.title,
+				image: entry.featuredImage.one(),
+				caption: entry.featuredImageCaption ?? null
+			} only %}
+		{% else %}
+			{% include "_modules/page-header" with {
+				title: entry.title
+			} only %}
+		{% endif %}
+
+		{% if entry.body is defined %}
+			<section class="container-wide mb-12">
+				{% for block in entry.body.all() %}
+					{% switch block.type %}
+						{% case "richText" %}
+							{% include "_partials/_experience-blocks/rich-text" with {
+								block
+							} only %}
+						{% case "pullQuote" %}
+							{% include "_partials/_experience-blocks/pull-quote" with {
+								block
+							} only %}
+						{% case "imageBlock" %}
+							{% include "_partials/_experience-blocks/image-block" with {
+								block
+							} only %}
+						{% case "callout" %}
+							{% include "_partials/_experience-blocks/callout" with {
+								block
+							} only %}
+						{% case "beforeAfter" %}
+							{% include "_partials/_experience-blocks/before-after" with {
+								block
+							} only %}
+					{% endswitch %}
+				{% endfor %}
+			</section>
+		{% endif %}
+	</article>
+{% endblock %}

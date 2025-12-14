@@ -1,6 +1,23 @@
+{% set block =
+	block|merge({
+		sectionWidth: "wide"
+	})
+%}
+{% set calloutClasses = {
+	full: "full w-full md:text-4xl/7 lg:text-6xl/10",
+	wide: "wide-width w-full md:text-4xl/7 lg:text-5xl/8",
+	medium: "medium-width md:max-w-4/5 lg:max-w-2/3 md:text-3xl/6 lg:text-4xl/7",
+	inColumn: "in-column max-w-xl md:text-3xl/6"
+}[block.sectionWidth ? block.sectionWidth : "wide"]
+	?? "w-full"
+%}
 {% if block.text %}
-	<section class="body-section container-{{ block.sectionWidth ? : 'wide' }}">
-		<aside class="callout bg-blue-50 mb-6 rounded-lg p-4">
+	<section class="body-section container-{{ block.sectionWidth == "full" ? "full" : "wide" }}">
+		<aside
+			class="callout relative my-4 flex flex-col justify-center p-4 text-2xl font-light text-pretty text-accent-dark after:absolute after:bottom-0 after:left-0 after:z-[-1] after:aspect-square after:h-full after:border-b-8 after:border-l-8 after:border-accent after:content-[''] md:p-6 2xl:p-10 dark:text-accent {{
+			calloutClasses
+			}}"
+		>
 			{% include "_partials/_retcon/experience-text" with {
 				text: block.text
 			} only %}

@@ -1,20 +1,30 @@
 {% if block.image %}
 	{% import "_macros" as macros %}
 	{% set image = block.image.one() %}
-	<section class="body-section container-{{ block.sectionWidth ? : "wide" }}">
-		<figure class="mb-6">
-			<img
-				src="{{ image.getUrl("w1200") }}"
-				srcset="{{ macros.srcSet(image) }}"
-				sizes="(max-width: 768px) 100vw, 800px"
-				alt="{{ block.altText ? : image.title }}"
-				width="{{ image.width }}"
-				height="{{ image.height }}"
-				loading="lazy"
-				class="w-full"
-			/>
+	<section class="body-section body-section--image container-{{ block.sectionWidth == "full" ? "full" : "wide" }}">
+		{% set imageClasses = {
+			full: "full w-full md:h-[60vh] xl:h-[90vh]",
+			wide: "wide-width w-full md:h-[40vh] xl:h-[80vh]",
+			medium: "medium-width md:max-w-2/3",
+			inColumn: "in-column max-w-xl"
+		}[block.sectionWidth ? block.sectionWidth : "wide"]
+			?? "w-full"
+		%}
+		<figure class="my-4 mb-6 flex flex-col overflow-hidden {{ imageClasses }}">
+			<div class="min-h-0 flex-1 overflow-hidden">
+				<img
+					src="{{ image.getUrl("w1200") }}"
+					srcset="{{ macros.srcSet(image) }}"
+					sizes="(max-width: 768px) 100vw, 800px"
+					alt="{{ block.altText ? : image.title }}"
+					width="{{ image.width }}"
+					height="{{ image.height }}"
+					loading="lazy"
+					class="h-full w-full object-cover"
+				/>
+			</div>
 			{% if block.caption %}
-				<figcaption class="mt-2 text-gray-700">
+				<figcaption class="shrink-0 bg-accent/10 px-4 py-2 text-base">
 					{% include "_partials/_retcon/experience-text" with {
 						text: block.caption
 					} only %}

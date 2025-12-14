@@ -131,7 +131,7 @@
 	/* Content Components */
 
 	.content-column-main {
-		@apply max-w-xl;
+		@apply max-w-xl 2xl:max-w-2xl;
 	}
 
 	.prose-block {
@@ -141,111 +141,61 @@
 	/* Before/After Slider Component - Start */
 
 	.before-after {
-		--reveal: 50%; /* Default reveal position */
-		position: relative;
-		user-select: none;
+		@apply relative select-none [--reveal:50%];
 	}
 
 	.before-after__container {
-		position: relative;
-		overflow: hidden;
-		border-radius: 0.5rem;
-		background-color: #f3f4f6;
-		aspect-ratio: 16 / 9; /* Default, will be overridden by images */
+		@apply relative aspect-[16/9] overflow-hidden bg-accent/10 dark:bg-accent/5;
 	}
 
 	/* Images */
 	.before-after__image {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		pointer-events: none;
+		@apply pointer-events-none absolute top-0 left-0 h-full w-full object-cover;
 	}
 
 	.before-after__image--before {
-		z-index: 1;
+		@apply z-[1];
 	}
 
 	.before-after__image--after {
-		z-index: 2;
-		clip-path: inset(0 0 0 var(--reveal));
+		@apply z-[2] [clip-path:inset(0_0_0_var(--reveal))];
 	}
 
 	/* Divider Line */
 	.before-after__divider {
-		position: absolute;
-		top: 0;
-		left: var(--reveal);
-		transform: translateX(-50%);
-		width: 2px;
-		height: 100%;
-		background-color: white;
-		z-index: 3;
-		pointer-events: none;
+		@apply pointer-events-none absolute top-0 [left:var(--reveal)] z-[3] h-full w-0.5 -translate-x-1/2 bg-accent;
 	}
 
-	/* Handle (drag circle) */
 	.before-after__handle {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 48px;
-		height: 48px;
-		background-color: white;
-		border-radius: 50%;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: #374151;
-		cursor: ew-resize;
-		pointer-events: auto;
-	}
-
-	.before-after__handle svg {
-		width: 24px;
-		height: 24px;
+		@apply pointer-events-auto absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-accent text-white shadow-[0_2px_8px_rgba(0,0,0,0.2)] transition-all ease-in-out;
 	}
 
 	/* Range Slider (fallback, hidden when JS enhanced) */
 	.before-after__slider {
-		width: 100%;
-		margin-top: 1rem;
-		cursor: pointer;
+		@apply mt-4 w-full cursor-pointer;
 	}
 
 	.before-after[data-enhanced] .before-after__slider {
-		display: none;
+		@apply hidden;
 	}
 
 	/* Labels */
-	.before-after__labels {
-		display: flex;
-		justify-content: space-between;
-		margin-top: 0.5rem;
-		font-size: 0.875rem;
-		color: #6b7280;
-		font-weight: 500;
-	}
 
-	/* Interactive States */
+	/* Remove these rules - handle with group classes in HTML instead */
+	/* 
 	.before-after__container:hover .before-after__handle {
 		background-color: #f9fafb;
 	}
-
+	
 	.before-after__container:active .before-after__handle {
 		transform: translate(-50%, -50%) scale(1.1);
 	}
-
-	/* Focus visible (keyboard navigation) */
+	
 	.before-after:focus-within .before-after__handle {
 		outline: 2px solid #3b82f6;
 		outline-offset: 2px;
 	}
+	*/
 
 	/* Before/After Slider Component - End */
 

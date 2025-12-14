@@ -1,6 +1,6 @@
 {% if block.text %}
-	<section class="body-section container-{{ block.sectionWidth ? : 'wide' }}">
-		<div class="prose-block content-column-main">
+	<section class="body-section container-{{ block.sectionWidth ? : "wide" }}">
+		<div class="content-column-main my-4 text-base md:text-lg">
 			{% include "_partials/_retcon/experience-text" with {
 				text: block.text
 			} only %}

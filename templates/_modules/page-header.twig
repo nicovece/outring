@@ -2,9 +2,10 @@
     Page Header Module
 
     Parameters:
+    - layout (optional): String - 'layout-full' for a full width layout with image before text, 'layout-wide' for a wide layout with image after text
     - title (required): String - main page title
     - text (optional): String - page description text
-    - image (required): Asset object - page background image
+    - image (optional): Asset object - page background image
     - imageHeight (optional): String - 'full', 'half', 'fitContent', 'oneThird', defaults to 'full'
     - caption (optional): String - image caption
     - sectionWidth (optional): String - 'full', 'wide', 'medium', 'inColumn', defaults to 'wide' (container-wide)
@@ -21,7 +22,36 @@
   #}
 {% import "_macros" as macros %}
 {% if title is defined or text is defined or image is defined %}
-	<section class="section-hero container-{{ sectionWidth|default("wide") }}">
+	{% set sectionClasses = "section-hero container-" ~ (sectionWidth|default("wide")) %}
+	{% if layout is not defined or layout == "layout-wide" %}
+		{% set sectionClasses = sectionClasses ~ " md:mt-14" %}
+	{% endif %}
+	<section class="{{ sectionClasses }}">
+		{% if layout is defined and layout == "layout-full" %}
+			{% if image is defined %}
+				<figure class="relative h-[40vh] w-full overflow-hidden lg:h-[60vh]">
+					<img
+						src="{{
+						image.getUrl({
+							width: 1200,
+							height: 800,
+							mode: "crop"
+						})
+						}}"
+						srcset="{{ macros.srcSet(image, true, "3:2") }}"
+						sizes="100vw"
+						class="h-full w-full object-cover"
+						loading="eager"
+						alt="{{ image.title }}"
+					/>
+					{% if caption is defined %}
+						<figcaption class="absolute right-0 bottom-0 left-0 p-4 text-center text-sm text-gray-600">
+							{{ caption }}
+						</figcaption>
+					{% endif %}
+				</figure>
+			{% endif %}
+		{% endif %}
 		{% if title is defined or text is defined %}
 			{% set heroTextClasses = {
 				full: "max-w-1/2 px-4 py-4",
@@ -31,7 +61,7 @@
 			}[sectionWidth|default("wide")]
 				?? "max-w-full"
 			%}
-			<header class="mx-auto mt-12 mb-6 max-w-(--max-width) md:mt-20 md:mb-10">
+			<header class="mx-auto mt-12 mb-6 max-w-(--max-width) md:mt-6 md:mb-10">
 				<div class="hero-text {{ heroTextClasses }}">
 					{% if title is defined %}
 						<h1 class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200">
@@ -46,36 +76,38 @@
 				</div>
 			</header>
 		{% endif %}
-		{% if image is defined %}
-			{% set heightClass = {
-				full: "h-[40vh] lg:h-[60vh] xl:h-screen",
-				half: "h-[25vh] lg:h-[40vh] xl:h-[50vh]",
-				oneThird: "h-[20vh] lg:h-[25vh] xl:h-[33vh]",
-				fitContent: "h-auto"
-			}[imageHeight|default("full")]
-				?? "h-[40vh] lg:h-[60vh] xl:h-screen"
-			%}
-			<figure class="{{ heightClass }} relative w-full overflow-hidden">
-				<img
-					src="{{
-					image.getUrl({
-						width: 1200,
-						height: 800,
-						mode: "crop"
-					})
-					}}"
-					srcset="{{ macros.srcSet(image, true, "3:2") }}"
-					sizes="100vw"
-					class="h-full w-full object-cover"
-					loading="eager"
-					alt="{{ image.title }}"
-				/>
-				{% if caption is defined %}
-					<figcaption class="absolute right-0 bottom-0 left-0 p-4 text-center text-sm text-gray-600">
-						{{ caption }}
-					</figcaption>
-				{% endif %}
-			</figure>
+		{% if layout is not defined or layout == "layout-wide" %}
+			{% if image is defined %}
+				{% set heightClass = {
+					full: "h-[40vh] lg:h-[60vh] xl:h-screen",
+					half: "h-[25vh] lg:h-[40vh] xl:h-[50vh]",
+					oneThird: "h-[20vh] lg:h-[25vh] xl:h-[33vh]",
+					fitContent: "h-auto"
+				}[imageHeight|default("full")]
+					?? "h-[40vh] lg:h-[60vh] xl:h-screen"
+				%}
+				<figure class="{{ heightClass }} relative w-full overflow-hidden">
+					<img
+						src="{{
+						image.getUrl({
+							width: 1200,
+							height: 800,
+							mode: "crop"
+						})
+						}}"
+						srcset="{{ macros.srcSet(image, true, "3:2") }}"
+						sizes="100vw"
+						class="h-full w-full object-cover"
+						loading="eager"
+						alt="{{ image.title }}"
+					/>
+					{% if caption is defined %}
+						<figcaption class="absolute right-0 bottom-0 left-0 p-4 text-center text-sm text-gray-600">
+							{{ caption }}
+						</figcaption>
+					{% endif %}
+				</figure>
+			{% endif %}
 		{% endif %}
 	</section>
 {% endif %}

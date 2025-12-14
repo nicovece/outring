@@ -1,16 +1,31 @@
 {% if block.quote %}
-	<section class="body-section container-{{ block.sectionWidth ? : "wide" }}">
-		<blockquote class="prose-block">
-			{% include "_partials/_retcon/experience-text" with {
-				text: block.quote
-			} only %}
+	<section class="body-section body-section--pull-quote container-{{ block.sectionWidth == "full" ? "full" : "wide" }}">
+		{% set pullQuoteClasses = {
+			full: "full w-full md:text-4xl/7 lg:text-6xl/10",
+			wide: "wide-width w-full md:text-4xl/7 lg:text-5xl/8",
+			medium: "medium-width md:max-w-4/5 lg:max-w-2/3 md:text-3xl/6 lg:text-4xl/7",
+			inColumn: "in-column max-w-xl md:text-3xl/6"
+		}[block.sectionWidth ? block.sectionWidth : "wide"]
+			?? "w-full"
+		%}
+		<blockquote
+			class="my-4 flex flex-col justify-center bg-accent/30 p-4 text-2xl font-extralight text-pretty italic md:p-6 2xl:p-10 {{
+			pullQuoteClasses
+			}}"
+		>
+			<p>
+				<span class="mr-1 inline-block font-medium">“</span>{% include "_partials/_retcon/experience-text" with {
+					text: block.quote
+				} only %}<span class="-mr-2 inline-block font-medium">”</span>
+			</p>
+
 			{% if block.attribution %}
-				<footer class="text-gray-700">
-					<cite>
+				<footer class="mt-2">
+					<div class="text-lg not-italic md:text-xl xl:text-2xl">
 						{% include "_partials/_retcon/experience-text" with {
 							text: block.attribution
 						} only %}
-					</cite>
+					</div>
 				</footer>
 			{% endif %}
 		</blockquote>
