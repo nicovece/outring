@@ -138,7 +138,7 @@
 					<h3 class="text-lg font-light md:text-2xl">People Involved</h3>
 				</div>
 				<div class="container-full mb-8 bg-accent/10 p-4 py-8 md:p-8 2xl:p-8 dark:bg-accent/5">
-					<div class="container-wide-- grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+					<div class="container-wide grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
 						{% for person in entry.peopleInvolved.all() %}
 							<div class="person-card">
 								{% if person.involvedPersonPhoto|length %}

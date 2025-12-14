@@ -1,0 +1,47 @@
+{#
+  Lead - Intro/Description Text Styling
+  Larger text for page introductions and descriptions
+
+  Parameters:
+  - text (required): The rich text content
+
+  Usage: {% include '_partials/_retcon/lead' with { text: entry.intro } only %}
+#}
+
+{{
+  text|retcon([
+    ["removeEmpty", "p"],
+    [
+      "attr",
+      "p",
+      {
+        class: "text-pretty text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 last:mb-0"
+      },
+      false
+    ],
+    [
+      "attr",
+      "a",
+      {
+        class: "underline decoration-accent/50 hover:decoration-accent hover:bg-accent/10 transition-colors"
+      },
+      false
+    ],
+    [
+      "attr",
+      "strong",
+      {
+        class: "font-semibold text-gray-900 dark:text-gray-100"
+      },
+      false
+    ],
+    [
+      "attr",
+      "em",
+      {
+        class: "italic"
+      },
+      false
+    ]
+  ])|raw
+}}

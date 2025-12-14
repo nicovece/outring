@@ -1,0 +1,12 @@
+{#
+  Minimal - Stripped Content
+  Removes empty elements, no styling applied
+  For RSS feeds, meta descriptions, or plain output
+
+  Parameters:
+  - text (required): The rich text content
+
+  Usage: {% include '_partials/_retcon/minimal' with { text: entry.body } only %}
+#}
+
+{{ text|retcon([["removeEmpty", "p"]])|raw }}

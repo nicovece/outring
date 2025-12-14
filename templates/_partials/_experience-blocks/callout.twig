@@ -1,8 +1,3 @@
-{% set block =
-	block|merge({
-		sectionWidth: "wide"
-	})
-%}
 {% set calloutClasses = {
 	full: "full w-full md:text-4xl/7 lg:text-6xl/10",
 	wide: "wide-width w-full md:text-4xl/7 lg:text-5xl/8",
@@ -14,13 +9,11 @@
 {% if block.text %}
 	<section class="body-section container-{{ block.sectionWidth == "full" ? "full" : "wide" }}">
 		<aside
-			class="callout relative my-4 flex flex-col justify-center p-4 text-2xl font-light text-pretty text-accent-dark after:absolute after:bottom-0 after:left-0 after:z-[-1] after:aspect-square after:h-full after:border-b-8 after:border-l-8 after:border-accent after:content-[''] md:p-6 2xl:p-10 dark:text-accent {{
+			class="callout relative my-4 flex flex-col justify-center p-4 text-2xl font-light text-pretty text-accent-dark after:absolute after:top-4 after:bottom-0 after:left-0 after:z-[-1] after:aspect-square after:border-b-8 after:border-l-8 after:border-accent after:content-[''] md:p-6 md:after:top-6 2xl:p-10 2xl:after:top-10 dark:text-accent {{
 			calloutClasses
 			}}"
 		>
-			{% include "_partials/_retcon/experience-text" with {
-				text: block.text
-			} only %}
+			{{ block.text|retcon([["removeEmpty", "p"], ["unwrap", "p"]])|raw }}
 		</aside>
 	</section>
 {% endif %}

@@ -1,0 +1,183 @@
+{#
+  Prose - Full Body Content Styling
+  Applies Tailwind classes to CKEditor content for body sections
+
+  Parameters:
+  - text (required): The rich text content
+  - size (optional): "small" | "base" | "large" - defaults to "base"
+
+  Usage: {% include '_partials/_retcon/prose' with { text: block.text } only %}
+#}
+
+{% set size = size|default("base") %}
+
+{% switch size %}
+  {% case "small" %}
+    {% set textSize = "text-sm md:text-base" %}
+    {% set headingScale = { h2: "text-lg md:text-xl", h3: "text-base md:text-lg", h4: "text-sm md:text-base" } %}
+  {% case "large" %}
+    {% set textSize = "text-lg md:text-xl" %}
+    {% set headingScale = { h2: "text-2xl md:text-3xl", h3: "text-xl md:text-2xl", h4: "text-lg md:text-xl" } %}
+  {% default %}
+    {% set textSize = "text-base md:text-lg" %}
+    {% set headingScale = { h2: "text-xl md:text-2xl", h3: "text-lg md:text-xl", h4: "text-base md:text-lg" } %}
+{% endswitch %}
+
+{{
+  text|retcon([
+    ["change", "body > h1", "body > h2"],
+    ["removeEmpty", "body > p, body > h2, body > h3, body > h4, body > h5, body > h6"],
+    [
+      "attr",
+      "body > h2, body > h3, body > h4, body > h5, body > h6",
+      {
+        class: "font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-3 first:mt-0 last:mb-0"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > h2",
+      {
+        class: headingScale.h2
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > h3",
+      {
+        class: headingScale.h3
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > h4",
+      {
+        class: headingScale.h4
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > p",
+      {
+        class: "text-pretty mb-4 last:mb-0 " ~ textSize
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > ul, body > ol",
+      {
+        class: "mb-4 last:mb-0 " ~ textSize
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > ul",
+      {
+        class: "list-disc list-outside pl-5"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > ul > li",
+      {
+        class: "pl-1 my-1 last:my-0"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > ol",
+      {
+        class: "list-decimal list-outside pl-5"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > ol > li",
+      {
+        class: "pl-1 my-1 last:my-0"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > blockquote",
+      {
+        class: "border-l-4 border-accent pl-4 my-6 italic text-gray-700 dark:text-gray-300"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > blockquote > p",
+      {
+        class: "text-lg md:text-xl"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > hr",
+      {
+        class: "my-8 border-gray-200 dark:border-gray-700"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > figure",
+      {
+        class: "my-6"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > figure > img",
+      {
+        class: "block max-w-full rounded"
+      },
+      false
+    ],
+    [
+      "attr",
+      "body > figure > figcaption",
+      {
+        class: "mt-2 text-sm text-gray-500 dark:text-gray-400"
+      },
+      false
+    ],
+    [
+      "attr",
+      "a",
+      {
+        class: "underline decoration-accent/50 hover:decoration-accent hover:bg-accent/10 transition-colors"
+      },
+      false
+    ],
+    [
+      "attr",
+      "strong",
+      {
+        class: "font-semibold"
+      },
+      false
+    ],
+    [
+      "attr",
+      "em",
+      {
+        class: "italic"
+      },
+      false
+    ]
+  ])|raw
+}}

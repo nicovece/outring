@@ -14,7 +14,7 @@
 			}}"
 		>
 			<p>
-				<span class="mr-1 inline-block font-medium">“</span>{% include "_partials/_retcon/experience-text" with {
+				<span class="mr-1 inline-block font-medium">“</span>{% include "_partials/_retcon/prose" with {
 					text: block.quote
 				} only %}<span class="-mr-2 inline-block font-medium">”</span>
 			</p>
@@ -22,7 +22,7 @@
 			{% if block.attribution %}
 				<footer class="mt-2">
 					<div class="text-lg not-italic md:text-xl xl:text-2xl">
-						{% include "_partials/_retcon/experience-text" with {
+						{% include "_partials/_retcon/prose" with {
 							text: block.attribution
 						} only %}
 					</div>
