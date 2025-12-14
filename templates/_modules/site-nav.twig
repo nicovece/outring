@@ -12,7 +12,7 @@
 					label: "Outring",
 					ariaLabel: "Go to home page Outring",
 					additionalClasses: "font-bold"
-				} only %} <span class="dark:text-gray-300 hidden text-gray-500 xl:inline">{{ siteInfo.siteTagline }}</span>
+				} only %} <span class="hidden text-gray-500 xl:inline dark:text-gray-300">{{ siteInfo.siteTagline }}</span>
 			</div>
 			<button
 				data-menu-toggle
@@ -63,6 +63,13 @@
 						{% include "_modules/nav-link" with {
 							url: url("themes"),
 							label: "Themes",
+							currentSegment: currentSegment
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/nav-link" with {
+							url: url("places"),
+							label: "Places",
 							currentSegment: currentSegment
 						} only %}
 					</li>

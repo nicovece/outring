@@ -39,6 +39,13 @@
 					</li>
 					<li>
 						{% include "_modules/link-text" with {
+							url: url("places"),
+							label: "Places",
+							additionalClasses: linkClasses.base
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/link-text" with {
 							url: url("about"),
 							label: "About",
 							additionalClasses: linkClasses.base

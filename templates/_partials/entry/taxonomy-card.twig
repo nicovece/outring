@@ -1,0 +1,48 @@
+{#
+    Taxonomy Card - for Themes and Places
+
+    Parameters:
+    - entry: The theme or place entry
+  #}
+{% import "_macros" as macros %}
+
+<article class="taxonomy-card group bg-accent/10 dark:bg-accent/15">
+	{% if entry.featuredImage is defined and (entry.featuredImage|length) %}
+		{% set image = entry.featuredImage.one() %}
+		<a href="{{ entry.url }}">
+			<img
+				src="{{
+				image.getUrl({
+					width: 400,
+					height: 300,
+					mode: "crop"
+				})
+				}}"
+				srcset="{{ macros.srcSet(image, true, "4:3") }}"
+				sizes="(max-width: 768px) 100vw, 33vw"
+				alt="{{ image.title }}"
+				class="-mb-2 aspect-4/3 w-full object-cover"
+				loading="lazy"
+			/>
+		</a>
+	{% endif %}
+	<div class="card-content p-4 md:p-6">
+		<h2 class="mb-1 text-xl font-normal md:text-2xl/5">
+			{% include "_modules/link-text" with {
+				url: entry.url,
+				label: entry.title,
+				additionalClasses: "text-xl wrap-break-word font-normal md:text-2xl/5 w-fit group-hover::after:bg-accent"
+			} only %}
+		</h2>
+		{% if entry.city is defined and entry.city %}
+			<span class="text-sm/3 md:text-base/4">{{ entry.city }}</span>
+		{% endif %}
+
+		{% if entry.text %}
+			{% set cleanText = entry.text|striptags %}
+			<div class="mt-2 text-base/3 font-light">
+				{{ (cleanText|slice(0, 200)) ~ ((cleanText|length) > 200 ? "..." : "") }}
+			</div>
+		{% endif %}
+	</div>
+</article>

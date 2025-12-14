@@ -31,7 +31,7 @@
 			}[sectionWidth|default("wide")]
 				?? "max-w-full"
 			%}
-			<div class="hero-text-container mx-auto mt-12 mb-6 max-w-(--max-width) md:mt-20 md:mb-10">
+			<header class="mx-auto mt-12 mb-6 max-w-(--max-width) md:mt-20 md:mb-10">
 				<div class="hero-text {{ heroTextClasses }}">
 					{% if title is defined %}
 						<h1 class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200">
@@ -39,12 +39,12 @@
 						</h1>
 					{% endif %}
 					{% if text is defined %}
-						<p class="text-base font-semibold md:text-xl">
+						<p class="text-base font-medium md:text-xl">
 							{{ text|striptags("<strong><em>")|raw }}
 						</p>
 					{% endif %}
 				</div>
-			</div>
+			</header>
 		{% endif %}
 		{% if image is defined %}
 			{% set heightClass = {

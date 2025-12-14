@@ -3,11 +3,12 @@
 
 {% set cardClasses = {
 	layout: "card-community flex flex-col gap-4 pb-8",
-	image: "w-full aspect-[16/9] object-cover",
+	image: "w-full aspect-video object-cover",
 	imageContainer: "block",
 	content: "px-4 md:px-6 pt-0",
 	meta: "px-4 md:px-6 mt-auto"
 } %}
+{% set headingTag = headingLevel|default("h2") %}
 <article class="card-experience bg-white dark:bg-gray-900 {{ cardClasses.layout }}">
 	{% if isEditorial and (experience.featuredImage|length) %}
 		{% set image = experience.featuredImage.one() %}
@@ -21,7 +22,7 @@
 				})
 				}}"
 				srcset="{{ macros.srcSet(image, true, "16:9") }}"
-				sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+				sizes="(max-width: 1024px) 100vw, 800px"
 				alt="{{ image.title }}"
 				class="{{ cardClasses.image }}"
 				loading="lazy"
@@ -76,9 +77,9 @@
 
 	<div class="card-content {{ cardClasses.content }}">
 		<span class="text-sm text-gray-700 dark:text-gray-500">{{ experience.experienceType.label }}</span>
-		<h3 class="mt-4 mb-2 text-xl font-normal md:text-2xl/5">
+		<{{ headingTag }} class="mt-4 mb-2 text-xl font-normal md:text-2xl/5">
 			<a href="{{ experience.url }}" class="hover:text-gray-600">{{ experience.title }}</a>
-		</h3>
+		</>
 		<div class="text-sm/3 md:text-base/4">
 			{% set place = experience.place.one() %}
 			{% if place %}

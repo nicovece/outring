@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: af67dae9-339a-4f37-8d53-f8a337507e03 # Index Page
+handle: themesIndex
+maxAuthors: 1
+name: 'Themes Index'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: themes
+propagationMethod: all
+siteSettings:
+  62bc0ef7-2ac1-4b54-b20d-b5029f396ce6: # Outring
+    enabledByDefault: true
+    hasUrls: true
+    template: themes/index.twig
+    uriFormat: themes
+type: single

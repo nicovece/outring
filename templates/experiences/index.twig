@@ -7,41 +7,33 @@
 
 {% block content %}
 	{% include "_modules/page-header" with {
-		title: "Experiences",
-		text: "Stories from residents involved in urban regeneration projects",
+		title: "Stories from residents involved in urban regeneration projects",
+		text: "People experiences",
 		imageHeight: "full",
 		caption: "Experiences",
-		sectionWidth: "full"
+		sectionWidth: "wide"
 	} only %}
 	<section>
-		<header class="container-wide">
-			<h1 class="mb-4 text-4xl font-bold">Experiences</h1>
-			<p class="text-xl text-gray-600">
-				Stories from residents involved in urban regeneration projects
-			</p>
-		</header>
-
-		{# Experiences Grid #}
 		{% set experiences =
 			craft.entries().section("experiences").with(["featuredImage", "place", "themes"]).orderBy(
 				"dateOfExperience DESC"
 			).all()
 		%}
 
-		{% if experiences|length %}
-			<div
-				class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
-			>
+		<div
+			class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
+		>
+			{% if experiences|length %}
 				{% for experience in experiences %}
 					{% include "_partials/entry/experience-card" with {
 						experience: experience
 					} only %}
 				{% endfor %}
-			</div>
-		{% else %}
-			<p class="text-gray-600">
-				No experiences yet.
-			</p>
-		{% endif %}
+			{% else %}
+				<p class="text-gray-600">
+					No experiences yet.
+				</p>
+			{% endif %}
+		</div>
 	</section>
 {% endblock %}

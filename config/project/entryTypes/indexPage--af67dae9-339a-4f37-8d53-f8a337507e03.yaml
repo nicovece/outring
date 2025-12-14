@@ -1,7 +1,7 @@
 color: null
 description: null
 fieldLayouts:
-  8a3ea86f-b148-4402-82d9-d0a0a6826ea6:
+  7e6713ea-fe06-4b72-a4ce-a4cbaa947262:
     cardThumbAlignment: end
     tabs:
       -
@@ -12,7 +12,7 @@ fieldLayouts:
             autocomplete: false
             autocorrect: true
             class: null
-            dateAdded: '2025-12-09T11:35:57+00:00'
+            dateAdded: '2025-12-14T11:09:49+00:00'
             disabled: false
             elementCondition: null
             id: null
@@ -33,15 +33,15 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: a66eed58-277f-44e1-a618-5fe53d75c400
+            uid: f0fa056a-e069-4c6b-b3c7-28fc275eaf49
             userCondition: null
             warning: null
             width: 100
           -
-            dateAdded: '2025-12-09T16:01:46+00:00'
+            dateAdded: '2025-12-14T11:11:51+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: 0905e205-4c22-4c63-88f1-fe6a62497607 # City
+            fieldUid: c854ee8e-d31d-41b5-a6b5-439ded6b83e4 # Section width
             handle: null
             includeInCards: false
             instructions: null
@@ -50,46 +50,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: fa2fad51-5da6-4c00-8aae-1560232b85fa
+            uid: 5088e6b1-b5e3-4c71-9009-238234156a5f
             userCondition: null
             warning: null
             width: 100
           -
-            dateAdded: '2025-12-09T16:01:46+00:00'
-            editCondition: null
-            elementCondition: null
-            fieldUid: 5d1215b1-5277-45ff-add8-b9470c26338b # Text
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 22dd7ae3-7d30-4cbe-8311-97e2ad206a04
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-12-09T16:01:46+00:00'
-            editCondition: null
-            elementCondition: null
-            fieldUid: 1f153368-e72f-4d41-9a33-2c0cc7769cfe # External Project URL
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 61e3f4ec-86a3-4be3-94bb-54043f964e69
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-12-09T16:01:46+00:00'
+            dateAdded: '2025-12-14T11:11:51+00:00'
             editCondition: null
             elementCondition: null
             fieldUid: a2b84830-34a0-4780-bf03-08293ba5127c # Featured Image
@@ -101,12 +67,29 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: b6fd007e-3325-4ca5-91c6-5f3bd86f492f
+            uid: 1c6d24de-70cd-4991-873b-45c5f13b674d
             userCondition: null
             warning: null
             width: 100
           -
-            dateAdded: '2025-12-14T11:41:28+00:00'
+            dateAdded: '2025-12-14T11:11:51+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 3f06dd89-2dcf-4ae6-9ea2-0ffecd508fa1 # Image height
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6b79507b-e06a-4cfe-87dc-ad78fae40b78
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-14T11:11:51+00:00'
             editCondition: null
             elementCondition: null
             fieldUid: 2510f397-c34c-4a8b-b10e-fb9b14599ee6 # Featured Image Caption
@@ -118,17 +101,51 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 1134761b-b727-4306-86e5-24b6c1b4405e
+            uid: d57984f5-1015-464f-a6bf-626332c541cf
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-14T11:11:51+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: e75f7d5c-c14a-4095-b070-a87cf4489180 # Hero title
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b1c147dd-93ed-47c0-aa14-91699eedde9d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-14T11:11:51+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 8dff054f-3c9d-44a0-a554-925d24f53805 # Hero text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3edca0ff-dd71-4f35-a114-65317c5c613e
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 2e590148-86e6-464e-9c5b-c7dab01e5f88
+        uid: 5902959f-9b63-4942-8332-8d982396295c
         userCondition: null
-handle: place
+handle: indexPage
 hasTitleField: true
-icon: location-dot
-name: Place
+icon: null
+name: 'Index Page'
 showSlugField: true
 showStatusField: true
 slugTranslationKeyFormat: null

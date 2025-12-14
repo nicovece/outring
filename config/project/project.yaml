@@ -1,4 +1,4 @@
-dateModified: 1765649142
+dateModified: 1765712488
 email:
   fromEmail: me@nicovece.com
   fromName: Outring
@@ -31,7 +31,9 @@ meta:
     9c8b9611-d687-4642-8647-d84d7a816609: 'Before Alt Text' # Before Alt Text
     22a9aad3-c553-4c77-b41c-bfb50d672c36: w400 # w400
     62bc0ef7-2ac1-4b54-b20d-b5029f396ce6: Outring # Outring
+    65b3367e-a8c3-4edd-bbb0-102b193e2928: 'Themes Index' # Themes Index
     79dfdcd1-560d-402e-8eee-7c663bdbdb15: Experiences # Experiences
+    096fcfd5-9243-4f20-a047-1925850af491: 'Places Index' # Places Index
     0178d46e-a81d-4be3-bab6-7481e2c62ee1: Experience # Experience
     534abbfb-4e75-40e6-8aed-3c859412ebf9: 'Experience Type' # Experience Type
     598d0d21-8167-418b-b4c0-f5012fdd9a6b: Manifesto # Manifesto
@@ -53,6 +55,7 @@ meta:
     ace70b36-3361-492c-a3ff-086baadf1ca0: w2400 # w2400
     ad89808d-966d-4ce0-a7dc-5b390dfad2c8: w1600 # w1600
     af2a869f-7e80-45dc-a20f-c6dabafd3b85: 'Site info' # Site info
+    af67dae9-339a-4f37-8d53-f8a337507e03: 'Index Page' # Index Page
     b0fe198f-199f-4d2e-ae35-2349dc2a9622: Description # Description
     b2d67bb8-0595-4356-a6ad-349dec9f11dd: Place # Place
     b75c217c-fc11-41f6-b056-7f483eb2212f: Default # Default
