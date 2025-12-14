@@ -1,14 +1,14 @@
 {% extends "_layouts/base.twig" %}
 
 {% block title %}
-	{{ siteName }} - Voices from the Periphery
+	{{ siteName }} - {{ siteInfo.siteTagline }}
 {% endblock %}
 
 {% block content %}
 	{# Hero Section #}
-	{% set homepage = craft.entries().section("homepage").one() %}
+	{% set homepage = craft.entries().section("homepage").with(["featuredImage"]).one() %}
 	{% if homepage %}
-		{% include "_modules/hero-image" with {
+		{% include "_modules/page-header" with {
 			title: homepage.heroTitle,
 			text: homepage.heroText,
 			image: homepage.featuredImage.one(),
@@ -42,12 +42,23 @@
 		<div class="container-wide">
 			<h3 class="text-lg font-light md:text-2xl">Recent Experiences</h3>
 		</div>
-
 		{% set featured =
-			craft.entries().section("experiences").with(["featuredImage", "place", "themes"]).orderBy(
+			craft.entries().section("experiences").with(
+				[
+					"featuredImage",
+					"place",
+					"themes",
+					[
+						"peopleInvolved",
+						{
+							with: ["involvedPersonPhoto"]
+						}
+					]
+				]
+			).orderBy(
 				"dateOfExperience DESC"
 			).limit(
-				3
+				4
 			).all()
 		%}
 		<div

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ craft.app.language|slice(0, 2) }}">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,15 +10,22 @@
 		</title>
 
 		{# Vite CSS/JS #}
-		{{ craft.vite.script('src/js/main.ts', false) }}
+		{{ craft.vite.script("src/js/main.ts", false) }}
+		{{ head() }}
 	</head>
-	<body>
-		{% include '_modules/site-nav' %}
+	<body
+		class="antialiased selection:bg-accent/20 selection:text-gray-900 dark:selection:bg-accent/30 dark:selection:text-white page-{{
+		entry.section.handle
+			?? "home"
+		}}"
+	>
+		{% include "_modules/site-nav" %}
 		<main>
 			{% block content %}
 
 			{% endblock %}
 		</main>
-		{% include '_modules/site-footer' %}
+		{% include "_modules/site-footer" %}
+		{{ endBody() }}
 	</body>
 </html>

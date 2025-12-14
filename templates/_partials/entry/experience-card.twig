@@ -45,7 +45,7 @@
 			</p>
 			{% if not isEditorial and (experience.peopleInvolved|length) %}
 				<footer class="mt-4">
-					{% for person in experience.peopleInvolved.showInPreview(true).all() %}
+					{% for person in experience.peopleInvolved.all()|filter(p => p.showInPreview) %}
 						<div class="flex items-center gap-3">
 							{% if person.involvedPersonPhoto|length %}
 								{% set photo = person.involvedPersonPhoto.one() %}

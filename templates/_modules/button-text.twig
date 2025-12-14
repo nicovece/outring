@@ -8,15 +8,7 @@
   - additionalClasses: (optional) Additional CSS classes to apply to the link
 #}
 
-{% set urlPath =
-	url
-		|replace({
-			(siteUrl): ""
-		})
-		|trim("/", "left")
-		|trim("/")
-%}
-{% set urlSegment = urlPath|split("/")|first %}
+
 
 {% set linkStyles = {
 	base: "block border-t-2 border-b-2 border-b-accent/50 border-t-transparent transition-all duration-300 font-[600] w-fit relative transform-gpu translate-y-[0px] text-base 2xl:text-lg",

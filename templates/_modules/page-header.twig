@@ -1,16 +1,16 @@
 {#
-    Hero Section Module
+    Page Header Module
 
     Parameters:
-    - title (optional): String - main hero title
-    - text (optional): String - hero description text
-    - image (optional): Asset object - hero background image
+    - title (required): String - main page title
+    - text (optional): String - page description text
+    - image (required): Asset object - page background image
     - imageHeight (optional): String - 'full', 'half', 'fitContent', 'oneThird', defaults to 'full'
     - caption (optional): String - image caption
-    - sectionWidth (optional): String - 'full', 'wide', 'medium', 'inColumn', defaults to 'wide'
+    - sectionWidth (optional): String - 'full', 'wide', 'medium', 'inColumn', defaults to 'wide' (container-wide)
 
-    Usage:
-    {% include '_modules/hero-image' with {
+    Usage example from homepage:
+    {% include '_modules/page-header' with {
       title: homepage.heroTitle,
       text: homepage.heroText,
       image: homepage.featuredImage.one(),
@@ -55,7 +55,7 @@
 			}[imageHeight|default("full")]
 				?? "h-[40vh] lg:h-[60vh] xl:h-screen"
 			%}
-			<figure class="{{ heightClass }} w-full overflow-hidden">
+			<figure class="{{ heightClass }} relative w-full overflow-hidden">
 				<img
 					src="{{
 					image.getUrl({

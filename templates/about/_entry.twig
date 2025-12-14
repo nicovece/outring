@@ -9,7 +9,7 @@
 		<h1 class="mb-8 text-4xl font-bold">{{ entry.title }}</h1>
 		{% set featuredImage = entry.featuredImage.one() %}
 		{% if featuredImage %}
-			{% include "_modules/hero-image" with {
+			{% include "_modules/page-header" with {
 				image: featuredImage,
 				caption: featuredImage.caption,
 				title: entry.title

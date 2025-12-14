@@ -6,9 +6,15 @@
 {% endblock %}
 
 {% block content %}
-	<div class="container-wide">
-		{# Header #}
-		<header class="mb-12">
+	{% include "_modules/page-header" with {
+		title: "Experiences",
+		text: "Stories from residents involved in urban regeneration projects",
+		imageHeight: "full",
+		caption: "Experiences",
+		sectionWidth: "full"
+	} only %}
+	<section>
+		<header class="container-wide">
 			<h1 class="mb-4 text-4xl font-bold">Experiences</h1>
 			<p class="text-xl text-gray-600">
 				Stories from residents involved in urban regeneration projects
@@ -23,7 +29,9 @@
 		%}
 
 		{% if experiences|length %}
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+			<div
+				class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
+			>
 				{% for experience in experiences %}
 					{% include "_partials/entry/experience-card" with {
 						experience: experience
@@ -35,5 +43,5 @@
 				No experiences yet.
 			</p>
 		{% endif %}
-	</div>
+	</section>
 {% endblock %}

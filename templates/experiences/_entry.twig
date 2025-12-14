@@ -12,7 +12,7 @@
 		</header>
 		<section class="hero-section-- container-wide">
 			{% if entry.featuredImage|length %}
-				{% include "_modules/hero-image" with {
+				{% include "_modules/page-header" with {
 					image: entry.featuredImage.one(),
 					caption: entry.featuredImageCaption
 				} only %}
