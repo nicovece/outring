@@ -10,7 +10,20 @@
 			{% endblock %}
 		</title>
 
-		{# Vite CSS/JS #}
+		{% block seo %}
+			<meta name="description" content="Outring - Voices from the Periphery. Stories from residents involved in urban regeneration projects.">
+			<meta property="og:title" content="{% block og_title %}Outring{% endblock %}">
+			<meta property="og:description" content="{% block og_description %}Stories from residents involved in urban regeneration projects.{% endblock %}">
+			<meta property="og:type" content="website">
+			<meta property="og:url" content="{{ craft.app.request.absoluteUrl }}">
+			<meta property="og:site_name" content="Outring">
+		{% endblock %}
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="icon" href="/favicon.ico">
+
 		{{ craft.vite.script("src/js/main.ts", false) }}
 		{{ head() }}
 	</head>
@@ -20,8 +33,9 @@
 			?? "home"
 		}}"
 	>
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:text-white">Skip to main content</a>
 		{% include "_modules/site-nav" %}
-		<main>
+		<main id="main-content">
 			{% block content %}
 
 			{% endblock %}
