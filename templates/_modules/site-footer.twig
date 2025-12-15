@@ -1,5 +1,5 @@
 <footer class="mt-auto pt-10">
-	<div class="container-wide border-t border-gray-200 dark:border-gray-700">
+	<div class="container-wide border-t border-gray-200 pt-10 dark:border-gray-700">
 		<div class="mb-8 grid gap-8 md:grid-cols-3">
 			{# Column 1: About #}
 			<div>
@@ -65,19 +65,26 @@
 			<div>
 				<h3 class="mb-3 font-bold">Inspired by</h3>
 				<p class="text-sm">
-					<a href="https://renzopianog124.com" target="_blank" rel="noopener" class="hover:text-white">
-						G124 by Renzo Piano Building Workshop
-					</a>
-				</p>
-				<p class="mt-4 text-sm">
-					Built with <a href="https://craftcms.com" class="hover:text-white">Craft CMS</a>
+					{% include "_modules/link-text" with {
+						url: "https://renzopianog124.com",
+						label: "G124 by Renzo Piano Building Workshop",
+						additionalClasses: "inline-block",
+						target: "_blank",
+						rel: "noopener noreferrer"
+					} only %}
 				</p>
 			</div>
 		</div>
 
 		<div class="pt-6 text-sm 2xl:text-base">
 			<p>
-				Demonstration project · December 2025
+				Demonstration project · December 2025 · Built with{% include "_modules/link-text" with {
+					url: "https://craftcms.com",
+					label: "Craft CMS",
+					additionalClasses: "inline-block",
+					target: "_blank",
+					rel: "noopener noreferrer"
+				} only %}
 			</p>
 		</div>
 	</div>

@@ -15,7 +15,8 @@
 		|trim("/", "left")
 		|trim("/")
 %}
-{% set urlSegment = urlPath|split("/")|first %}
+{% set target = target|default(null) %}
+{% set rel = rel|default(null) %}
 
 {# Organize styles by purpose #}
 {% set linkStyles = {
@@ -27,6 +28,8 @@
 <a
 	href="{{ url }}"
 	class="{{ linkStyles.base }} {{ linkStyles.hover }} {{ linkStyles.after }} {{ additionalClasses ?? "" }}"
+	{{ target ? 'target="' ~ target ~ '"' }}
+	{{ rel ? 'rel="' ~ rel ~ '"' }}
 >
 	{{ label }}
 </a>
