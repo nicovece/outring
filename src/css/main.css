@@ -45,6 +45,10 @@
 	--max-width: 90vw;
 }
 
+@view-transition {
+	navigation: auto;
+}
+
 @layer base {
 	/* Enable dark mode with class strategy */
 	:root {
@@ -121,7 +125,7 @@
 	/* Card Components */
 
 	.card-experience {
-		@apply transition hover:shadow-lg;
+		@apply shadow-accent/30 transition hover:shadow-sm;
 	}
 
 	.card-theme {

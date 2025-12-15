@@ -1,0 +1,23 @@
+columnSuffix: null
+handle: participationPhase
+instructions: null
+name: 'Participation Phase'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showCardsInGrid: false
+  showSearchInput: true
+  showSiteMenu: true
+  source: 'group:03e18ea1-7651-41cd-9492-c899a3e46eca' # Participation Phases
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Categories

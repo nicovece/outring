@@ -7,12 +7,9 @@
 
 {% set currentPath = craft.app.request.pathInfo %}
 
-{# Filter options #}
-{% set typeField = craft.app.fields.getFieldByHandle("experienceType") %}
-{% set typeOptions = typeField.options %}
-
-{% set phaseField = craft.app.fields.getFieldByHandle("participationPhase") %}
-{% set phaseOptions = phaseField.options %}
+{# Filter options - now using categories #}
+{% set typeOptions = craft.categories().group("experienceTypes").all() %}
+{% set phaseOptions = craft.categories().group("participationPhases").all() %}
 
 {% set themeOptions = craft.entries().section("themes").orderBy("title").all() %}
 {% set placeOptions = craft.entries().section("places").orderBy("title").all() %}
@@ -51,14 +48,14 @@
 				>
 					{% for option in typeOptions %}
 						<a
-							href="?{{ baseParams|merge({type: option.value})|url_encode }}"
+							href="?{{ baseParams|merge({type: option.slug})|url_encode }}"
 							class="{{ linkClasses }} {{
-							typeParam == option.value
+							typeParam == option.slug
 								? activeClasses
 								: inactiveClasses
 							}}"
 						>
-							{{ option.label }}
+							{{ option.title }}
 						</a>
 					{% endfor %}
 				</div>
@@ -79,14 +76,14 @@
 				>
 					{% for option in phaseOptions %}
 						<a
-							href="?{{ baseParams|merge({phase: option.value})|url_encode }}"
+							href="?{{ baseParams|merge({phase: option.slug})|url_encode }}"
 							class="{{ linkClasses }} {{
-							phaseParam == option.value
+							phaseParam == option.slug
 								? activeClasses
 								: inactiveClasses
 							}}"
 						>
-							{{ option.label }}
+							{{ option.title }}
 						</a>
 					{% endfor %}
 				</div>
@@ -160,28 +157,28 @@
 				<span class="text-sm text-gray-500 ml-2 md:ml-0">Active:</span>
 
 				{% if typeParam %}
-					{% set activeType = typeOptions|filter(o => o.value == typeParam)|first %}
+					{% set activeType = typeOptions|filter(o => o.slug == typeParam)|first %}
 					{% if activeType %}
 						{% set removeTypeParams = baseParams|filter((v, k) => k != 'type') %}
 						<a
 							href="{% if removeTypeParams|length %}/experiences?{{ removeTypeParams|url_encode }}{% else %}/experiences{% endif %}"
 							class="{{ activeFilterClasses }}"
 						>
-							{{ activeType.label }}
+							{{ activeType.title }}
 							<span aria-hidden="true" class="{{ activeFilterIconClasses }}">&times;</span>
 						</a>
 					{% endif %}
 				{% endif %}
 
 				{% if phaseParam %}
-					{% set activePhase = phaseOptions|filter(o => o.value == phaseParam)|first %}
+					{% set activePhase = phaseOptions|filter(o => o.slug == phaseParam)|first %}
 					{% if activePhase %}
 						{% set removePhaseParams = baseParams|filter((v, k) => k != 'phase') %}
 						<a
 							href="{% if removePhaseParams|length %}/experiences?{{ removePhaseParams|url_encode }}{% else %}/experiences{% endif %}"
 							class="{{ activeFilterClasses }}"
 						>
-							{{ activePhase.label }}
+							{{ activePhase.title }}
 							<span aria-hidden="true" class="{{ activeFilterIconClasses }}">&times;</span>
 						</a>
 					{% endif %}

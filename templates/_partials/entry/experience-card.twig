@@ -1,5 +1,7 @@
 {% import "_macros" as macros %}
-{% set isEditorial = experience.experienceType == "editorialReportage" %}
+{% set experienceType = experience.experienceType.one() %}
+{% set participationPhase = experience.participationPhase.one() %}
+{% set isEditorial = experienceType and experienceType.slug == "editorial-reportage" %}
 
 {% set cardClasses = {
 	layout: "card-community flex flex-col gap-4 pb-8",
@@ -8,8 +10,8 @@
 	content: "px-4 md:px-6 pt-0",
 	meta: "px-4 md:px-6 mt-auto"
 } %}
-{% set headingTag = headingLevel|default("h2") %}
-<article class="card-experience bg-white dark:bg-gray-900 {{ cardClasses.layout }}">
+
+<article class="card-experience group bg-white dark:bg-gray-900 {{ cardClasses.layout }}">
 	{% if isEditorial and (experience.featuredImage|length) %}
 		{% set image = experience.featuredImage.one() %}
 		<a href="{{ experience.url }}" class="{{ cardClasses.imageContainer }}">
@@ -76,10 +78,21 @@
 	{% endif %}
 
 	<div class="card-content {{ cardClasses.content }}">
-		<span class="text-sm text-gray-700 dark:text-gray-500">{{ experience.experienceType.label }}</span>
-		<{{ headingTag }} class="mt-4 mb-2 text-xl font-normal md:text-2xl/5">
-			<a href="{{ experience.url }}" class="hover:text-gray-600">{{ experience.title }}</a>
-		</>
+		{% set headingTag = headingLevel|default("h2") %}
+		{% if headingTag == "h3" %}
+			<h3 class="my-1 text-xl font-normal md:text-2xl/5 xl:text-3xl/6">
+				<a
+					href="{{ experience.url }}"
+					class="border-b border-transparent text-inherit transition-all group-hover:text-accent hover:border-accent dark:group-hover:text-accent"
+				>
+					{{ experience.title }}
+				</a>
+			</h3>
+		{% else %}
+			<h2 class="my-3 text-xl font-normal md:text-2xl/5">
+				<a href="{{ experience.url }}" class="hover:text-gray-600">{{ experience.title }}</a>
+			</h2>
+		{% endif %}
 		<div class="text-sm/3 md:text-base/4">
 			{% set place = experience.place.one() %}
 			{% if place %}
@@ -98,7 +111,7 @@
 			</p>
 		{% endif %}
 	</div>
-	<footer class="card-meta {{ cardClasses.meta }} ">
+	<footer class="card-meta {{ cardClasses.meta }}">
 		{% set themes = experience.themes.all() %}
 		{% if themes|length %}
 			<nav aria-label="Experience themes" class="flex flex-wrap gap-1">
@@ -109,10 +122,27 @@
 							{% include "_modules/link-text" with {
 								url: theme.url,
 								label: theme.title,
-								additionalClasses: "font-bold text-base 2xl:text-lg"
+								additionalClasses: "font-semibold text-base"
 							} only %}
 						</li>
 					{% endfor %}
+				</ul>
+				<span class="mt-2 text-sm text-gray-700 dark:text-gray-500">Type:</span>
+				<ul class="flex w-full flex-wrap gap-2">
+					<li>
+						{% include "_modules/link-text" with {
+							url: experienceType.url,
+							label: experienceType.title,
+							additionalClasses: "font-medium text-base"
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/link-text" with {
+							url: participationPhase.url,
+							label: participationPhase.title,
+							additionalClasses: "font-semibold text-base"
+						} only %}
+					</li>
 				</ul>
 			</nav>
 		{% endif %}

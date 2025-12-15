@@ -1,4 +1,4 @@
-dateModified: 1765733433
+dateModified: 1765757315
 email:
   fromEmail: me@nicovece.com
   fromName: Outring
@@ -16,8 +16,9 @@ meta:
     0a4e97ab-20db-490f-9aff-4ce8a944eca0: w1200 # w1200
     1f153368-e72f-4d41-9a33-2c0cc7769cfe: 'External Project URL' # External Project URL
     2c506b5d-c50c-4a0c-987d-ee5a0e597996: 'Pull Quote' # Pull Quote
+    3a6099cc-52f1-4d82-a793-8fff632ccf70: 'Experience Types' # Experience Types
+    03e18ea1-7651-41cd-9492-c899a3e46eca: 'Participation Phases' # Participation Phases
     3f06dd89-2dcf-4ae6-9ea2-0ffecd508fa1: 'Image height' # Image height
-    5c1103a9-12de-4dcb-b873-ac7b9a5bebf7: 'Participation Phase' # Participation Phase
     5d1215b1-5277-45ff-add8-b9470c26338b: Text # Text
     5e85c8d8-050c-4f7b-83b5-8f5bb2c1609a: 'Alt Text' # Alt Text
     7c7a95e6-57d7-4355-9679-32d26c3c0a83: Role # Role
@@ -25,6 +26,7 @@ meta:
     7eb89847-52c1-4cf3-8178-cddbc12e22bd: Attribution # Attribution
     7f1c25b6-7231-4cf2-96d8-b6c651140081: 'Site tagline' # Site tagline
     8b1eeb41-ed00-4e2d-ae3f-293ff76f96d6: Themes # Themes
+    8b21baa7-1aaf-4641-a3f0-94997d5d755a: 'Participation Phase' # Participation Phase
     8dff054f-3c9d-44a0-a554-925d24f53805: 'Hero text' # Hero text
     8e125a51-39c8-4452-8313-84b56f8fd5fb: 'Rich Text' # Rich Text
     9b3aa930-2c46-4c7f-a9ce-3119712fb9a9: Stripped-down # Stripped-down
@@ -35,7 +37,6 @@ meta:
     79dfdcd1-560d-402e-8eee-7c663bdbdb15: Experiences # Experiences
     096fcfd5-9243-4f20-a047-1925850af491: 'Places Index' # Places Index
     0178d46e-a81d-4be3-bab6-7481e2c62ee1: Experience # Experience
-    534abbfb-4e75-40e6-8aed-3c859412ebf9: 'Experience Type' # Experience Type
     598d0d21-8167-418b-b4c0-f5012fdd9a6b: Manifesto # Manifesto
     0905e205-4c22-4c63-88f1-fe6a62497607: City # City
     1418d0e3-127c-47e3-a914-2074712463c4: 'Before After' # Before After
@@ -44,6 +45,7 @@ meta:
     2856f991-bc95-4a50-ae86-cdb6d7a75cce: 'Theme Color' # Theme Color
     9360bbed-4244-4034-a80e-cb0814742b75: 'Show in preview' # Show in preview
     22918af6-f86e-4ad2-a9d1-5328727f45e9: 'About section text' # About section text
+    27000dd9-6752-4e6e-8c78-d46762a38049: 'Experience Type' # Experience Type
     46074d51-880d-400f-b390-512515e1246d: Homepage # Homepage
     99065c31-85bb-40f5-a596-9edb5964acd8: Homepage # Homepage
     632826db-933d-4fb9-a63e-c6173a02cf07: Place # Place

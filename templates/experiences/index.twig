@@ -28,11 +28,15 @@
 		{% set experiencesQuery = craft.entries().section("experiences").with(["featuredImage", "place", "themes"]) %}
 
 		{% if typeParam %}
-			{% set experiencesQuery = experiencesQuery.experienceType(typeParam) %}
+			{% set experiencesQuery = experiencesQuery.relatedTo({
+				targetElement: craft.categories().group("experienceTypes").slug(typeParam)
+			}) %}
 		{% endif %}
 
 		{% if phaseParam %}
-			{% set experiencesQuery = experiencesQuery.participationPhase(phaseParam) %}
+			{% set experiencesQuery = experiencesQuery.relatedTo({
+				targetElement: craft.categories().group("participationPhases").slug(phaseParam)
+			}) %}
 		{% endif %}
 
 		{% if themeParam %}
