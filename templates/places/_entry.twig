@@ -20,28 +20,26 @@
 			).all()
 		%}
 
-		{% if experiences|length %}
-			<div class="container-wide">
-				<h2 class="text-lg font-light md:text-2xl">
-					There are <strong>{{ experiences|length }}</strong> experiences with this theme
-				</h2>
-			</div>
-			<div
-				class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
-			>
-				{% if experiences|length %}
-					{% for experience in experiences %}
-						{% include "_partials/entry/experience-card" with {
-							experience: experience,
-							headingLevel: "h3"
-						} only %}
-					{% endfor %}
-				{% else %}
-					<p class="text-gray-600">
-						No experiences yet.
-					</p>
-				{% endif %}
-			</div>
-		{% endif %}
+		<div class="container-wide">
+			<h2 class="text-lg font-light md:text-2xl">
+				There are <strong>{{ experiences|length }}</strong> experiences with this theme
+			</h2>
+		</div>
+		<div
+			class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
+		>
+			{% if experiences|length %}
+				{% for experience in experiences %}
+					{% include "_partials/entry/experience-card" with {
+						experience: experience,
+						headingLevel: "h3"
+					} only %}
+				{% endfor %}
+			{% else %}
+				<p class="text-gray-600">
+					No experiences yet.
+				</p>
+			{% endif %}
+		</div>
 	</section>
 {% endblock %}

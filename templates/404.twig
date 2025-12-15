@@ -1,0 +1,21 @@
+{% extends "_layouts/base.twig" %}
+
+{% block title %}
+	Page Not Found - {{ siteName }}
+{% endblock %}
+
+{% block content %}
+	<section class="bg-accent/30 dark:bg-accent/20">
+		<div class="container-wide flex min-h-[100vw] flex-col justify-center p-1 md:min-h-[50vh] md:p-6 2xl:p-6">
+			<h1 class="mb-4 text-4xl font-light">Page Not Found</h1>
+			<p class="dark:text-gray-400 mb-8 text-lg">
+				The page you're looking for doesn't exist or has been moved.
+			</p>
+			{% include "_modules/link-text" with {
+				url: url("/"),
+				label: "Return to homepage",
+				additionalClasses: "text-xl font-semibold w-fit"
+			} only %}
+		</div>
+	</section>
+{% endblock %}
