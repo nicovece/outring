@@ -4,7 +4,7 @@ const host = process.env.DDEV_HOSTNAME;
 
 export default ({ command }) => ({
 	base: command === "serve" ? "" : "/static/dist/",
-	publicDir: "web",
+	publicDir: false,
 	build: {
 		manifest: "manifest.json",
 		outDir: "web/static/dist/",
