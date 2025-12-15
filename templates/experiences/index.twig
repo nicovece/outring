@@ -1,6 +1,11 @@
 {% extends "_layouts/base.twig" %}
 {% import "_macros" as macros %}
 
+{% set typeParam = craft.app.request.getQueryParam("type") %}
+{% set phaseParam = craft.app.request.getQueryParam("phase") %}
+{% set themeParam = craft.app.request.getQueryParam("theme") %}
+{% set placeParam = craft.app.request.getQueryParam("place") %}
+
 {% block title %}
 	Experiences - {{ siteName }}
 {% endblock %}
@@ -13,12 +18,40 @@
 		caption: "Experiences",
 		sectionWidth: "wide"
 	} only %}
+	{% include "_modules/experience-filters" with {
+		typeParam: typeParam,
+		phaseParam: phaseParam,
+		themeParam: themeParam,
+		placeParam: placeParam
+	} only %}
 	<section>
-		{% set experiences =
-			craft.entries().section("experiences").with(["featuredImage", "place", "themes"]).orderBy(
-				"dateOfExperience DESC"
-			).all()
-		%}
+		{% set experiencesQuery = craft.entries().section("experiences").with(["featuredImage", "place", "themes"]) %}
+
+		{% if typeParam %}
+			{% set experiencesQuery = experiencesQuery.experienceType(typeParam) %}
+		{% endif %}
+
+		{% if phaseParam %}
+			{% set experiencesQuery = experiencesQuery.participationPhase(phaseParam) %}
+		{% endif %}
+
+		{% if themeParam %}
+			{% set experiencesQuery =
+				experiencesQuery.relatedTo({
+					targetElement: craft.entries().section("themes").slug(themeParam)
+				})
+			%}
+		{% endif %}
+
+		{% if placeParam %}
+			{% set experiencesQuery =
+				experiencesQuery.relatedTo({
+					targetElement: craft.entries().section("places").slug(placeParam)
+				})
+			%}
+		{% endif %}
+
+		{% set experiences = experiencesQuery.orderBy("dateOfExperience DESC").all() %}
 
 		<div
 			class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"

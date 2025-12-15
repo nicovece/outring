@@ -1,6 +1,7 @@
 // Import styles
 import "../css/main.css";
 import "./components/before-after-slider";
+import "./components/filter-dropdown";
 
 // Main TypeScript entry point
 console.log("Outring - Vite + TypeScript ready");

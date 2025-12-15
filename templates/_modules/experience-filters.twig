@@ -1,0 +1,226 @@
+{#
+	Experience Filters Module
+
+	Displays dropdown filters for experiences listing
+	Requires: typeParam, phaseParam, themeParam, placeParam from parent template
+#}
+
+{% set currentPath = craft.app.request.pathInfo %}
+
+{# Filter options #}
+{% set typeField = craft.app.fields.getFieldByHandle("experienceType") %}
+{% set typeOptions = typeField.options %}
+
+{% set phaseField = craft.app.fields.getFieldByHandle("participationPhase") %}
+{% set phaseOptions = phaseField.options %}
+
+{% set themeOptions = craft.entries().section("themes").orderBy("title").all() %}
+{% set placeOptions = craft.entries().section("places").orderBy("title").all() %}
+
+{# Build query strings that preserve other filters #}
+{% set baseParams = {} %}
+{% if typeParam %}{% set baseParams = baseParams|merge({type: typeParam}) %}{% endif %}
+{% if phaseParam %}{% set baseParams = baseParams|merge({phase: phaseParam}) %}{% endif %}
+{% if themeParam %}{% set baseParams = baseParams|merge({theme: themeParam}) %}{% endif %}
+{% if placeParam %}{% set baseParams = baseParams|merge({place: placeParam}) %}{% endif %}
+
+{% set filterDropdownClasses = "filter-dropdown relative flex-1 md:flex-none" %}
+{% set buttonClasses = "flex items-center justify-between gap-2 w-full rounded border border-gray-300 px-2 py-1 text-sm hover:border-accent dark:border-gray-600 dark:hover:border-accent cursor-pointer" %}
+{% set buttonIconClasses = "h-2 w-2 stroke-accent" %}
+{% set menuClasses = "filter-dropdown-menu absolute top-full left-0 z-10 mt-1 hidden min-w-48 rounded border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800" %}
+{% set activeClasses = "bg-accent/20 font-medium" %}
+{% set inactiveClasses = "" %}
+{% set linkClasses = "block px-4 py-2 text-sm hover:bg-accent/10" %}
+
+<div class="experience-filters">
+	<nav class="experience-filters container-wide mb-2" aria-label="Filter experiences">
+		<div class="flex flex-wrap gap-4">
+			{# Type dropdown #}
+			<filter-dropdown class="{{ filterDropdownClasses }}">
+				<button
+					type="button"
+					class="{{ buttonClasses }}"
+				>
+					<span>Type</span>
+					<svg class="{{ buttonIconClasses }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</button>
+				<div
+					class="{{ menuClasses }}"
+				>
+					{% for option in typeOptions %}
+						<a
+							href="?{{ baseParams|merge({type: option.value})|url_encode }}"
+							class="{{ linkClasses }} {{
+							typeParam == option.value
+								? activeClasses
+								: inactiveClasses
+							}}"
+						>
+							{{ option.label }}
+						</a>
+					{% endfor %}
+				</div>
+			</filter-dropdown>
+			{# Phase dropdown #}
+			<filter-dropdown class="{{ filterDropdownClasses }}">
+				<button
+					type="button"
+					class="{{ buttonClasses }}"
+				>
+					<span>Phase</span>
+					<svg class="{{ buttonIconClasses }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</button>
+				<div
+					class="{{ menuClasses }}"
+				>
+					{% for option in phaseOptions %}
+						<a
+							href="?{{ baseParams|merge({phase: option.value})|url_encode }}"
+							class="{{ linkClasses }} {{
+							phaseParam == option.value
+								? activeClasses
+								: inactiveClasses
+							}}"
+						>
+							{{ option.label }}
+						</a>
+					{% endfor %}
+				</div>
+			</filter-dropdown>
+
+			{# Themes dropdown #}
+			<filter-dropdown class="{{ filterDropdownClasses }}">
+				<button
+					type="button"
+					class="{{ buttonClasses }}"
+				>
+					<span>Themes</span>
+					<svg class="{{ buttonIconClasses }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</button>
+				<div
+					class="{{ menuClasses }}"
+				>
+					{% for option in themeOptions %}
+						<a
+							href="?{{ baseParams|merge({theme: option.slug})|url_encode }}"
+							class="{{ linkClasses }} {{
+							themeParam == option.slug
+								? activeClasses
+								: inactiveClasses
+							}}"
+						>
+							{{ option.title }}
+						</a>
+					{% endfor %}
+				</div>
+			</filter-dropdown>
+
+			{# Places dropdown #}
+			<filter-dropdown class="{{ filterDropdownClasses }}">
+				<button
+					type="button"
+					class="{{ buttonClasses }}"
+				>
+					<span>Places</span>
+					<svg class="{{ buttonIconClasses }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</button>
+				<div
+					class="{{ menuClasses }}"
+				>
+					{% for option in placeOptions %}
+						<a
+							href="?{{ baseParams|merge({place: option.slug})|url_encode }}"
+							class="{{ linkClasses }} {{
+							placeParam == option.slug
+								? activeClasses
+								: inactiveClasses
+							}}"
+						>
+							{{ option.title }}
+						</a>
+					{% endfor %}
+				</div>
+			</filter-dropdown>
+		</div>
+
+		{# Active filter pills #}
+		{% set hasActiveFilters = typeParam or phaseParam or themeParam or placeParam %}
+  {% set activeFilterClasses = "inline-flex items-center justify-between gap-1 rounded-full bg-accent/80 px-3 py-1 text-sm hover:bg-accent text-white" %}
+  {% set activeFilterIconClasses = "text-lg/none" %}
+		{% if hasActiveFilters %}
+			<div class="mt-4 flex flex-col md:flex-row flex-wrap md:items-center gap-2">
+				<span class="text-sm text-gray-500 ml-2 md:ml-0">Active:</span>
+
+				{% if typeParam %}
+					{% set activeType = typeOptions|filter(o => o.value == typeParam)|first %}
+					{% if activeType %}
+						{% set removeTypeParams = baseParams|filter((v, k) => k != 'type') %}
+						<a
+							href="{% if removeTypeParams|length %}/experiences?{{ removeTypeParams|url_encode }}{% else %}/experiences{% endif %}"
+							class="{{ activeFilterClasses }}"
+						>
+							{{ activeType.label }}
+							<span aria-hidden="true" class="{{ activeFilterIconClasses }}">&times;</span>
+						</a>
+					{% endif %}
+				{% endif %}
+
+				{% if phaseParam %}
+					{% set activePhase = phaseOptions|filter(o => o.value == phaseParam)|first %}
+					{% if activePhase %}
+						{% set removePhaseParams = baseParams|filter((v, k) => k != 'phase') %}
+						<a
+							href="{% if removePhaseParams|length %}/experiences?{{ removePhaseParams|url_encode }}{% else %}/experiences{% endif %}"
+							class="{{ activeFilterClasses }}"
+						>
+							{{ activePhase.label }}
+							<span aria-hidden="true" class="{{ activeFilterIconClasses }}">&times;</span>
+						</a>
+					{% endif %}
+				{% endif %}
+
+				{% if themeParam %}
+					{% set activeTheme = themeOptions|filter(o => o.slug == themeParam)|first %}
+					{% if activeTheme %}
+						{% set removeThemeParams = baseParams|filter((v, k) => k != 'theme') %}
+						<a
+							href="{% if removeThemeParams|length %}/experiences?{{ removeThemeParams|url_encode }}{% else %}/experiences{% endif %}"
+							class="{{ activeFilterClasses }}"
+						>
+							{{ activeTheme.title }}
+							<span aria-hidden="true" class="{{ activeFilterIconClasses }}">&times;</span>
+						</a>
+					{% endif %}
+				{% endif %}
+
+				{% if placeParam %}
+					{% set activePlace = placeOptions|filter(o => o.slug == placeParam)|first %}
+					{% if activePlace %}
+						{% set removePlaceParams = baseParams|filter((v, k) => k != 'place') %}
+						<a
+							href="{% if removePlaceParams|length %}/experiences?{{ removePlaceParams|url_encode }}{% else %}/experiences{% endif %}"
+							class="{{ activeFilterClasses }}"
+						>
+							{{ activePlace.title }}
+							<span aria-hidden="true" class="{{ activeFilterIconClasses }}">&times;</span>
+						</a>
+					{% endif %}
+				{% endif %}
+
+        {% include "_modules/link-text" with {
+							url: url("experiences"),
+							label: "Clear all",
+							additionalClasses: "ml-2 md:ml-0 w-fit"
+						} only %}
+			</div>
+		{% endif %}
+	</nav>
+</div>

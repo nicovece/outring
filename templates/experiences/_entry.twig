@@ -68,23 +68,25 @@
 						</h1>
 					{% endif %}
 					{% if entry.shortQuote is defined %}
-						<p class="text-base font-medium md:text-xl">
+						<p class="mb-1 text-base font-medium md:text-xl">
 							{{ entry.shortQuote|striptags("<strong><em>")|raw }}
 						</p>
 					{% endif %}
+					{% set place = entry.place.one() %}
+					{% if place %}
+						<span><strong>{{ place.title }}</strong>, {{ place.city }}</span>
+					{% endif %}
+					{% if entry.dateOfExperience %}
+						<time datetime="{{ entry.dateOfExperience|date("Y-m") }}" class="before:content-['-']">
+							{{ entry.dateOfExperience|date("F Y") }}
+						</time>
+					{% endif %}
 				</div>
 			</header>
-			<section class="project-meta container-wide mt-2 mb-0 pt-0 text-base md:mt-6 2xl:text-lg">
-				<span><strong>{{ entry.experienceType.label }}</strong> -</span>
-				{% set place = entry.place.one() %}
-				{% if place %}
-					<span><strong>{{ place.title }}</strong>, {{ place.city }}</span>
-				{% endif %}
-				{% if entry.dateOfExperience %}
-					<time datetime="{{ entry.dateOfExperience|date("Y-m") }}" class="before:content-['-']">
-						{{ entry.dateOfExperience|date("F Y") }}
-					</time>
-				{% endif %}
+			<section class="project-meta container-wide mt-2 mb-0 pt-0 text-base md:mt-6">
+				<span class="font-medium">{{ entry.experienceType.label }} -</span>
+				<span class="font-medium">{{ entry.participationPhase.label }}</span>
+
 				{% set themes = entry.themes.all() %}
 				<nav aria-label="Experience themes" class="mt-4 flex flex-wrap items-center">
 					<span class="mb-1 text-base text-gray-500 dark:text-gray-300">Themes:</span>
@@ -94,7 +96,7 @@
 								{% include "_modules/link-text" with {
 									url: theme.url,
 									label: theme.title,
-									additionalClasses: "font-bold text-base 2xl:text-lg"
+									additionalClasses: "font-medium text-base"
 								} only %}
 							</li>
 						{% endfor %}
