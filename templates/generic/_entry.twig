@@ -19,32 +19,30 @@
 		{% endif %}
 
 		{% if entry.body is defined %}
-			<section class="container-wide mb-12">
-				{% for block in entry.body.all() %}
-					{% switch block.type %}
-						{% case "richText" %}
-							{% include "_partials/_experience-blocks/rich-text" with {
-								block
-							} only %}
-						{% case "pullQuote" %}
-							{% include "_partials/_experience-blocks/pull-quote" with {
-								block
-							} only %}
-						{% case "imageBlock" %}
-							{% include "_partials/_experience-blocks/image-block" with {
-								block
-							} only %}
-						{% case "callout" %}
-							{% include "_partials/_experience-blocks/callout" with {
-								block
-							} only %}
-						{% case "beforeAfter" %}
-							{% include "_partials/_experience-blocks/before-after" with {
-								block
-							} only %}
-					{% endswitch %}
-				{% endfor %}
-			</section>
+			{% for block in entry.body.all() %}
+				{% switch block.type %}
+					{% case "richText" %}
+						{% include "_partials/_experience-blocks/rich-text" with {
+							block
+						} only %}
+					{% case "pullQuote" %}
+						{% include "_partials/_experience-blocks/pull-quote" with {
+							block
+						} only %}
+					{% case "imageBlock" %}
+						{% include "_partials/_experience-blocks/image-block" with {
+							block
+						} only %}
+					{% case "callout" %}
+						{% include "_partials/_experience-blocks/callout" with {
+							block
+						} only %}
+					{% case "beforeAfter" %}
+						{% include "_partials/_experience-blocks/before-after" with {
+							block
+						} only %}
+				{% endswitch %}
+			{% endfor %}
 		{% endif %}
 	</article>
 {% endblock %}
