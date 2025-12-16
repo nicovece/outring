@@ -1,12 +1,12 @@
 {% import "_macros" as macros %}
 {% set experienceType = experience.experienceType.one() %}
-{% set participationPhase = experience.participationPhase.one() %}
+{% set participationPhases = experience.participationPhases.all() %}
 {% set isEditorial = experienceType and experienceType.slug == "editorial-reportage" %}
 
 {% set cardClasses = {
-	layout: "card-community flex flex-col gap-4 pb-8",
+	layout: "card-community flex flex-col gap-2 pb-8",
 	image: "w-full aspect-video object-cover",
-	imageContainer: "block",
+	imageContainer: "block mb-",
 	content: "px-4 md:px-6 pt-0",
 	meta: "px-4 md:px-6 mt-auto"
 } %}
@@ -127,23 +127,34 @@
 						</li>
 					{% endfor %}
 				</ul>
-				<span class="mt-2 text-sm text-gray-700 dark:text-gray-500">Type:</span>
-				<ul class="flex w-full flex-wrap gap-2">
-					<li>
-						{% include "_modules/link-text" with {
-							url: experienceType.url,
-							label: experienceType.title,
-							additionalClasses: "font-medium text-base"
-						} only %}
-					</li>
-					<li>
-						{% include "_modules/link-text" with {
-							url: participationPhase.url,
-							label: participationPhase.title,
-							additionalClasses: "font-semibold text-base"
-						} only %}
-					</li>
-				</ul>
+				<div class="mt-2 flex flex-col gap-2 md:gap-3 xl:flex-row xl:gap-4">
+					<div>
+						<span class="mt-2 text-sm text-gray-700 dark:text-gray-500">Type:</span>
+						<ul class="flex w-full flex-wrap gap-2">
+							<li>
+								{% include "_modules/link-text" with {
+									url: experienceType.url,
+									label: experienceType.title,
+									additionalClasses: "font-medium text-base"
+								} only %}
+							</li>
+						</ul>
+					</div>
+					<div>
+						<span class="mt-2 text-sm text-gray-700 dark:text-gray-500">Phase:</span>
+						<ul class="flex w-full flex-wrap gap-2">
+							{% for phase in participationPhases %}
+								<li>
+									{% include "_modules/link-text" with {
+										url: phase.url,
+										label: phase.title,
+										additionalClasses: "font-semibold text-base"
+									} only %}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
 			</nav>
 		{% endif %}
 	</footer>
