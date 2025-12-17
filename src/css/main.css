@@ -89,6 +89,13 @@
 	}
 }
 
+/* Note: FOUC may occur in dev mode (Vite CSS injection)
+Production with Blitz caching eliminates this */
+
+.js-loaded [data-reveal-item] {
+	opacity: 0;
+}
+
 @layer components {
 	/* Layout Components */
 

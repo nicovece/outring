@@ -11,7 +11,7 @@
 	meta: "px-4 md:px-6 mt-auto"
 } %}
 
-<article class="card-experience group bg-white dark:bg-gray-900 {{ cardClasses.layout }}">
+<article class="card-experience group bg-white dark:bg-gray-900 {{ cardClasses.layout }}" {{ data|default("") }}>
 	{% if isEditorial and (experience.featuredImage|length) %}
 		{% set image = experience.featuredImage.one() %}
 		<a href="{{ experience.url }}" class="{{ cardClasses.imageContainer }}">
@@ -83,7 +83,7 @@
 			<h3 class="my-1 text-xl font-normal md:text-2xl/5 xl:text-3xl/6">
 				<a
 					href="{{ experience.url }}"
-					class="border-b border-transparent text-inherit transition-all group-hover:text-accent hover:border-accent dark:group-hover:text-accent"
+					class="border-b border-transparent text-inherit transition-colors group-hover:text-accent hover:border-accent dark:group-hover:text-accent"
 				>
 					{{ experience.title }}
 				</a>

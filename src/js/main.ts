@@ -3,10 +3,10 @@ import "../css/main.css";
 import "./components/before-after-slider";
 import "./components/filter-dropdown";
 
-// Main TypeScript entry point
-console.log("Outring - Vite + TypeScript ready");
+// Note: FOUC may occur in dev mode (Vite CSS injection)
+// Production with Blitz caching eliminates this
+document.documentElement.classList.add("js-loaded");
 
-// HMR support for development
 if (import.meta.hot) {
 	import.meta.hot.accept();
 }
@@ -19,4 +19,8 @@ if (!customElements.get("theme-toggle")) {
 import { SiteNav } from "./components/site-nav";
 if (!customElements.get("site-nav")) {
 	customElements.define("site-nav", SiteNav);
+}
+
+if (document.querySelectorAll("[data-reveal-group]").length > 0) {
+	import("./components/scroll-reveal");
 }

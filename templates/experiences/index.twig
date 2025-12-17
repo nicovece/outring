@@ -28,15 +28,19 @@
 		{% set experiencesQuery = craft.entries().section("experiences").with(["featuredImage", "place", "themes"]) %}
 
 		{% if typeParam %}
-			{% set experiencesQuery = experiencesQuery.relatedTo({
-				targetElement: craft.categories().group("experienceTypes").slug(typeParam)
-			}) %}
+			{% set experiencesQuery =
+				experiencesQuery.relatedTo({
+					targetElement: craft.categories().group("experienceTypes").slug(typeParam)
+				})
+			%}
 		{% endif %}
 
 		{% if phaseParam %}
-			{% set experiencesQuery = experiencesQuery.relatedTo({
-				targetElement: craft.categories().group("participationPhases").slug(phaseParam)
-			}) %}
+			{% set experiencesQuery =
+				experiencesQuery.relatedTo({
+					targetElement: craft.categories().group("participationPhases").slug(phaseParam)
+				})
+			%}
 		{% endif %}
 
 		{% if themeParam %}
@@ -56,21 +60,23 @@
 		{% endif %}
 
 		{% set experiences = experiencesQuery.orderBy("dateOfExperience DESC").all() %}
-
-		<div
-			class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
-		>
-			{% if experiences|length %}
-				{% for experience in experiences %}
-					{% include "_partials/entry/experience-card" with {
-						experience: experience
-					} only %}
-				{% endfor %}
-			{% else %}
-				<p class="text-gray-600">
-					No experiences yet.
-				</p>
-			{% endif %}
+		<div data-reveal-group>
+			<div
+				class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
+				data-reveal-item
+			>
+				{% if experiences|length %}
+					{% for experience in experiences %}
+						{% include "_partials/entry/experience-card" with {
+							experience: experience
+						} only %}
+					{% endfor %}
+				{% else %}
+					<p class="text-gray-600">
+						No experiences yet.
+					</p>
+				{% endif %}
+			</div>
 		</div>
 	</section>
 {% endblock %}

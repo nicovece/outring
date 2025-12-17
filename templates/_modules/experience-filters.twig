@@ -29,11 +29,11 @@
 {% set inactiveClasses = "" %}
 {% set linkClasses = "block px-4 py-2 text-sm hover:bg-accent/10" %}
 
-<div class="experience-filters">
+<section class="experience-filters" data-reveal-group>
 	<nav class="experience-filters container-wide mb-2" aria-label="Filter experiences">
 		<div class="flex flex-wrap gap-4">
 			{# Type dropdown #}
-			<filter-dropdown class="{{ filterDropdownClasses }}">
+			<filter-dropdown class="{{ filterDropdownClasses }}" data-reveal-item>
 				<button
 					type="button"
 					class="{{ buttonClasses }}"
@@ -63,7 +63,7 @@
 				</div>
 			</filter-dropdown>
 			{# Phase dropdown #}
-			<filter-dropdown class="{{ filterDropdownClasses }}">
+			<filter-dropdown class="{{ filterDropdownClasses }}" data-reveal-item>
 				<button
 					type="button"
 					class="{{ buttonClasses }}"
@@ -94,7 +94,7 @@
 			</filter-dropdown>
 
 			{# Themes dropdown #}
-			<filter-dropdown class="{{ filterDropdownClasses }}">
+			<filter-dropdown class="{{ filterDropdownClasses }}" data-reveal-item>
 				<button
 					type="button"
 					class="{{ buttonClasses }}"
@@ -125,7 +125,7 @@
 			</filter-dropdown>
 
 			{# Places dropdown #}
-			<filter-dropdown class="{{ filterDropdownClasses }}">
+			<filter-dropdown class="{{ filterDropdownClasses }}" data-reveal-item>
 				<button
 					type="button"
 					class="{{ buttonClasses }}"
@@ -232,4 +232,4 @@
 			</div>
 		{% endif %}
 	</nav>
-</div>
+</section>

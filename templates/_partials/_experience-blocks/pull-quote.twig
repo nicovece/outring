@@ -1,5 +1,8 @@
 {% if block.quote %}
-	<section class="body-section body-section--pull-quote container-{{ block.sectionWidth == "full" ? "full" : "wide" }}">
+	<section
+		class="body-section body-section--pull-quote container-{{ block.sectionWidth == "full" ? "full" : "wide" }}"
+		data-reveal-group
+	>
 		{% set pullQuoteClasses = {
 			full: "full w-full md:text-4xl/7 lg:text-6xl/10",
 			wide: "wide-width w-full md:text-4xl/7 lg:text-5xl/8",
@@ -12,15 +15,16 @@
 			class="my-4 flex flex-col justify-center bg-accent/30 p-4 text-2xl font-extralight text-pretty italic md:p-6 2xl:p-10 {{
 			pullQuoteClasses
 			}}"
+			data-reveal-item
 		>
-			<p>
+			<p data-reveal-item>
 				<span class="mr-1 inline-block font-medium">“</span>{% include "_partials/_retcon/prose" with {
 					text: block.quote
 				} only %}<span class="-mr-2 inline-block font-medium">”</span>
 			</p>
 
 			{% if block.attribution %}
-				<footer class="mt-2">
+				<footer class="mt-2" data-reveal-item>
 					<div class="text-lg not-italic md:text-xl xl:text-2xl">
 						{% include "_partials/_retcon/prose" with {
 							text: block.attribution
