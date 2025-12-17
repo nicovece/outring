@@ -1,15 +1,16 @@
 {# Navigation Link Component
-  Renders a styled navigation link with active state detection
+  Renders a styled navigation link with active state
   
   Parameters:
   - url: The URL for the link
   - label: The text to display
-  - currentSegment: The current URL segment for active state
+  - isActive: Boolean indicating if this link is the current page
+  - ariaLabel: (optional) Accessible label for screen readers. Use when label is generic (e.g., "Learn More")
+  - additionalClasses: (optional) Additional CSS classes to apply to the link
+  - data: (optional) Additional data attributes to apply to the link
 #}
 
-{% set urlPath = url|replace({(siteUrl): ''})|trim('/', 'left')|trim('/') %}
-{% set urlSegment = urlPath|split('/')|first %}
-{% set isActive = currentSegment == urlSegment %}
+{% set isActive = isActive ?? false %}
 
 {# Organize styles by purpose #}
 {% set linkStyles = {
@@ -23,7 +24,7 @@
 <a
   href="{{ url }}"
   {% if isActive %}aria-current="page"{% endif %}
-  class="{{ linkStyles.base }} {{ linkStyles.hover }} {{ isActive ? linkStyles.active : linkStyles.inactive }} {{ linkStyles.after }}"
+  class="{{ linkStyles.base }} {{ linkStyles.hover }} {{ isActive ? linkStyles.active : linkStyles.inactive }} {{ linkStyles.after }} {{ additionalClasses ?? "" }}" {{ data|default("") }}" {% if ariaLabel is defined %}aria-label="{{ ariaLabel }}"{% endif %} 
 >
   {{ label }}
 </a>
