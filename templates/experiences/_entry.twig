@@ -21,142 +21,146 @@
 				} only %}
 			{% endif %}
 		{% else %}
-			<section class="bg-accent/30 dark:bg-accent/60">
-				<blockquote
-					class="container-wide flex min-h-[100vw] flex-col items-center justify-center p-1 text-3xl font-extralight italic md:min-h-[50vh] md:items-start md:p-6 md:text-4xl 2xl:p-6 2xl:text-5xl/8"
-				>
-					<p class="max-w-2xl text-center md:text-left lg:max-w-3/5">
-						<span class="mr-1 inline-block font-medium">“</span>{{ entry.shortQuote }}<span
-							class="-mr-2 inline-block font-medium"
-						>
-							”
-						</span>
-					</p>
-					{% if entry.peopleInvolved|length %}
-						<footer class="mt-4 2xl:mt-6">
-							{% for person in entry.peopleInvolved.all()|filter(p => p.showInPreview) %}
-								<div class="flex items-center gap-3">
-									{% if person.involvedPersonPhoto|length %}
-										{% set photo = person.involvedPersonPhoto.one() %}
-										<img
-											src="{{
-											photo.getUrl({
-												width: 160,
-												height: 160,
-												mode: "crop"
-											})
-											}}"
-											srcset="{{ macros.srcSet(photo, true, "1:1") }}"
-											sizes="80px"
-											alt="{{ person.involvedPersonName }}"
-											class="h-10 w-10 rounded-full object-cover lg:h-14 lg:w-14"
-										/>
-									{% endif %}
-									<div class="text-base text-gray-700 not-italic md:text-lg dark:text-gray-300">
-										<span class="block font-semibold">{{ person.involvedPersonName }}</span>
-										<span class="font-light">{{ person.involvedPersonRole }}</span>
+			<section data-reveal-group>
+				<div class="bg-accent/30 dark:bg-accent/60" data-reveal-item>
+					<blockquote
+						class="container-wide flex min-h-[100vw] flex-col items-center justify-center p-1 text-3xl font-extralight italic md:min-h-[50vh] md:items-start md:p-6 md:text-4xl 2xl:p-6 2xl:text-5xl/8"
+					>
+						<p class="max-w-2xl text-center md:text-left lg:max-w-3/5">
+							<span class="mr-1 inline-block font-medium">“</span>{{ entry.shortQuote }}<span
+								class="-mr-2 inline-block font-medium"
+							>
+								”
+							</span>
+						</p>
+						{% if entry.peopleInvolved|length %}
+							<footer class="mt-4 2xl:mt-6">
+								{% for person in entry.peopleInvolved.all()|filter(p => p.showInPreview) %}
+									<div class="flex items-center gap-3">
+										{% if person.involvedPersonPhoto|length %}
+											{% set photo = person.involvedPersonPhoto.one() %}
+											<img
+												src="{{
+												photo.getUrl({
+													width: 160,
+													height: 160,
+													mode: "crop"
+												})
+												}}"
+												srcset="{{ macros.srcSet(photo, true, "1:1") }}"
+												sizes="80px"
+												alt="{{ person.involvedPersonName }}"
+												class="h-10 w-10 rounded-full object-cover lg:h-14 lg:w-14"
+											/>
+										{% endif %}
+										<div class="text-base text-gray-700 not-italic md:text-lg dark:text-gray-300">
+											<span class="block font-semibold">{{ person.involvedPersonName }}</span>
+											<span class="font-light">{{ person.involvedPersonRole }}</span>
+										</div>
 									</div>
-								</div>
-							{% endfor %}
-						</footer>
-					{% endif %}
-				</blockquote>
+								{% endfor %}
+							</footer>
+						{% endif %}
+					</blockquote>
+				</div>
 			</section>
 		{% endif %}
-		<div class="mb-5 bg-accent/10 py-8 dark:bg-accent/5" data-reveal-group>
-			<header class="mx-auto max-w-(--max-width)">
-				<div class="hero-text px-1 md:px-4 2xl:max-w-1/2">
-					{% if entry.title is defined %}
-						<h1
-							class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200"
-							data-reveal-item
-						>
-							{{ entry.title|striptags("<strong><em>")|raw }}
-						</h1>
-					{% endif %}
-					<div class="text-lg" data-reveal-item>
-						{% if entry.shortQuote is defined %}
-							<p class="mb-1 text-base font-medium md:text-xl">
-								{{ entry.shortQuote|striptags("<strong><em>")|raw }}
-							</p>
+		<div data-reveal-group="0.2">
+			<div class="mb-5 bg-accent/10 py-8 dark:bg-accent/5" data-reveal-item>
+				<header class="mx-auto max-w-(--max-width)">
+					<div class="hero-text px-1 md:px-4 2xl:max-w-1/2">
+						{% if entry.title is defined %}
+							<h1
+								class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200"
+								data-reveal-item
+							>
+								{{ entry.title|striptags("<strong><em>")|raw }}
+							</h1>
 						{% endif %}
-						{% set place = entry.place.one() %}
-						{% if place %}
-							<span><strong>{{ place.title }}</strong>, {{ place.city }}</span>
-						{% endif %}
-						{% if entry.dateOfExperience %}
-							<time datetime="{{ entry.dateOfExperience|date("Y-m") }}" class="before:content-['-']">
-								{{ entry.dateOfExperience|date("F Y") }}
-							</time>
-						{% endif %}
-					</div>
-				</div>
-			</header>
-			<section class="project-meta container-wide mt-2 mb-0 pt-0 text-base md:mt-6" data-reveal-item>
-				{% set themes = entry.themes.all() %}
-				<nav aria-label="Experience themes" class="mt-4 flex flex-wrap items-center gap-4">
-					<div>
-						<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">Themes:</span>
-						<ul class="flex w-full flex-wrap gap-2">
-							{% for theme in themes %}
-								<li>
-									{% include "_modules/link-text" with {
-										url: theme.url,
-										label: theme.title,
-										additionalClasses: "font-medium text-base"
-									} only %}
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
-					{% if experienceType %}
-						<div>
-							<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">Type:</span>
-							<ul class="flex w-full flex-wrap gap-2">
-								<li>
-									{% include "_modules/link-text" with {
-										url: experienceType.url,
-										label: experienceType.title,
-										additionalClasses: "font-medium text-base"
-									} only %}
-								</li>
-							</ul>
+						<div class="text-lg" data-reveal-item>
+							{% if entry.shortQuote is defined %}
+								<p class="mb-1 text-base font-medium md:text-xl">
+									{{ entry.shortQuote|striptags("<strong><em>")|raw }}
+								</p>
+							{% endif %}
+							{% set place = entry.place.one() %}
+							{% if place %}
+								<span><strong>{{ place.title }}</strong>, {{ place.city }}</span>
+							{% endif %}
+							{% if entry.dateOfExperience %}
+								<time datetime="{{ entry.dateOfExperience|date("Y-m") }}" class="before:content-['-']">
+									{{ entry.dateOfExperience|date("F Y") }}
+								</time>
+							{% endif %}
 						</div>
-					{% endif %}
-					{% if participationPhases|length %}
+					</div>
+				</header>
+				<section class="project-meta container-wide mt-2 mb-0 pt-0 text-base md:mt-6" data-reveal-item>
+					{% set themes = entry.themes.all() %}
+					<nav aria-label="Experience themes" class="mt-4 flex flex-wrap items-center gap-4">
 						<div>
-							<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">Phase:</span>
+							<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">Themes:</span>
 							<ul class="flex w-full flex-wrap gap-2">
-								{% for phase in participationPhases %}
+								{% for theme in themes %}
 									<li>
 										{% include "_modules/link-text" with {
-											url: phase.url,
-											label: phase.title,
+											url: theme.url,
+											label: theme.title,
 											additionalClasses: "font-medium text-base"
 										} only %}
 									</li>
 								{% endfor %}
 							</ul>
 						</div>
-					{% endif %}
-					{% if entry.externalProjectUrl %}
-						<div>
-							<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">G124 Project:</span>
-							<ul class="flex w-full flex-wrap gap-2">
-								<li>
-									{% include "_modules/link-text" with {
-										url: entry.externalProjectUrl,
-										label: place.title ~ " - " ~ place.city,
-										target: "_blank",
-										rel: "noopener noreferrer",
-										additionalClasses: "font-medium text-base"
-									} only %}
-								</li>
-							</ul>
-						</div>
-					{% endif %}
-				</nav>
-			</section>
+						{% if experienceType %}
+							<div>
+								<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">Type:</span>
+								<ul class="flex w-full flex-wrap gap-2">
+									<li>
+										{% include "_modules/link-text" with {
+											url: experienceType.url,
+											label: experienceType.title,
+											additionalClasses: "font-medium text-base"
+										} only %}
+									</li>
+								</ul>
+							</div>
+						{% endif %}
+						{% if participationPhases|length %}
+							<div>
+								<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">Phase:</span>
+								<ul class="flex w-full flex-wrap gap-2">
+									{% for phase in participationPhases %}
+										<li>
+											{% include "_modules/link-text" with {
+												url: phase.url,
+												label: phase.title,
+												additionalClasses: "font-medium text-base"
+											} only %}
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% endif %}
+						{% if entry.externalProjectUrl %}
+							<div>
+								<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">G124 Project:</span>
+								<ul class="flex w-full flex-wrap gap-2">
+									<li>
+										{% include "_modules/link-text" with {
+											url: entry.externalProjectUrl,
+											label: place.title ~ " - " ~ place.city,
+											target: "_blank",
+											rel: "noopener noreferrer",
+											additionalClasses: "font-medium text-base"
+										} only %}
+									</li>
+								</ul>
+							</div>
+						{% endif %}
+					</nav>
+				</section>
+			</div>
 		</div>
 		{# Body Content - Matrix Blocks #}
 		{% for block in entry.body.all() %}

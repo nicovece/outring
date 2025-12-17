@@ -12,6 +12,7 @@ An editorial platform amplifying resident voices from G124 urban regeneration pr
 - **Build Tool:** Vite 6
 - **CSS:** Tailwind CSS 4
 - **TypeScript:** Yes
+- **Animation:** GSAP + ScrollTrigger
 - **Hosting:** Fortrabbit (Universal Stack, eu-w1a)
 
 ## Content Architecture
@@ -53,6 +54,7 @@ templates/
 - **BeforeAfterSlider** - Touch/mouse/keyboard image comparison
 - **ThemeToggle** - Dark mode with localStorage persistence
 - **SiteNav** - Mobile navigation
+- **ScrollReveal** - GSAP-powered scroll animations (dynamic import for performance)
 
 ### Image Strategy
 - Parameterized `srcSet` macro with dynamic aspect ratio calculation

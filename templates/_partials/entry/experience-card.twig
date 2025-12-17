@@ -34,47 +34,49 @@
 
 	{# Short Quote #}
 	{% if not isEditorial and experience.shortQuote %}
-		<blockquote
-			class="flex flex-col justify-center bg-accent/30 p-4 text-2xl font-extralight italic md:p-6 md:text-4xl 2xl:p-10 {{
-			cardClasses.image
-			}}"
-		>
-			<p>
-				<span class="mr-1 inline-block font-medium">“</span>{{ experience.shortQuote }}<span
-					class="-mr-2 inline-block font-medium"
-				>
-					”
-				</span>
-			</p>
-			{% if not isEditorial and (experience.peopleInvolved|length) %}
-				<footer class="mt-4">
-					{% for person in experience.peopleInvolved.all()|filter(p => p.showInPreview) %}
-						<div class="flex items-center gap-3">
-							{% if person.involvedPersonPhoto|length %}
-								{% set photo = person.involvedPersonPhoto.one() %}
-								<img
-									src="{{
-									photo.getUrl({
-										width: 160,
-										height: 160,
-										mode: "crop"
-									})
-									}}"
-									srcset="{{ macros.srcSet(photo, true, "1:1") }}"
-									sizes="80px"
-									alt="{{ person.involvedPersonName }}"
-									class="h-10 w-10 rounded-full object-cover lg:h-14 lg:w-14"
-								/>
-							{% endif %}
-							<div class="text-base not-italic md:text-lg">
-								<span class="block font-semibold">{{ person.involvedPersonName }}</span>
-								<span class="text-gray-600">{{ person.involvedPersonRole }}</span>
+		<a href="{{ experience.url }}" class="block" aria-label="Read experience: {{ experience.title }}">
+			<blockquote
+				class="flex flex-col justify-center bg-accent/30 p-4 text-2xl font-extralight italic md:p-6 md:text-4xl 2xl:p-10 {{
+				cardClasses.image
+				}}"
+			>
+				<p>
+					<span class="mr-1 inline-block font-medium">“</span>{{ experience.shortQuote }}<span
+						class="-mr-2 inline-block font-medium"
+					>
+						”
+					</span>
+				</p>
+				{% if not isEditorial and (experience.peopleInvolved|length) %}
+					<footer class="mt-4">
+						{% for person in experience.peopleInvolved.all()|filter(p => p.showInPreview) %}
+							<div class="flex items-center gap-3">
+								{% if person.involvedPersonPhoto|length %}
+									{% set photo = person.involvedPersonPhoto.one() %}
+									<img
+										src="{{
+										photo.getUrl({
+											width: 160,
+											height: 160,
+											mode: "crop"
+										})
+										}}"
+										srcset="{{ macros.srcSet(photo, true, "1:1") }}"
+										sizes="80px"
+										alt="{{ person.involvedPersonName }}"
+										class="h-10 w-10 rounded-full object-cover lg:h-14 lg:w-14"
+									/>
+								{% endif %}
+								<div class="text-base not-italic md:text-lg">
+									<span class="block font-semibold">{{ person.involvedPersonName }}</span>
+									<span class="text-gray-600">{{ person.involvedPersonRole }}</span>
+								</div>
 							</div>
-						</div>
-					{% endfor %}
-				</footer>
-			{% endif %}
-		</blockquote>
+						{% endfor %}
+					</footer>
+				{% endif %}
+			</blockquote>
+		</a>
 	{% endif %}
 
 	<div class="card-content {{ cardClasses.content }}">

@@ -30,6 +30,7 @@
 	class="{{ linkStyles.base }} {{ linkStyles.hover }} {{ linkStyles.after }} {{ additionalClasses ?? "" }}"
 	{{ target ? 'target="' ~ target ~ '"' }}
 	{{ rel ? 'rel="' ~ rel ~ '"' }}
+	{{ data|default("") }}
 >
 	{{ label }}
 </a>
