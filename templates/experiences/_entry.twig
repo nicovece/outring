@@ -63,15 +63,18 @@
 				</blockquote>
 			</section>
 		{% endif %}
-		<div class="mb-5 bg-accent/10 py-8 dark:bg-accent/5">
+		<div class="mb-5 bg-accent/10 py-8 dark:bg-accent/5" data-reveal-group>
 			<header class="mx-auto max-w-(--max-width)">
 				<div class="hero-text px-1 md:px-4 2xl:max-w-1/2">
 					{% if entry.title is defined %}
-						<h1 class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200">
+						<h1
+							class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200"
+							data-reveal-item
+						>
 							{{ entry.title|striptags("<strong><em>")|raw }}
 						</h1>
 					{% endif %}
-					<div class="text-lg">
+					<div class="text-lg" data-reveal-item>
 						{% if entry.shortQuote is defined %}
 							<p class="mb-1 text-base font-medium md:text-xl">
 								{{ entry.shortQuote|striptags("<strong><em>")|raw }}
@@ -89,7 +92,7 @@
 					</div>
 				</div>
 			</header>
-			<section class="project-meta container-wide mt-2 mb-0 pt-0 text-base md:mt-6">
+			<section class="project-meta container-wide mt-2 mb-0 pt-0 text-base md:mt-6" data-reveal-item>
 				{% set themes = entry.themes.all() %}
 				<nav aria-label="Experience themes" class="mt-4 flex flex-wrap items-center gap-4">
 					<div>
@@ -129,7 +132,7 @@
 										{% include "_modules/link-text" with {
 											url: phase.url,
 											label: phase.title,
-											additionalClasses: "font-semibold text-base"
+											additionalClasses: "font-medium text-base"
 										} only %}
 									</li>
 								{% endfor %}
@@ -146,7 +149,7 @@
 										label: place.title ~ " - " ~ place.city,
 										target: "_blank",
 										rel: "noopener noreferrer",
-										additionalClasses: "font-semibold text-base"
+										additionalClasses: "font-medium text-base"
 									} only %}
 								</li>
 							</ul>

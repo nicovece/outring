@@ -1,7 +1,7 @@
 {% if block.image %}
 	{% import "_macros" as macros %}
 	{% set image = block.image.one() %}
-	<section class="body-section body-section--image container-{{ block.sectionWidth == "full" ? "full" : "wide" }}">
+	<section class="body-section body-section--image container-{{ block.sectionWidth == "full" ? "full" : "wide" }}" data-reveal-group>
 		{% set imageClasses = {
 			full: "full w-full md:h-[60vh] xl:h-[90vh]",
 			wide: "wide-width w-full md:h-[40vh] xl:h-[80vh]",
@@ -10,7 +10,7 @@
 		}[block.sectionWidth ? block.sectionWidth : "wide"]
 			?? "w-full"
 		%}
-		<figure class="my-4 mb-6 flex flex-col overflow-hidden {{ imageClasses }}">
+		<figure class="my-4 mb-6 flex flex-col overflow-hidden {{ imageClasses }}" data-reveal-item>
 			<div class="min-h-0 flex-1 overflow-hidden">
 				<img
 					src="{{ image.getUrl("w1200") }}"
@@ -24,7 +24,7 @@
 				/>
 			</div>
 			{% if block.caption %}
-				<figcaption class="shrink-0 bg-accent/10 px-4 py-2 text-base">
+				<figcaption class="shrink-0 bg-accent/10 px-4 py-2 text-base"
 					{% include "_partials/_retcon/prose" with {
 						text: block.caption
 					} only %}

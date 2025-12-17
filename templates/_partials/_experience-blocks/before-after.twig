@@ -14,77 +14,79 @@
 	{% import "_macros" as macros %}
 	{% set beforeImg = block.beforeImage.one() %}
 	{% set afterImg = block.afterImage.one() %}
-	<section class="body-section my-12 bg-accent/10 pt-8 pb-2 dark:bg-accent/5">
-		<div class="container-wide">
-			<figure class="before-after mb-6" data-before-after>
-				{# Caption #}
-				{% if block.caption %}
-					<figcaption class="mb-4 text-2xl">
-						{% include "_partials/_retcon/prose" with {
-							text: block.caption
-						} only %}
-					</figcaption>
-				{% endif %}
+	<section class="body-section" data-reveal-group>
+		<div class="my-12 bg-accent/10 pt-8 pb-2 dark:bg-accent/5" data-reveal-item>
+			<div class="container-wide">
+				<figure class="before-after mb-6" data-before-after>
+					{# Caption #}
+					{% if block.caption %}
+						<figcaption class="mb-4 text-2xl" data-reveal-item>
+							{% include "_partials/_retcon/prose" with {
+								text: block.caption
+							} only %}
+						</figcaption>
+					{% endif %}
 
-				<div class="before-after__container group">
-					{# Before Image (base layer) #}
-					<img
-						src="{{ beforeImg.getUrl("w1200") }}"
-						srcset="{{ macros.srcSet(beforeImg, true, "16:9") }}"
-						sizes="100vw"
-						alt="{{ block.beforeAltText ? : beforeImg.title }}"
-						width="{{ beforeImg.width }}"
-						height="{{ beforeImg.height }}"
-						class="before-after__image before-after__image--before"
-						loading="lazy"
-					/>
+					<div class="before-after__container group" data-reveal-item>
+						{# Before Image (base layer) #}
+						<img
+							src="{{ beforeImg.getUrl("w1200") }}"
+							srcset="{{ macros.srcSet(beforeImg, true, "16:9") }}"
+							sizes="100vw"
+							alt="{{ block.beforeAltText ? : beforeImg.title }}"
+							width="{{ beforeImg.width }}"
+							height="{{ beforeImg.height }}"
+							class="before-after__image before-after__image--before"
+							loading="lazy"
+						/>
 
-					{# After Image (clipped layer) #}
-					<img
-						src="{{ afterImg.getUrl("w1200") }}"
-						srcset="{{ macros.srcSet(afterImg, true, "16:9") }}"
-						sizes="100vw"
-						alt="{{ block.afterAltText ? : afterImg.title }}"
-						width="{{ afterImg.width }}"
-						height="{{ afterImg.height }}"
-						class="before-after__image before-after__image--after"
-						loading="lazy"
-					/>
+						{# After Image (clipped layer) #}
+						<img
+							src="{{ afterImg.getUrl("w1200") }}"
+							srcset="{{ macros.srcSet(afterImg, true, "16:9") }}"
+							sizes="100vw"
+							alt="{{ block.afterAltText ? : afterImg.title }}"
+							width="{{ afterImg.width }}"
+							height="{{ afterImg.height }}"
+							class="before-after__image before-after__image--after"
+							loading="lazy"
+						/>
 
-					{# Divider Line #}
-					<div class="before-after__divider" aria-hidden="true">
-						<div class="before-after__handle group-hover:scale-105">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
-								<path
-									fill-rule="evenodd"
-									d="M13.2 2.24a.75.75 0 0 0 .04 1.06l2.1 1.95H6.75a.75.75 0 0 0 0 1.5h8.59l-2.1 1.95a.75.75 0 1 0 1.02 1.1l3.5-3.25a.75.75 0 0 0 0-1.1l-3.5-3.25a.75.75 0 0 0-1.06.04Zm-6.4 8a.75.75 0 0 0-1.06-.04l-3.5 3.25a.75.75 0 0 0 0 1.1l3.5 3.25a.75.75 0 1 0 1.02-1.1l-2.1-1.95h8.59a.75.75 0 0 0 0-1.5H4.66l2.1-1.95a.75.75 0 0 0 .04-1.06Z"
-									clip-rule="evenodd"
-								/>
-							</svg>
+						{# Divider Line #}
+						<div class="before-after__divider" aria-hidden="true">
+							<div class="before-after__handle group-hover:scale-105">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+									<path
+										fill-rule="evenodd"
+										d="M13.2 2.24a.75.75 0 0 0 .04 1.06l2.1 1.95H6.75a.75.75 0 0 0 0 1.5h8.59l-2.1 1.95a.75.75 0 1 0 1.02 1.1l3.5-3.25a.75.75 0 0 0 0-1.1l-3.5-3.25a.75.75 0 0 0-1.06.04Zm-6.4 8a.75.75 0 0 0-1.06-.04l-3.5 3.25a.75.75 0 0 0 0 1.1l3.5 3.25a.75.75 0 1 0 1.02-1.1l-2.1-1.95h8.59a.75.75 0 0 0 0-1.5H4.66l2.1-1.95a.75.75 0 0 0 .04-1.06Z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				{# Range Input (fallback + enhancement) #}
-				<input
-					type="range"
-					min="0"
-					max="100"
-					value="50"
-					step="1"
-					class="before-after__slider"
-					aria-label="Slide to compare before and after images"
-				/>
+					{# Range Input (fallback + enhancement) #}
+					<input
+						type="range"
+						min="0"
+						max="100"
+						value="50"
+						step="1"
+						class="before-after__slider"
+						aria-label="Slide to compare before and after images"
+					/>
 
-				{# Labels #}
-				<div
-					class="before-after__labels flex justify-between bg-accent px-4 py-2 text-lg font-medium text-white"
-					aria-hidden="true"
-				>
-					<span class="before-after__label before-after__label--before">Before /</span>
-					<span class="before-after__label before-after__label--after">/ After</span>
-				</div>
-			</figure>
+					{# Labels #}
+					<div
+						class="before-after__labels flex justify-between bg-accent px-4 py-2 text-lg font-medium text-white"
+						aria-hidden="true"
+					>
+						<span class="before-after__label before-after__label--before">Before /</span>
+						<span class="before-after__label before-after__label--after">/ After</span>
+					</div>
+				</figure>
+			</div>
 		</div>
 	</section>
 {% endif %}

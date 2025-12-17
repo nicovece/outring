@@ -26,10 +26,10 @@
 	{% if layout is not defined or layout == "layout-wide" %}
 		{% set sectionClasses = sectionClasses ~ " md:mt-14" %}
 	{% endif %}
-	<section class="{{ sectionClasses }}">
+	<section class="{{ sectionClasses }}" data-reveal-group>
 		{% if layout is defined and layout == "layout-full" %}
 			{% if image is defined %}
-				<figure class="relative h-[40vh] w-full overflow-hidden lg:h-[60vh]">
+				<figure class="relative h-[40vh] w-full overflow-hidden lg:h-[60vh]" data-reveal-item>
 					<img
 						src="{{
 						image.getUrl({
@@ -64,12 +64,15 @@
 			<header class="mx-auto mt-12 mb-6 max-w-(--max-width) md:mt-6 md:mb-10">
 				<div class="hero-text {{ heroTextClasses }}">
 					{% if title is defined %}
-						<h1 class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200">
+						<h1
+							class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200"
+							data-reveal-item
+						>
 							{{ title|striptags("<strong><em>")|raw }}
 						</h1>
 					{% endif %}
 					{% if text is defined %}
-						<p class="text-base font-medium md:text-xl">
+						<p class="text-base font-medium md:text-xl" data-reveal-item>
 							{{ text|striptags("<strong><em>")|raw }}
 						</p>
 					{% endif %}
@@ -86,7 +89,7 @@
 				}[imageHeight|default("full")]
 					?? "h-[40vh] lg:h-[60vh] xl:h-screen"
 				%}
-				<figure class="{{ heightClass }} relative w-full overflow-hidden">
+				<figure class="{{ heightClass }} relative w-full overflow-hidden" data-reveal-item>
 					<img
 						src="{{
 						image.getUrl({

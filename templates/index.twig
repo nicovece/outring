@@ -19,27 +19,28 @@
 	{% endif %}
 
 	{# About Section #}
-	<section class="container-wide my-12 md:my-12">
+	<section class="container-wide my-12 md:my-12" data-reveal-group>
 		<div
 			class="flex flex-col content-center gap-y-3 lg:max-w-3/4 xl:grid xl:max-w-[75vw] xl:grid-cols-[2fr_3fr] xl:content-center xl:items-end xl:gap-x-4 xl:gap-y-5"
 		>
-			<h2 class="mb-0 text-xl/4 font-light md:text-2xl/5">
+			<h2 class="mb-0 text-xl/4 font-light md:text-2xl/5" data-reveal-item>
 				{{ homepage.aboutSectionTitle|striptags("<strong><em>")|raw }}
 			</h2>
-			<div class="col-2 mb-0 text-base/3 font-light md:text-lg/4">
+			<div class="col-2 mb-0 text-base/3 font-light md:text-lg/4" data-reveal-item>
 				{{ homepage.aboutSectionText|striptags("<strong><em><p>")|raw }}
 			</div>
 			<hr class="w-full border-0 border-b border-gray-200 md:col-span-2 dark:border-gray-700" />
 			{% include "_modules/button-text" with {
 				url: url("about"),
 				label: "Learn more about our method",
-				additionalClasses: "md:col-1"
+				additionalClasses: "md:col-1",
+				data: "data-reveal-item"
 			} only %}
 		</div>
 	</section>
 
-	<section>
-		<div class="container-wide">
+	<section data-reveal-group>
+		<div class="container-wide" data-reveal-item>
 			<h3 class="text-lg font-light md:text-2xl">Recent Experiences</h3>
 		</div>
 		{% set featured =
@@ -63,6 +64,7 @@
 		%}
 		<div
 			class="container-full flex flex-col gap-8 bg-accent/10 p-2 md:p-4 lg:grid lg:grid-cols-2 2xl:p-8 dark:bg-accent/5"
+			data-reveal-item
 		>
 			{% for experience in featured %}
 				{% include "_partials/entry/experience-card" with {

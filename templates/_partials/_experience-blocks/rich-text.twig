@@ -1,6 +1,6 @@
 {% if block.text %}
-	<section class="body-section container-{{ block.sectionWidth ? : "wide" }}">
-		<div class="content-column-main my-4 text-base md:text-lg">
+	<section class="body-section container-{{ block.sectionWidth ? : "wide" }}" data-reveal-group>
+		<div class="content-column-main my-4 text-base md:text-lg" data-reveal-item>
 			{% include "_partials/_retcon/prose" with {
 				text: block.text
 			} only %}
