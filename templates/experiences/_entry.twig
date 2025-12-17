@@ -136,6 +136,22 @@
 							</ul>
 						</div>
 					{% endif %}
+					{% if entry.externalProjectUrl %}
+						<div>
+							<span class="mb-1 inline-block text-sm text-gray-500 dark:text-gray-300">G124 Project:</span>
+							<ul class="flex w-full flex-wrap gap-2">
+								<li>
+									{% include "_modules/link-text" with {
+										url: entry.externalProjectUrl,
+										label: place.title ~ " - " ~ place.city,
+										target: "_blank",
+										rel: "noopener noreferrer",
+										additionalClasses: "font-semibold text-base"
+									} only %}
+								</li>
+							</ul>
+						</div>
+					{% endif %}
 				</nav>
 			</section>
 		</div>
