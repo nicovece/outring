@@ -62,17 +62,14 @@
 				?? "max-w-full"
 			%}
 			<header class="mx-auto mt-12 mb-6 max-w-(--max-width) md:mt-6 md:mb-10">
-				<div class="hero-text {{ heroTextClasses }}">
+				<div class="hero-text {{ heroTextClasses }}" data-reveal-item>
 					{% if title is defined %}
-						<h1
-							class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200"
-							data-reveal-item
-						>
+						<h1 class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200">
 							{{ title|striptags("<strong><em>")|raw }}
 						</h1>
 					{% endif %}
 					{% if text is defined %}
-						<p class="text-base font-medium md:text-xl" data-reveal-item>
+						<p class="text-base font-medium md:text-xl">
 							{{ text|striptags("<strong><em>")|raw }}
 						</p>
 					{% endif %}

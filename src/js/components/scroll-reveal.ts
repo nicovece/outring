@@ -10,18 +10,19 @@ function initScrollReveal() {
 		const items = group.querySelectorAll("[data-reveal-item]");
 
 		if (items.length === 0) return;
-
+		const groupDelay = parseFloat((group as HTMLElement).dataset.revealGroup || "0");
 		gsap.fromTo(
 			items,
 			{
 				opacity: 0,
-				y: 40
+				y: 30
 			},
 			{
 				opacity: 1,
 				y: 0,
 
 				duration: 0.6,
+				delay: groupDelay,
 				stagger: 0.1,
 				ease: "power2.out",
 

@@ -29,11 +29,11 @@
 			<div class="col-2 mb-0 text-base/3 font-light md:text-lg/4" data-reveal-item>
 				{{ homepage.aboutSectionText|striptags("<strong><em><p>")|raw }}
 			</div>
-			<hr class="w-full border-0 border-b border-gray-200 md:col-span-2 dark:border-gray-700" />
-			{% include "_modules/button-text" with {
+			<hr class="w-full border-0 border-b border-gray-200 md:col-span-2 dark:border-gray-700" data-reveal-item />
+			{% include "_modules/link-text" with {
 				url: url("about"),
 				label: "Learn more about our method",
-				additionalClasses: "md:col-1",
+				additionalClasses: "w-fit md:col-1",
 				data: "data-reveal-item"
 			} only %}
 		</div>
