@@ -7,10 +7,11 @@
 			aria-label="Primary navigation"
 		>
 			<div class="flex items-center gap-2 xl:w-1/2">
-				{% include "_modules/button-text" with {
+				{% include "_modules/nav-link" with {
 					url: url("/"),
 					label: "Outring",
 					ariaLabel: "Go to home page Outring",
+					isActive: true,
 					additionalClasses: "font-bold"
 				} only %} <span class="hidden text-gray-500 xl:inline dark:text-gray-300">{{ siteInfo.siteTagline }}</span>
 			</div>
@@ -56,28 +57,28 @@
 						{% include "_modules/nav-link" with {
 							url: url("experiences"),
 							label: "Experiences",
-							currentSegment: currentSegment
+							isActive: currentSegment == "experiences"
 						} only %}
 					</li>
 					<li>
 						{% include "_modules/nav-link" with {
 							url: url("themes"),
 							label: "Themes",
-							currentSegment: currentSegment
+							isActive: currentSegment == "themes"
 						} only %}
 					</li>
 					<li>
 						{% include "_modules/nav-link" with {
 							url: url("places"),
 							label: "Places",
-							currentSegment: currentSegment
+							isActive: currentSegment == "places"
 						} only %}
 					</li>
 					<li>
 						{% include "_modules/nav-link" with {
 							url: url("about"),
 							label: "About",
-							currentSegment: currentSegment
+							isActive: currentSegment == "about"
 						} only %}
 					</li>
 				</ul>
