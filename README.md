@@ -18,6 +18,7 @@ An editorial platform amplifying resident voices from G124 urban regeneration pr
 ## Content Architecture
 
 ### Content Model
+
 - **Experiences** (Channel) - Resident stories with flexible Matrix content
   - Two visual layouts: `Editorial Reportage` (magazine-style) vs `Community Story` (personal/blog-style)
   - Related to Places and Themes for multi-dimensional navigation
@@ -26,7 +27,9 @@ An editorial platform amplifying resident voices from G124 urban regeneration pr
 - **Categories** - `experienceTypes` and `participationPhases` for filtering
 
 ### Matrix Field Architecture
+
 5 block types for editorial flexibility:
+
 - `richText` - CKEditor paragraphs with Retcon transformation
 - `pullQuote` - Highlighted resident quotes
 - `imageBlock` - Images with required alt text and optional caption
@@ -34,11 +37,13 @@ An editorial platform amplifying resident voices from G124 urban regeneration pr
 - `beforeAfter` - TypeScript-powered comparison slider
 
 ### Query Patterns
+
 - **URL-based filtering**: Native `craft.app.request.getQueryParam()` with `relatedTo()` queries
 - **Eager loading**: `.with(['featuredImage', 'place', 'themes'])` on listing pages
 - **Nested eager loading**: `['peopleInvolved', { with: ['involvedPersonPhoto'] }]` on homepage
 
 ### Template Organization
+
 ```
 templates/
   _layouts/           # Base page layouts
@@ -50,6 +55,7 @@ templates/
 ```
 
 ### Frontend Components (TypeScript)
+
 - **FilterDropdown** - Accessible dropdown with keyboard nav, ARIA attributes
 - **BeforeAfterSlider** - Touch/mouse/keyboard image comparison
 - **ThemeToggle** - Dark mode with localStorage persistence
@@ -57,11 +63,13 @@ templates/
 - **ScrollReveal** - GSAP-powered scroll animations (dynamic import for performance)
 
 ### Image Strategy
+
 - Parameterized `srcSet` macro with dynamic aspect ratio calculation
 - 5 responsive widths: 400, 800, 1200, 1600, 2400px
 - Consolidated from reference project's 4 separate macros into 1
 
 ### Accessibility
+
 - Skip link in base layout
 - 26+ ARIA attributes throughout
 - `aria-expanded` toggled by JavaScript on interactive elements
