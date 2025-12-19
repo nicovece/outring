@@ -21,6 +21,10 @@
     } only %}
   #}
 {% import "_macros" as macros %}
+{% set headerVerticalSpacing = layout is defined and layout == "layout-textonly-short"
+	? "mt-8 mb-3 md:mt-8 md:mb-4"
+	: "mt-12 mb-6 md:mt-8 md:mb-10"
+%}
 {% if title is defined or text is defined or image is defined %}
 	{% set sectionClasses = "section-hero container-" ~ (sectionWidth|default("wide")) %}
 	{% if layout is not defined or layout == "layout-wide" %}
@@ -61,7 +65,7 @@
 			}[sectionWidth|default("wide")]
 				?? "max-w-full"
 			%}
-			<header class="mx-auto mt-12 mb-6 max-w-(--max-width) md:mt-6 md:mb-10">
+			<header class="mx-auto max-w-(--max-width) {{ headerVerticalSpacing }}">
 				<div class="hero-text {{ heroTextClasses }}" data-reveal-item>
 					{% if title is defined %}
 						<h1 class="mb-2 text-2xl/4 font-light text-gray-900 md:text-3xl/5 2xl:text-4xl/6 dark:text-gray-200">

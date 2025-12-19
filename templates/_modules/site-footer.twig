@@ -4,11 +4,12 @@
 			{# Column 1: About #}
 			<div>
 				<h3 class="mb-3 font-bold">
-					{% include "_modules/button-text" with {
+					{% include "_modules/nav-link" with {
 						url: url("/"),
-						label: siteInfo.siteDisplayName,
+						label: "Outring",
 						ariaLabel: "Go to home page Outring",
-						additionalClasses: "font-bold"
+						isActive: true,
+						additionalClasses: "font-bold w-fit"
 					} only %}
 				</h3>
 				<p class="text-sm">
@@ -49,6 +50,13 @@
 							url: url("about"),
 							label: "About",
 							additionalClasses: linkClasses.base
+						} only %}
+					</li>
+					<li>
+						{% include "_modules/link-text" with {
+							url: url("submit"),
+							label: "Submit Your Story",
+							additionalClasses: linkClasses.base ~ " text-accent font-semibold"
 						} only %}
 					</li>
 				</ul>

@@ -35,3 +35,90 @@
 		}}
 	{% endif %}
 {% endmacro %}
+
+{#
+    Form Field Macro
+    Renders a complete form field with label, input/textarea, error handling, and help text.
+
+    Parameters:
+    - handle: string (required) - Field handle, used for id, name, error lookup
+    - label: string (required) - Label text
+    - entry: Entry|null - The entry object for getting values and errors
+    - type: string - Input type: 'text', 'email', or 'textarea' (default: 'text')
+    - isTitle: boolean - True if this is the entry title field (uses name="title" not name="fields[...]")
+    - help: string - Help text shown below field (when no error)
+    - placeholder: string - Input placeholder
+    - rows: number - Textarea rows (default: 3)
+    - autocomplete: string - Autocomplete attribute value
+    - classes: object - Override default classes (inputClasses, labelClasses, etc.)
+  #}
+  {% macro formField(config) %}
+    {# Extract config with defaults #}
+    {% set handle = config.handle %}
+    {% set label = config.label %}
+    {% set entry = config.entry ?? null %}
+    {% set type = config.type ?? 'text' %}
+    {% set isTitle = config.isTitle ?? false %}
+    {% set help = config.help ?? null %}
+    {% set placeholder = config.placeholder ?? null %}
+    {% set rows = config.rows ?? 3 %}
+    {% set autocomplete = config.autocomplete ?? null %}
+
+    {# Default classes - can be overridden via config.classes #}
+    {% set inputClasses = config.classes.input ?? "block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-accent" %}
+    {% set labelClasses = config.classes.label ?? "block mb-1.5 text-sm font-semibold text-gray-900 dark:text-gray-200" %}
+    {% set helpClasses = config.classes.help ?? "mt-1.5 text-sm text-gray-500 dark:text-gray-400" %}
+    {% set errorClasses = config.classes.error ?? "border-red-600 dark:border-red-400" %}
+    {% set errorTextClasses = config.classes.errorText ?? "mt-1.5 text-sm text-red-600 dark:text-red-400" %}
+    {% set requiredClasses = config.classes.required ?? "text-red-500 dark:text-red-700 font-semibold text-lg" %}
+
+    {# Get field errors #}
+    {% set fieldErrors = entry is defined and entry ? entry.getErrors(handle) : [] %}
+
+    {# Build field name - title is special case #}
+    {% set fieldName = isTitle ? 'title' : 'fields[' ~ handle ~ ']' %}
+
+    {# Get current value #}
+    {% set fieldValue = entry[handle] ?? '' %}
+
+    <div class="mb-6" data-reveal-item>
+      {# Label #}
+      <label for="{{ handle }}" class="{{ labelClasses }}">
+        {{ label }} <span class="{{ requiredClasses }}" aria-hidden="true">*</span>
+      </label>
+
+      {# Input or Textarea #}
+      {% if type == 'textarea' %}
+        <textarea
+          id="{{ handle }}"
+          name="{{ fieldName }}"
+          rows="{{ rows }}"
+          required
+          aria-required="true"
+          class="{{ inputClasses }} min-h-[{{ rows * 26 }}px] resize-y {{ fieldErrors|length ? errorClasses }}"
+          {% if fieldErrors|length %}aria-invalid="true" aria-describedby="{{ handle }}-error"{% endif %}
+          {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+        >{{ fieldValue }}</textarea>
+      {% else %}
+        <input
+          type="{{ type }}"
+          id="{{ handle }}"
+          name="{{ fieldName }}"
+          value="{{ fieldValue }}"
+          required
+          aria-required="true"
+          class="{{ inputClasses }} {{ fieldErrors|length ? errorClasses }}"
+          {% if fieldErrors|length %}aria-invalid="true" aria-describedby="{{ handle }}-error"{% endif %}
+          {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+          {% if autocomplete %}autocomplete="{{ autocomplete }}"{% endif %}
+        />
+      {% endif %}
+
+      {# Error or Help text #}
+      {% if fieldErrors|length %}
+        <p id="{{ handle }}-error" class="{{ errorTextClasses }}">{{ fieldErrors|first }}</p>
+      {% elseif help %}
+        <p class="{{ helpClasses }}">{{ help }}</p>
+      {% endif %}
+    </div>
+  {% endmacro %}

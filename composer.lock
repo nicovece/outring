@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bec3c6637112318be7831fa4abfea03",
+    "content-hash": "bdf6f357bad4483bb60f28312e477831",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -588,6 +588,66 @@
                 "source": "https://github.com/craftcms/cms"
             },
             "time": "2025-12-05T01:19:19+00:00"
+        },
+        {
+            "name": "craftcms/guest-entries",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/craftcms/guest-entries.git",
+                "reference": "f0b94fa28efb7d24e8d80ee278584653759c05d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/guest-entries/zipball/f0b94fa28efb7d24e8d80ee278584653759c05d2",
+                "reference": "f0b94fa28efb7d24e8d80ee278584653759c05d2",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^4.0.0-RC3|^5.0.0-beta.1"
+            },
+            "require-dev": {
+                "craftcms/ecs": "dev-main",
+                "craftcms/phpstan": "dev-main",
+                "craftcms/rector": "dev-main"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Guest Entries",
+                "handle": "guest-entries",
+                "documentationUrl": "https://github.com/craftcms/guest-entries/blob/v2/README.md"
+            },
+            "autoload": {
+                "psr-4": {
+                    "craft\\guestentries\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "This plugin allows you to save guest entries from the front-end of your website.",
+            "keywords": [
+                "cms",
+                "craftcms",
+                "entries",
+                "guest",
+                "yii2"
+            ],
+            "support": {
+                "docs": "https://github.com/craftcms/guest-entries/blob/v2/README.md",
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/guest-entries/issues?state=open",
+                "rss": "https://github.com/craftcms/guest-entries/commits/v2.atom",
+                "source": "https://github.com/craftcms/guest-entries"
+            },
+            "time": "2024-05-23T05:03:16+00:00"
         },
         {
             "name": "craftcms/html-field",

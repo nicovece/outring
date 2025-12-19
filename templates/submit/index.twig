@@ -1,0 +1,194 @@
+{% extends "_layouts/base.twig" %}
+{% import "_macros" as macros %}
+
+{% block title %}
+	Submit Your Story - {{ siteName }}
+{% endblock %}
+
+{% block content %}
+	{% if craft.app.request.getQueryParam("success") %}
+		{% include "_modules/page-header" with {
+			title: "Thank You!",
+			text: "Your story proposal has been submitted successfully.",
+			layout: "layout-textonly-short"
+		} only %}
+		<section data-reveal-group>
+			<div class="bg-accent/50 py-8 dark:bg-accent/20" data-reveal-item>
+				<header class="container-wide" data-reveal-group="0.2">
+					<div class="hero-text 2xl:max-w-1/3">
+						<div class="text-lg">
+							<p class="mb-4 text-lg" data-reveal-item>
+								Our editorial team will review your submission and contact you at the email address you provided if we'd
+								like to collaborate on developing your story.
+							</p>
+							<p class="mb-4 text-lg" data-reveal-item>
+								We typically respond within a few days. In the meantime, feel free to explore other stories from our
+								community.
+							</p>
+							{% include "_modules/link-text" with {
+								url: url("/experiences"),
+								label: "Explore Stories",
+								additionalClasses: "text-lg w-fit font-semibold",
+								data: "data-reveal-item"
+							} only %}
+						</div>
+					</div>
+				</header>
+			</div>
+		</section>
+	{% else %}
+		{% set entry = entry ?? null %}
+
+		{% include "_modules/page-header" with {
+			title: "Submit Your Story",
+			text: "Share your experience living in a G124 project area. Our editorial team will review your submission and contact you to co-author and publish your story.",
+			layout: "layout-textonly-short"
+		} only %}
+
+		{% if entry and entry.hasErrors() %}
+			<section class="container-wide -mt-4 mb-4 py-0" data-reveal-group>
+				<div class="max-w-lg bg-red-900/10 px-6 py-4 text-red-500 2xl:max-w-2xl dark:text-red-400">
+					<div data-reveal-item>
+						<p class="mb-2 font-semibold">
+							Please fix the following errors:
+						</p>
+						<ol class="list-inside-- list-decimal space-y-1">
+							{% for handle, errors in entry.getErrors() %}
+								{% for error in errors %}
+									<li>
+										<a
+											href="#{{ handle }}"
+											class="inline-block border-b-2 border-current/20 hover:border-current hover:text-red-600 dark:hover:text-red-300"
+										>
+											{{ error }}
+										</a>
+									</li>
+								{% endfor %}
+							{% endfor %}
+						</ol>
+					</div>
+				</div>
+			</section>
+		{% endif %}
+
+		<section data-reveal-group>
+			<form method="post" accept-charset="UTF-8">
+				{{ csrfInput() }}
+				{{ actionInput("guest-entries/save") }}
+				{{ hiddenInput("sectionHandle", "experiences") }}
+				{{ redirectInput("/submit?success=1") }}
+
+				{% set communityStoryCategory = craft.categories.group("experienceTypes").slug("community-story").one() %}
+				{% if communityStoryCategory %}
+					{{ hiddenInput("fields[experienceType][]", communityStoryCategory.id) }}
+				{% endif %}
+
+				<div class="hidden" aria-hidden="true">
+					<label for="website">Website</label>
+					<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+				</div>
+
+				{% set fieldSetClasses = "max-w-lg 2xl:max-w-2xl" %}
+
+				<div class="container-wide" data-reveal-group>
+					<h3 class="mb-8 text-lg font-light md:text-2xl" data-reveal-item>Contact information</h3>
+					<fieldset class="space-y-6 {{ fieldSetClasses }}">
+						<legend class="sr-only">
+							Your Contact Information
+						</legend>
+
+						{{
+							macros.formField({
+								handle: "submitterName",
+								label: "Your Name",
+								entry: entry,
+								autocomplete: "name"
+							})
+						}}
+
+						{{
+							macros.formField({
+								handle: "submitterEmail",
+								label: "Your Email",
+								entry: entry,
+								type: "email",
+								autocomplete: "email",
+								help: "We'll use this to contact you about your story."
+							})
+						}}
+
+						{{
+							macros.formField({
+								handle: "submitterLocation",
+								label: "Your Location",
+								entry: entry,
+								placeholder: "e.g., Giambellino, Milano",
+								help: "Which G124 project area do you live in?"
+							})
+						}}
+					</fieldset>
+				</div>
+
+				<div class="container-wide" data-reveal-item>
+					<h3 class="text-lg font-light md:text-2xl">Your story details</h3>
+				</div>
+
+				<div class="bg-accent/10 pt-4 dark:bg-accent/5" data-reveal-item>
+					<div class="container-wide" data-reveal-group>
+						<fieldset class="space-y-6 {{ fieldSetClasses }}">
+							<legend class="sr-only">
+								Your Story
+							</legend>
+
+							{{
+								macros.formField({
+									handle: "title",
+									label: "Story Title",
+									entry: entry,
+									isTitle: true,
+									help: "A working title for your story — this can change later."
+								})
+							}}
+
+							{{
+								macros.formField({
+									handle: "shortQuote",
+									label: "A Compelling Quote",
+									entry: entry,
+									type: "textarea",
+									rows: 3,
+									help: "The most memorable moment or quote from your experience."
+								})
+							}}
+
+							{{
+								macros.formField({
+									handle: "submitterStory",
+									label: "Your Story",
+									entry: entry,
+									type: "textarea",
+									rows: 8,
+									help: "Tell us briefly what happened and why it matters. 2-3 paragraphs is enough — we'll develop the full story together."
+								})
+							}}
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="container-wide" data-reveal-group>
+					<div class="pt-4" data-reveal-item>
+						<button
+							type="submit"
+							class="inline-flex items-center justify-center rounded-sm bg-accent px-4 py-2 text-base font-semibold text-white transition-all duration-200 hover:bg-accent/90 hover:shadow-md focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-900"
+						>
+							Submit Your Story
+						</button>
+						<p class="dark:text-gray-400 mt-3 text-sm text-gray-500">
+							All fields marked with <span class="font-semibold text-red-500 dark:text-red-700">*</span> are required.
+						</p>
+					</div>
+				</div>
+			</form>
+		</section>
+	{% endif %}
+{% endblock %}
