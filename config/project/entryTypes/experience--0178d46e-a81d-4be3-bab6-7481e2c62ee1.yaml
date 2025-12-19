@@ -324,6 +324,92 @@ fieldLayouts:
         name: People
         uid: a11c7ffc-52dc-49a6-83a9-678877231ee8
         userCondition: null
+      -
+        elementCondition:
+          class: craft\elements\conditions\entries\EntryCondition
+          conditionRules:
+            -
+              class: craft\fields\conditions\RelationalFieldConditionRule
+              elementIds:
+                - 385
+              fieldUid: 27000dd9-6752-4e6e-8c78-d46762a38049 # Experience Type
+              layoutElementUid: 2b50cb5f-02e4-46fa-8f6a-a12aa339ca92
+              operator: relatedTo
+              uid: d92be6c6-2e1f-4b01-8876-2caf0fc589cd
+          elementType: craft\elements\Entry
+          fieldContext: global
+        elements:
+          -
+            dateAdded: '2025-12-18T11:47:05+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 0217ffe7-c5a5-465a-a8ea-fcc5e8839f81 # Submitter Name
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 86e64cb3-b15f-45be-92fb-35879426706a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-18T11:47:05+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 0e616ad3-9e17-4f84-8cf2-3f573b31208a # Submitter Email
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3cb9915f-c98e-41ee-a028-414bb641148a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-18T11:47:05+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1190013e-63ae-4750-b14d-58b19474b584 # Submitter Location
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 60c2df67-8280-4041-8ed2-2b845f8b832b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-18T11:47:05+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: f066fe0c-da43-4310-8dcc-e710b2f427a0 # Submitter Story
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a0af1be0-2821-4761-87be-ae11a6caff84
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Submission data'
+        uid: 1e96578f-bba0-472f-81e1-583e15cac78b
+        userCondition: null
 handle: experience
 hasTitleField: true
 icon: null
