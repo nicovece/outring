@@ -1,8 +1,8 @@
 <footer class="mt-auto pt-10">
 	<div class="container-wide border-t border-gray-200 pt-10 dark:border-gray-700">
-		<div class="mb-8 grid gap-8 md:grid-cols-3">
+		<div class="grid-rows-auto mb-8 grid grid-cols-1 gap-8 md:grid-cols-[1fr_1fr_1fr] xl:grid-cols-[2fr_1fr_1fr_2fr]">
 			{# Column 1: About #}
-			<div>
+			<div class="md:col-span-3 xl:col-span-1">
 				<h3 class="mb-3 font-bold">
 					{% include "_modules/nav-link" with {
 						url: url("/"),
@@ -12,7 +12,7 @@
 						additionalClasses: "font-bold w-fit"
 					} only %}
 				</h3>
-				<p class="text-sm">
+				<p class="text-sm xl:w-2/3 2xl:w-full">
 					{{ siteInfo.siteTagline }}
 				</p>
 			</div>
@@ -52,18 +52,23 @@
 							additionalClasses: linkClasses.base
 						} only %}
 					</li>
+				</ul>
+			</div>
+
+			<div>
+				<h3 class="mb-3 font-bold">Partecipate</h3>
+				<ul class="space-y-2 text-sm">
 					<li>
 						{% include "_modules/link-text" with {
 							url: url("submit"),
-							label: "Submit Your Story",
+							label: "Submit your story",
 							additionalClasses: linkClasses.base ~ " text-accent font-semibold"
 						} only %}
 					</li>
 				</ul>
 			</div>
 
-			{# Column 3: Credits #}
-			<div>
+			<div class="md:col-span-3 xl:col-span-1">
 				<h3 class="mb-3 font-bold">Inspired by</h3>
 				<p class="text-sm">
 					{% include "_modules/link-text" with {
