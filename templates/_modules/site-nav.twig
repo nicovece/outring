@@ -1,19 +1,19 @@
 {% import "_macros" as macros %}
 {% set currentSegment = craft.app.request.segments|first %}
 <site-nav>
-	<header class="relative has-[.menu-open]:bg-accent">
+	<header class="relative z-10 has-[.menu-open]:bg-accent">
 		<nav
 			class="site-nav container-nav flex items-center justify-between border-b border-gray-200 pt-4 pb-2 dark:border-gray-700 [.menu-open]:border-b-0 [.menu-open]:bg-accent"
 			aria-label="Primary navigation"
 		>
-			<div class="flex items-center gap-2 xl:w-1/3">
+			<div class="flex items-center gap-2 xl:w-1/3 2xl:w-2/5">
 				{% include "_modules/nav-link" with {
 					url: url("/"),
 					label: "Outring",
 					ariaLabel: "Go to home page Outring",
 					isActive: true,
 					additionalClasses: "font-bold"
-				} only %} <span class="hidden text-gray-500 xl:inline dark:text-gray-300">{{ siteInfo.siteTagline }}</span>
+				} only %} <span class="hidden text-gray-500 2xl:inline dark:text-gray-300">{{ siteInfo.siteTagline }}</span>
 			</div>
 			<button
 				data-menu-toggle
@@ -48,7 +48,7 @@
 			</button>
 			<div
 				data-menu
-				class="pointer-events-none invisible absolute -top-full right-0 left-0 flex flex-col gap-2 border-b border-gray-200 bg-white opacity-0 transition-all md:pointer-events-auto md:visible md:static md:flex-row md:items-center md:justify-end md:border-0 md:bg-transparent md:opacity-100 xl:w-2/3 xl:gap-4 dark:border-gray-700 dark:bg-gray-900 [.menu-open_&]:pointer-events-auto [.menu-open_&]:visible [.menu-open_&]:top-full [.menu-open_&]:bg-accent [.menu-open_&]:opacity-100 [.menu-open_&]:dark:bg-accent"
+				class="pointer-events-none invisible absolute -top-full right-0 left-0 flex flex-col gap-2 border-b border-gray-200 bg-white opacity-0 transition-all md:pointer-events-auto md:visible md:static md:flex-row md:items-center md:justify-end md:border-0 md:bg-transparent md:opacity-100 xl:w-2/3 xl:gap-4 2xl:w-3/5 dark:border-gray-700 dark:bg-gray-900 [.menu-open_&]:pointer-events-auto [.menu-open_&]:visible [.menu-open_&]:top-full [.menu-open_&]:bg-accent [.menu-open_&]:opacity-100 [.menu-open_&]:dark:bg-accent"
 			>
 				<ul
 					class="2 mx-auto flex w-full max-w-(--max-width) flex-col justify-end gap-2 border-b border-gray-200/25 px-1 pt-2 pb-2 md:mx-0 md:w-fit md:flex-row md:border-b-0 md:px-0 md:pt-0 md:pb-0 xl:gap-3 xl:pt-0"
@@ -86,7 +86,7 @@
 							url: url("submit"),
 							label: "Submit Your Story",
 							isActive: currentSegment == "submit",
-							additionalClasses: "text-accent font-semibold"
+							additionalClasses: "md:text-accent font-semibold"
 						} only %}
 					</li>
 				</ul>
