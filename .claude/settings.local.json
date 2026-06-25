@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(rm:*)",
-      "Bash(cat:*)",
-      "WebFetch(domain:docs.fortrabbit.com)"
-    ]
-  }
-}
